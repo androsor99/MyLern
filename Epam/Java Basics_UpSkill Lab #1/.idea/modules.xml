@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Algorithmization/Algorithmization.iml" filepath="$PROJECT_DIR$/Algorithmization/Algorithmization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Basics_of_software_code_development/Cycles/Cycles.iml" filepath="$PROJECT_DIR$/Basics_of_software_code_development/Cycles/Cycles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java Basics_UpSkill Lab #1.iml" filepath="$PROJECT_DIR$/.idea/Java Basics_UpSkill Lab #1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Basics_of_software_code_development/Linear_Programs/Linear_Programs.iml" filepath="$PROJECT_DIR$/Basics_of_software_code_development/Linear_Programs/Linear_Programs.iml" />
+    </modules>
+  </component>
+</project>
