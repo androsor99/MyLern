@@ -7,7 +7,7 @@ public class HomeTask7 {
 
     public static void main(String[] args) {
         int numberOne = 2496;
-        int numberTwo = 789;
+        int numberTwo = 7894;
         String stringOne = "";
         String stringTwo = "";
         int symbolOne = 0;
@@ -22,6 +22,7 @@ public class HomeTask7 {
                 symbolTwo = stringTwo.charAt(j) - '0';
                 if (symbolTwo == symbolOne) {
                     System.out.println(" Совпадающие цифры - " + symbolOne);
+                    break;
                 }
             }
         }

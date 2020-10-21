@@ -7,7 +7,7 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        for(int i = 1; i <= 255; i++) {
+        for (int i = 1; i <= 255; i++) {
             System.out.println(i + " - " + (char) i);
         }
     }

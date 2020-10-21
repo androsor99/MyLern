@@ -13,7 +13,10 @@ public class HomeTask3 {
         double y2 = 6;
         double y3 = 7;
 
-        if ((x3 - x1) * (y2 - y1) - (x2 - x1) * (y3 - y1) == 0) { // (x – x1) * (y2 – y1) – (x2 – x1) * (y – y1) = 0 - уравнение прямой проходящей через 2 точки.
+        boolean isLinearEquation = (x3 - x1) *
+                (y2 - y1) - (x2 - x1) * (y3 - y1) == 0;
+
+        if (isLinearEquation) { // (x – x1) * (y2 – y1) – (x2 – x1) * (y – y1) = 0 - уравнение прямой проходящей через 2 точки.
             System.out.println("Указанные точки лежат на одной прямой");
         }
         else {

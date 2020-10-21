@@ -11,11 +11,14 @@ public class HomeTask2 {
         double c = 50;
         double d = 0;
 
-        if (Math.min(a, b) > Math.min(c, d)){
-            System.out.println("Максимум = " + Math.min(a, b));
+        double min1 = Math.min(a, b);
+        double min2 = Math.min(c, d);
+
+        if (min1 > min2){
+            System.out.println("Максимум = " + min1);
         }
         else {
-            System.out.println("Максимум = " + Math.min(c, d));
+            System.out.println("Максимум = " + min2);
         }
     }
 }

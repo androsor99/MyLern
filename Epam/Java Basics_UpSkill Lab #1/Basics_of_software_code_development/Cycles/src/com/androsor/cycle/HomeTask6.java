@@ -17,14 +17,15 @@ public class HomeTask6 {
             do {
                 System.out.print( " Делители числа " +m+ " - ");
                 for (int i = 2; i * i < m; i++) {
-                    if (m % i == 0)
+                    if (m % i == 0) {
                         System.out.print(i + ", ");
                     }
-                for (int i = (int) Math.sqrt(m);
-                     i >= 2; i--) {
-                    if (m % i == 0)
+                }
+                for (int i = (int) Math.sqrt(m); i >= 2; i--) {
+                    if (m % i == 0) {
                         System.out.print(m / i + ", ");
                     }
+                }
                 m++;
                 System.out.println();
             }

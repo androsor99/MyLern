@@ -8,8 +8,8 @@ public class HomeTask4 {
     public static void main(String[] args){
         double r = 179.908;
 
-        var r1 = r * 1000;
-        var r2 = r1 % 1000;
+        double r1 = r * 1000;
+        double r2 = r1 % 1000;
         double r3 = (int) r;
         double R = r2 + r3/1000;
 

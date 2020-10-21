@@ -22,7 +22,7 @@ public class HomeTask10 {
         myArray = new int[n];
         Random random = new Random(n);
         for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = random.nextInt();
+            myArray[i] = random.nextInt(30);
         }
 
         System.out.println(" Исходный массив ");
@@ -32,9 +32,7 @@ public class HomeTask10 {
 
 
         for (int i = 1; i < myArray.length -1; i=i + 1) {
-            double bufer = myArray[i];
             myArray[i] = myArray[i+1];
-            //myArray[(n -1)] = bufer;
             for (int j = i + 1 ; j < myArray.length -1; j = j+1){
                 myArray[j] = myArray[j+1];
             }
