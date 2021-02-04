@@ -12,14 +12,20 @@ public class HomeTask4 {
         double y = 0;
         double z = 0;
 
+<<<<<<< HEAD
         if (checkNegative(A, B, x, y, z)) {
         if ((x<=A && y<=B) || (y<=A && x<=B) || (x<=A && z<=B) || (z<=A && x<=B) || (z<=A && y<=B) || (y<=A && z<=B)) {
+=======
+        if (A > 0 & B > 0 & x > 0 & y > 0 & z > 0) {
+            if ((x<=A && y<=B) || (y<=A && x<=B) || (x<=A && z<=B) || (z<=A && x<=B) || (z<=A && y<=B) || (y<=A && z<=B)) {
+>>>>>>> 20abfb964b0798d08157d9ff06408ca0759ec2e7
                 System.out.println(" Кирпич проскочит!))");
             }
             else {
                 System.out.println(" Пилите, Шура, гири!))");
             }
         }
+<<<<<<< HEAD
 
 
 
@@ -36,5 +42,10 @@ public class HomeTask4 {
             }
         }
         return true;
+=======
+        else {
+            System.out.println(" Размеры отверстия и кирпича должны быть оличными от нуля в положительную сторону");
+        }
+>>>>>>> 20abfb964b0798d08157d9ff06408ca0759ec2e7
     }
 }
