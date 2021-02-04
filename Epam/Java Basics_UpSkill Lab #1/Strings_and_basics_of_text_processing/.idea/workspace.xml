@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="b3638d91-443c-4a50-9935-bf8a3eb22116" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
-=======
     <list default="true" id="b3638d91-443c-4a50-9935-bf8a3eb22116" name="Default Changelist" comment="" />
->>>>>>> 20abfb964b0798d08157d9ff06408ca0759ec2e7
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,26 +60,15 @@
         </entry>
       </map>
     </option>
-<<<<<<< HEAD
-    <option name="oldMeFiltersMigrated" value="true" />
-=======
->>>>>>> 20abfb964b0798d08157d9ff06408ca0759ec2e7
   </component>
   <component name="WindowStateProjectService">
     <state x="1160" y="254" key="FileChooserDialogImpl" timestamp="1603780611503">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1160" y="254" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1603780611503" />
-<<<<<<< HEAD
-    <state x="763" y="133" key="new project wizard" timestamp="1603821705517">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="763" y="133" key="new project wizard/0.0.2560.1040@0.0.2560.1040" timestamp="1603821705517" />
-=======
     <state x="763" y="133" key="new project wizard" timestamp="1603780646360">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="763" y="133" key="new project wizard/0.0.2560.1040@0.0.2560.1040" timestamp="1603780646360" />
->>>>>>> 20abfb964b0798d08157d9ff06408ca0759ec2e7
   </component>
 </project>
