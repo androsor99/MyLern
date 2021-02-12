@@ -9,34 +9,47 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        int[] A; // Объявление массива.
-        int n; // разрядность массива.
-        int K; // Коэфициент кратности.
-        int sum =0; // Сумма элементоав массива.
+        int arrayWidth; // разрядность массива.
+        int multiplicityFactor; // Коэфициент кратности.
+        int sum; // Сумма элементоав массива.
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов ммассива n = ");
-        n = sc.nextInt();
-        A = new int[n];
-        System.out.print(" Введите коэфициент кратности K = ");
-        K = sc.nextInt();
-        for (int i = 0; i < n; i++) { // заполняем массив n числами
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            A[i] = sc.nextInt();
-        }
+        System.out.print(" Введите количество элементов массива = ");
+        arrayWidth = inputParameter();
 
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] % K == 0) {
-                sum += A[i];
+        System.out.print(" Введите коэфициент кратности К = ");
+        multiplicityFactor = inputParameter();
+
+        sum = getSum(arrayWidth, multiplicityFactor);
+        printSum(multiplicityFactor, sum);
+    }
+
+    private static int getSum(int arrayWidth, int multiplicityFactor) {
+
+        int sum = 0;
+        int[] myArray = new int[arrayWidth];
+        for (int i = 0; i < myArray.length; i++) { // заполняем массив arrayWidth числами
+            System.out.print(" Введите элемент массива myArray[" + i + "] = ");
+            myArray[i] = inputParameter();
+            if (myArray[i] % multiplicityFactor == 0) {
+                sum += myArray[i];
             }
         }
+        return sum;
+    }
+
+    private static void printSum(int multiplicityFactor, int sum) {
 
         if (sum > 0) {
-            System.out.println(" Сумма элементов массива А, которые кратны " + K + ", равна " + sum);
+            System.out.println(" Сумма элементов массива, которые кратны - " + multiplicityFactor + ", равна - " + sum);
 
         } else {
-            System.out.println(" Массив не содержит элементов кратных К = " + K);
+            System.out.println(" Массив не содержит элементов кратных К = " + multiplicityFactor);
         }
     }
-}
 
+    public static int inputParameter() {
+
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+}

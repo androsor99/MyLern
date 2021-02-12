@@ -1,6 +1,6 @@
 package com.androsor.array;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  * You are given an array of real numbers, the dimension of which is N.
@@ -9,36 +9,35 @@ import java.util.Scanner;
 public class HomeTask3 {
 
     public static void main(String[] args) {
-        double[] myArray; // Объявление массива
-        int n; // разрядность массива
+
+        int arrayWidth; // разрядность массива
+
+        System.out.print(" Введите количество элементов ммассива arrayWidth = ");
+        arrayWidth = HomeTask1.inputParameter();
+
+        System.out.println(" Исходный массив:");
+        int[] myArray = HomeTask2.createArray(arrayWidth);
+        System.out.println(Arrays.toString(myArray));
+
+        countingTheNumberOfElements(myArray);
+    }
+
+    private static void countingTheNumberOfElements(int[] array) {
+
         int numberOfPositive = 0; // Количество положительных элементов
         int numberOfNegative = 0; // Количество отрицательных элементов
         int numberOfZero = 0; // Количество элементов равных нулю
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов ммассива n = ");
-        n = sc.nextInt();
-        myArray = new double[n];
-        System.out.println(" Заполните исходный массив элементами:");
-        for (int i = 0; i < n; i++) { // заполняем массив n числами
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            myArray[i] = sc.nextInt();
-        }
-
-        for (double v : myArray) {
-            if (v == 0) {
+        for (int elem : array) {
+            if (elem == 0) {
                 numberOfZero++;
+                continue;
             }
-
-            if (v > 0) {
+            if (elem > 0) {
                 numberOfPositive++;
+                continue;
             }
-
-            if (v < 0) {
-                numberOfNegative++;
-            }
+            numberOfNegative++;
         }
-
         System.out.println(" Количество положительных элементов =  " + numberOfPositive);
         System.out.println(" Количество отрицательных элементов =  " + numberOfNegative);
         System.out.println(" Количество элементов равных 0 =  " + numberOfZero);

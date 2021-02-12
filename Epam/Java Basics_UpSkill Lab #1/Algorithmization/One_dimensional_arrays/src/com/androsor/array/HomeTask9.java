@@ -11,55 +11,46 @@ public class HomeTask9 {
 
     public static void main (String[] args) {
 
-        double [] myArray; // объявляем массив.
-        int n; // разрядность массива
-        int counter; // Текущий счетчик повторов.
-        int counterLargest = 1; // Наибольшее число повторов.
-        double elementFrequency = 0; // Наиболее часто встречающийся элемент массива.
-        double elementFrequencyCurrent; // текущий ниболее встречающийся элемент.
+        int arrayWidth; // разрядность массива
 
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = HomeTask1.inputParameter();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность массива n = ");
-        n = sc.nextInt();
-        myArray = new double[n];
-        System.out.println(" Заполняем массив элементами ");
-
-        for (int i =0; i < n; i++ ) {
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            myArray[i] = sc.nextDouble();
-        }
-
-        System.out.println(" Исходный массив ");
-        System.out.println("----------------------------------------");
+        System.out.println(" Исходный массив: ");
+        System.out.println(" ------------------------------------------------------- ");
+        int[] myArray = HomeTask2.createArray((arrayWidth));
         System.out.println(" " + Arrays.toString(myArray));
-        System.out.println("----------------------------------------");
+        System.out.println(" ------------------------------------------------------- ");
 
-        elementFrequencyCurrent = myArray[0]; // начинаем перебор с первого элемента массива.
+
+        int mostCommonNumberCurrent = myArray[0]; //текущий ниболее встречающийся элемент.
+        int counterLargest = 1; // Наибольшее число повторов.
+        int mostCommonNumber = 0; // Наиболее часто встречающийся элемент массива.
 
         for (int i = 0; i < myArray.length - 1; i++) {
 
-            counter = 1; // устанавливаем\сбрасываем счетчик.
+            int counter = 1; // устанавливаем\сбрасываем счетчик.
 
             for (int j = i + 1; j < myArray.length; j++) {
                 if (myArray[i] == myArray[j]) {
                     counter++;
-                    elementFrequencyCurrent = myArray[i];
+                    mostCommonNumberCurrent = myArray[i];
                 }
             }
 
             if (counter > counterLargest) {
                 counterLargest = counter;
-                elementFrequency = myArray[i];
-            } else if  (counterLargest == counter && elementFrequency > elementFrequencyCurrent) {
-                elementFrequency = myArray[i];
+                mostCommonNumber = myArray[i];
+            } else if  (counterLargest == counter && mostCommonNumber > mostCommonNumberCurrent) {
+                mostCommonNumber = myArray[i];
             }
         }
 
         if (counterLargest == 1) {
             System.out.println(" Повторяющихся элементов в массиве нет");
-        } else {
-            System.out.println(" Наименьший часто встречающийся элемент массива = " + elementFrequency);
+        }
+        else {
+            System.out.println(" Наименьший часто встречающийся элемент массива = " + mostCommonNumber);
         }
     }
 }

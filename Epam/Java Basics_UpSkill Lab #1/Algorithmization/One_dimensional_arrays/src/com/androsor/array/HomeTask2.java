@@ -1,6 +1,6 @@
 package com.androsor.array;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  * A sequence of real numbers a1, a2, ..., an is given. Replace all its members greater than the given Z with this number.
@@ -9,36 +9,49 @@ import java.util.Scanner;
 public class HomeTask2 {
 
     public static void main(String[] args) {
-        int[] myArray; // Объявление массива
-        int n; // разрядность массива
-        int Z; // Число для замены
-        int numberOfReplace = 0; // Количество замен
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов ммассива n = ");
-        n = sc.nextInt();
-        myArray = new int[n];
-        System.out.print(" Введите число для замены Z = ");
-        Z = sc.nextInt();
-        System.out.println(" Заполните исходный массив элементами:");
+        int arrayWidth; // разрядность массива
+        int replacementNumber; // Число для замены
+        int numberOfReplace; // Количество замен
 
-        for (int i = 0; i < n; i++) { // заполняем массив n числами
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            myArray[i] = sc.nextInt();
-        }
+
+        System.out.print(" Введите количество элементов массива arrayWidth = ");
+        arrayWidth = HomeTask1.inputParameter();
+
+        System.out.print(" Введите число для замены replacementNumber = ");
+        replacementNumber = HomeTask1.inputParameter();
+
+        System.out.println(" Исходный массив:");
+        int[] myArray = createArray(arrayWidth);
+        System.out.println(Arrays.toString(myArray));
 
         System.out.println(" Замененный массив:");
-
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] > Z) {
-                myArray[i] = Z;
-                numberOfReplace ++;
-            }
-            System.out.print(" " + myArray[i]);
-        }
-
-        System.out.println();
+        numberOfReplace = getNumberOfReplace(myArray, replacementNumber);
+        System.out.println(Arrays.toString(myArray));
         System.out.println(" Число замен =  " + numberOfReplace);
     }
+
+    private static int getNumberOfReplace(int[] array, int replacementNumber) {
+        int numberOfReplace = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > replacementNumber) {
+                array[i] = replacementNumber;
+                numberOfReplace++;
+            }
+        }
+        return numberOfReplace;
+    }
+
+    public static int[] createArray( int arrayWidth) {
+
+        System.out.println(" Заполните исходный массив элементами:");
+        int[] myArray = new int[arrayWidth];
+        for (int i = 0; i < arrayWidth; i++) { // заполняем массив arrayWidth числами
+            System.out.print(" Введите элемент массива myArray[" + i + "] = ");
+            myArray[i] = HomeTask1.inputParameter();
+        }
+        return myArray;
+    }
 }
+
 

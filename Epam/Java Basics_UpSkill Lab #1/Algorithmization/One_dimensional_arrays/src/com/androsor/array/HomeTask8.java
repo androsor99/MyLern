@@ -1,7 +1,6 @@
 package com.androsor.array;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * You are given a sequence of integers a1, a2, ..., an. Form a new sequence, discarding those terms from the original,
@@ -11,57 +10,64 @@ public class HomeTask8 {
 
     public static void main (String[] args) {
 
-        double[] myArray;
-        int n;
-        double minArray;
-        int counter; // количество одинаковых минимумов в массиве.
-        double [] myArrayNew; // массив без мин элементов исходного массива.
+        int arrayWidth; // разрядность массива
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность массива n = ");
-        n = sc.nextInt();
-        myArray = new double[n];
-        System.out.println(" Заполняем массив элементами ");
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = HomeTask1.inputParameter();
 
-        for (int i =0; i < n; i++ ) {
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            myArray[i] = sc.nextDouble();
-        }
-
-        System.out.println(" Исходный массив ");
-        System.out.println("----------------------------------------");
+        System.out.println(" Исходный массив: ");
+        System.out.println(" ------------------------------------------------------- ");
+        int[] myArray = HomeTask2.createArray((arrayWidth));
         System.out.println(" " + Arrays.toString(myArray));
-        System.out.println("----------------------------------------");
+        System.out.println(" ------------------------------------------------------- ");
 
-        minArray = myArray[0];
+        int minElement = getMinArray(myArray); // минимальный элемент в массиве
+
+        int numberOfMinElements = getNumberOfElementsEqualToMin(minElement, myArray); // количество элементов не равных мин..
+
+        if ((numberOfMinElements == 1) || (numberOfMinElements == myArray.length)){
+            System.out.println(" Весь массив состоиит из одного или из одинаковых элементов, составить новый массив невозможно ");
+        }
+        else {
+            System.out.println(" Новая последовательность");
+            System.out.println("---------------------------------------------");
+            int[] myArrayNew = createNewArray(myArray, minElement, numberOfMinElements); // массив без мин элементов исходного массива.
+            System.out.println(Arrays.toString(myArrayNew));
+        }
+    }
+
+    private static int[] createNewArray(int[] myArray, int minElement, int numberOfMinElements) {
+
+        int[] myArrayNew = new int[numberOfMinElements];
+        int j = 0;
+        for (int k : myArray) {
+            if (k != minElement) {
+                myArrayNew[j] = k;
+                j++;
+            }
+        }
+        return myArrayNew;
+    }
+
+    private static int getNumberOfElementsEqualToMin(int minArray, int[] myArray) {
+
+        int counter = 0;
+        for (int j : myArray) {
+            if (j != minArray) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int getMinArray(int[] myArray) {
+
+        int minArray = myArray[0];
         for (int i = 1; i < myArray.length; i++) {
             if (myArray[i] < minArray) {
                 minArray = myArray[i];
             }
         }
-
-        counter = 1;
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] != minArray) {
-               counter++;
-            }
-        }
-
-        if ((counter == 1) | (counter == n)){
-            System.out.println(" Весь массив состоиит из одного или из одинаковых элементов, составить новый массив невозможно ");
-        } else {
-            myArrayNew = new double[counter];
-            int j = 0;
-            for (int i = 0; i < myArray.length; i ++) {
-                if (myArray[i] != minArray) {
-                    myArrayNew[j] = myArray[i];
-                    j++;
-                }
-            }
-
-            System.out.println(" Новая последовательность");
-            System.out.println("---------------------------------------------");
-            System.out.println(Arrays.toString(myArrayNew));
-        }
+        return minArray;
     }
 }

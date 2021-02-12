@@ -1,7 +1,6 @@
 package com.androsor.array;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * Integers a1, a2, ..., an are given. Print only those numbers for which ai> i.
@@ -9,28 +8,25 @@ import java.util.Scanner;
 public class HomeTask5 {
 
     public static void main(String[] args) {
-        int[] myArray; // Объявление массива
-        int n; // разрядность массива
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов ммассива n = ");
-        n = sc.nextInt();
-        myArray = new int[n];
-        System.out.println(" Заполните исходный массив элементами:");
+        int arrayWidth; // разрядность массива
 
-        for (int i = 0; i < n; i++) { // заполняем массив n числами
-            System.out.print(" Введите элемент массива A[" + i + "] = ");
-            myArray[i] = sc.nextInt();
-        }
+        System.out.print(" Введите количество элементов ммассива arrayWidth = ");
+        arrayWidth = HomeTask1.inputParameter();
 
         System.out.println(" Исходный массив: ");
+        int[] myArray = HomeTask2.createArray(arrayWidth);
         System.out.println(" " + Arrays.toString(myArray));
 
         System.out.println(" Список элементов массива у которых значение больше их индекса :");
+        findingItems(myArray);
+    }
+
+    private static void findingItems(int[] myArray) {
 
         for (int i = 0; i < myArray.length; i++) {
             if (myArray[i] > i) {
-                System.out.print(" " + myArray[i]);
+                System.out.print(myArray[i] + ", ");
             }
         }
     }
