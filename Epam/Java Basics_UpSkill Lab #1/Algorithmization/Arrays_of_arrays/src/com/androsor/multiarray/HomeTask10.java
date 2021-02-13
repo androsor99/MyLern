@@ -1,33 +1,32 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-import static com.androsor.multiarray.FillArray.fillArray;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
  * Find the positive elements of the main diagonal of a square matrix.
  */
-
 public class HomeTask10 {
 
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        int[][] myArray;
+        int arrayWidth; // разрядность матрицы
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
-        myArray = new int[n][n];
-        fillArray(myArray);
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = ArrayCreator.inputParameter();
 
-        System.out.println(" Исходная матрица:");
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
         System.out.print(" Элементы главной диагонали матрицы: ");
-        for (int i = 0; i < n; i++) {
-            if (myArray[i][i] > 0) {
-                System.out.print(myArray[i][i] + " ");
+        printPositiveElementMainDiagonal(myArray);
+    }
+
+    private static void printPositiveElementMainDiagonal(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i][i] > 0) {
+                System.out.print(array[i][i] + " ");
             }
         }
     }

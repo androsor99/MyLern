@@ -2,56 +2,71 @@ package com.androsor.multiarray;
 
 import java.util.Random;
 
+import static com.androsor.multiarray.ArrayCreator.inputParameter;
+
 /**
  * Fill the 10x20 matrix with random numbers from 0 to 15. Display the matrix itself and the row numbers in which the
  * number 5 occurs three or more times.
  */
-
 public class HomeTask11 {
 
-    public static void main (String[] args){
+    public static void main(String[] args){
 
-        int [][] myArray;
-        myArray = new int[10][20];
-        int count; // число встреч цифры 5 в строке матрицы.
+        int numberOfRows; // число строк матрицы
+        int numberOfColumns; // число столбцов матрицы
+        int number = 5; // число по условию задачи
+        int numberOfRepetitions = 3; // количество повторов
 
-        //  Заполняем матрицу 10x20 случайными числами от 0 до 15.
-        Random random = new Random ();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 20; j++) {
-                myArray[i][j] = random.nextInt(16);
+        System.out.print(" Введите число строк массива numberOfRows = ");
+        numberOfRows = inputParameter();
+        System.out.print(" Введите число столбцов массива numberOfColumns = ");
+        numberOfColumns = inputParameter();
+
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillArray(numberOfRows, numberOfColumns);
+        printArray(myArray, numberOfColumns);
+
+        printLineWithRepetitions(myArray, numberOfColumns, number, numberOfRepetitions);
+    }
+
+    private static int[][] fillArray(int rows, int columns) {
+        int [][] array = new int[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                array[i][j] = new Random().nextInt(16);
             }
         }
+        return array;
+    }
 
-        // Выводим матрицу.
-        System.out.println(" Исходная матрица:");
+    private static void printArray(int[][] array, int columns) {
         System.out.println("----------------------------------------------------------------------------------------");
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 20; j++) {
-                System.out.print(myArray[i][j] + "\t");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(array[i][j] + "\t");
             }
             System.out.println();
         }
         System.out.println("----------------------------------------------------------------------------------------");
+    }
 
-        // Анализируем число встреч цифры 5 в строках.
+    private static void printLineWithRepetitions(int[][] array, int columns, int number, int numberOfRepetitions) {
+        int count; // число встреч цифры 5 в строке матрицы.
         int flag = 0; // вводим временную переменную для определения несовпадения встреч цифры 5.
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < array.length; i++) {
             count = 0;
-            for (int j = 0; j < 20; j++) {
-                if ( myArray[i][j] == 5) {
+            for (int j = 0; j < columns; j++) {
+                if (array[i][j] == number) {
                     count++;
                 }
             }
-            if (count >= 3) {
-                System.out.println(i + 1 + "-ая строка содержит цифру 5 три и более раз");
-            } else {
-                    flag++;
+            if (count >= numberOfRepetitions) {
+                flag++;
+                System.out.printf(" %d-ая строка содержит цифру = %d, %d и более раз\n",(i + 1), number, numberOfRepetitions);
             }
         }
-        if (flag == 10) {
-            System.out.println(" Число 5 встречается реже трех раз во всех строках");
+        if (flag == 0) {
+            System.out.printf(" Число %d встречается реже %d раз во всех строках", number, numberOfRepetitions);
         }
     }
 }
-

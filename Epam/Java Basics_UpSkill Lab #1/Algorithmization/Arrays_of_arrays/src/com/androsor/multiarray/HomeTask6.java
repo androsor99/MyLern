@@ -1,7 +1,7 @@
 package com.androsor.multiarray;
 
 import java.util.Scanner;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -11,36 +11,43 @@ import static com.androsor.multiarray.PrintArray.printArrayInt;
  * 0 1 1 1 1 0
  * 1 1 1 1 1 1
  */
-
 public class HomeTask6 {
+
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        int[][] myArray;
+        int arrayWidth; // разрядность матрицы
 
-        Scanner sc = new Scanner(System.in);
         System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
-        while (n % 2 != 0) {
+        arrayWidth = inputParameter();
+
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillyArray(arrayWidth);
+        printArrayInt(myArray);
+    }
+
+    private static int[][] fillyArray(int arrayWidth) {
+        int[][] array = new int[arrayWidth][arrayWidth];
+        for (int i = 0; i < array.length / 2 + 1; i++) { // заполняем первую половину строк.
+            for (int j = i; j < array.length - i; j++) {
+                array[i][j] = 1;
+            }
+        }
+        for (int i = array.length / 2; i < array.length; i++) { // заполняем вторую половину строк.
+            for (int j = array.length - i - 1; j < i + 1; j++) {
+                array[i][j] = 1;
+            }
+        }
+        return array;
+    }
+
+    private static int inputParameter() {
+        Scanner scanner = new Scanner(System.in);
+        int temp = scanner.nextInt();
+        while (temp % 2 != 0) {
             System.out.println(" Значение разрядности должно быть четным по условию");
             System.out.print(" Введите разрядность матрицы = ");
-            n = sc.nextInt();
+            temp = scanner.nextInt();
         }
-
-        myArray = new int[n][n];
-
-        for (int i = 0; i < n / 2 + 1; i++) { // заполняем первую половину строк.
-            for (int j = i; j < n - i; j++) {
-                myArray[i][j] = 1;
-            }
-        }
-        for (int i = n / 2; i < n; i++) { // заполняем вторую половину строк.
-            for (int j = n - i - 1; j < i + 1; j++) {
-                myArray[i][j] = 1;
-            }
-        }
-
-        System.out.println(" Исходная матрица:");
-        printArrayInt(myArray);
+        return temp;
     }
 }

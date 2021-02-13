@@ -1,25 +1,31 @@
 package com.androsor.multiarray;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Filling an array with random integers.
  */
 
-public class FillArray {
+public class ArrayCreator {
 
-    public  static void fillArray (int [][] array) {
-
-        Random random = new Random ();
+    public static int[][] fillArray (int n) {
+        int[][] array = new int[n][n];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
-                array[i][j] = random.nextInt(100);
+                array[i][j] = new Random().nextInt(100);
             }
         }
+        return array;
     }
 
-    public  static void standardFillArray(int [][] array) {
+    public static int inputParameter() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
 
+    public static int[][] standardFillArray(int n) {
+        int[][] array = new int[n][n];
         int count = 1;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
@@ -27,5 +33,6 @@ public class FillArray {
                 count++;
             }
         }
+        return array;
     }
 }

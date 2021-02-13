@@ -1,54 +1,81 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-import static com.androsor.multiarray.FillArray.fillArray;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
+import java.util.Arrays;
+
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayCreator.inputParameter;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
  * Find the largest element of the matrix and replace all odd elements with it.
  */
-
 public class HomeTask15 {
 
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        int[][] myArray;
-        int myArrayMax; // Максимальный элемент матрицы.
-        int indexArrayMaxI = 0; // Индекс строки максимального элемента.
-        int indexArrayMaxJ = 0; // Индекс столбца максимального элемента
+        int arrayWidth; // разрядность массива.
 
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = inputParameter();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
-        myArray = new int[n][n];
-        fillArray(myArray);
-
-        System.out.println(" Исходная матрица:");
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
-        myArrayMax = myArray[0][0];
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i < n; i++) {
-                if (myArray[i][j] > myArrayMax) {
-                    myArrayMax = myArray[i][j];
+        System.out.println(" Максимальный элемент матрицы " + findingTheMaximumElement(myArray).toString());
+        int arrayMax = findingTheMaximumElement(myArray).getValue();
+
+        System.out.println(" Матрица с замененными нечетными элементами :");
+        int[][] copyArray = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
+        printArrayInt(replaceOddElements(copyArray,arrayMax));
+    }
+
+    private static ElementMax findingTheMaximumElement(int [][] array) {
+        int indexArrayMaxI = 0; // Индекс строки максимального элемента.
+        int indexArrayMaxJ = 0; // Индекс столбца максимального элемента
+        int arrayMax = array[0][0]; // Максимальный элемент матрицы.
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i][j] > arrayMax) {
+                    arrayMax = array[i][j];
                     indexArrayMaxI = i;
                     indexArrayMaxJ = j;
                 }
             }
         }
-        System.out.println(" Максимальный элемент матрицы N [" + indexArrayMaxI + ";" + indexArrayMaxJ + "] = " + myArrayMax);
+        return new ElementMax(indexArrayMaxI, indexArrayMaxJ, arrayMax);
+    }
 
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i < n; i++) {
-                if (myArray[i][j] % 2 != 0) {
-                     myArray[i][j] = myArrayMax;
+    private static int[][] replaceOddElements(int[][] array, int arrayMax) {
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i][j] % 2 != 0) {
+                    array[i][j] = arrayMax;
                 }
             }
         }
+        return array;
+    }
 
-        System.out.println(" Матрица с замененными нечетными элементами :");
-        printArrayInt(myArray);
+    private static class ElementMax {
+
+        private final int indexMaxI; // Индекс строки максимального элемента.
+        private final int indexMaxJ ; // Индекс столбца максимального элемента
+        private final int value; // Максимальный элемент матрицы.
+
+        public ElementMax(int indexMaxI, int indexMaxJ, int value) {
+            this.indexMaxI = indexMaxI;
+            this.indexMaxJ = indexMaxJ;
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return "[" + indexMaxI + " ; " + indexMaxJ + "] = " + value;
+        }
     }
 }

@@ -1,56 +1,63 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-import static com.androsor.multiarray.FillArray.fillArray;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
+import java.util.Arrays;
+
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
  * Sort matrix rows in ascending and descending order of element values.
  */
-
 public class HomeTask12 {
 
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        int[][] myArray;
+        int arrayWidth; // разрядность матрицы
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
-        myArray = new int[n][n];
-        fillArray(myArray);
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = ArrayCreator.inputParameter();
 
-        System.out.println(" Исходная матрица:");
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
 
         System.out.println(" Матрица с отсортированными по убыванию элементами строк: ");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = j+1; k < n; k++) {
-                    if (myArray[i][k] > myArray[i][j]) {
-                        int temp = myArray[i][k];
-                        myArray[i][k] = myArray[i][j];
-                        myArray[i][j] = temp;
-                    }
-                }
-            }
-        }
-        printArrayInt(myArray);
+        int[][] sortArray1 = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
+        sortRowsInDescendingOrder(sortArray1);
+        printArrayInt(sortArray1);
 
         System.out.println(" Матрица с отсортированными по возростанию элементами строк: ");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = j+1; k < n; k++) {
-                    if (myArray[i][k] < myArray[i][j]) {
-                        int temp = myArray[i][k];
-                        myArray[i][k] = myArray[i][j];
-                        myArray[i][j] = temp;
+        int[][] sortArray2 = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
+        sortRowsInAscendingOrder(sortArray2);
+        printArrayInt(sortArray2);
+    }
+
+    private static void sortRowsInAscendingOrder(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                for (int k = j + 1; k < array.length; k++) {
+                    if (array[i][k] < array[i][j]) {
+                        int temp = array[i][k];
+                        array[i][k] = array[i][j];
+                        array[i][j] = temp;
                     }
                 }
             }
         }
-        printArrayInt(myArray);
+    }
+
+    private static void sortRowsInDescendingOrder(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                for (int k = j + 1; k < array.length; k++) {
+                    if (array[i][k] > array[i][j]) {
+                        int temp = array[i][k];
+                        array[i][k] = array[i][j];
+                        array[i][j] = temp;
+                    }
+                }
+            }
+        }
     }
 }

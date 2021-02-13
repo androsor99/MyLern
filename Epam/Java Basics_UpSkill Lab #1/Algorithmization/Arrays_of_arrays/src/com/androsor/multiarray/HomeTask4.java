@@ -1,7 +1,6 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
+import static com.androsor.multiarray.ArrayPrinter.*;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -12,30 +11,31 @@ import static com.androsor.multiarray.PrintArray.printArrayInt;
  * ...............
  * n n-1 n-2 ... 1
  */
-
 public class HomeTask4 {
+
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        int[][] myArray;
+        int arrayWidth; // разрядность матрицы
 
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = ArrayCreator.inputParameter();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
+        System.out.println(" Исходная матрица:");
+        int[][] myArray = fillArray(arrayWidth);
+        printArrayInt(myArray);
+    }
 
-        myArray = new int[n][n];
-        for ( int i = 0; i < n; i ++ ) {
-            for (int j = 0; j < n; j++) {
-                if (i % 2 == 0){
-                    myArray[i][j] = j+1;
-                }else {
-                    myArray[i][j] = n-j;
+    private static int[][] fillArray(int arrayWidth) {
+        int[][] array = new int[arrayWidth][arrayWidth];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i % 2 == 0) {
+                    array[i][j] = j + 1;
+                } else {
+                    array[i][j] = array.length - j;
                 }
             }
         }
-
-        System.out.println(" Исходная матрица:");
-        printArrayInt(myArray);
+        return array;
     }
 }

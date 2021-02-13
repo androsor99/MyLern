@@ -1,47 +1,43 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-import static com.androsor.multiarray.FillArray.fillArray;
-import static com.androsor.multiarray.PrintArray.printArrayInt;
-
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
  * A matrix of non-negative numbers is given. Calculate the sum of the items in each column. Determine which
  * the column contains the maximum amount.
  */
-
 public class HomeTask9 {
 
     public static void main (String[] args) {
 
-        int n; // разрядность матрицы
-        int [][] myArray;
-        int myArraySumColumn; // Сумма элементов столбца матрицы
-        int myArrayMaxSumColumn =0; // Максимальная сумма элементов столбцов матрицы.
-        int indexColumn =0; // Индекс столбца матрицы с маусимальной суммой элементов.
+        int arrayWidth; // разрядность матрицы
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
-        myArray = new int[n][n];
-        fillArray (myArray);
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = ArrayCreator.inputParameter();
 
-        System.out.println(" Исходная матрица:");
-        printArrayInt (myArray);
+        System.out.println(" Исходный массив");
+        int [][] myArray = fillArray(arrayWidth);
+        printArrayInt(myArray);
 
-        for (int j = 0; j < n; j++) {
-            myArraySumColumn =0;
-            for (int i = 0; i < n; i ++) {
-                myArraySumColumn += myArray[i][j];
-                if (myArraySumColumn > myArrayMaxSumColumn) {
-                    myArrayMaxSumColumn = myArraySumColumn;
+        printSumOfColumnElements(myArray);
+    }
+
+    private static void printSumOfColumnElements(int[][] array) {
+        int arrayMaxSumColumn = 0; // Максимальная сумма элементов столбцов матрицы.
+        int indexColumn = 0; // Индекс столбца матрицы с маусимальной суммой элементов.
+
+        for (int j = 0; j < array.length; j++) {
+            int arraySumColumn = 0; // Сумма элементов столбца матрицы
+            for (int i = 0; i < array.length; i ++) {
+                arraySumColumn += array[i][j];
+                if (arraySumColumn > arrayMaxSumColumn) {
+                    arrayMaxSumColumn = arraySumColumn;
                     indexColumn = j;
                 }
             }
-
-            System.out.println(j + 1+ "-ый столбец содержит элементов сумма которых = " + myArraySumColumn);
+            System.out.println(j + 1+ "-ый столбец содержит " + array.length + " элементов сумма которых = " + arraySumColumn);
         }
-
-        System.out.println(indexColumn + 1 + "-ый столбец содержит максимальную сумму элементов");
+        System.out.println(indexColumn + 1 + "-ый столбец содержит максимальную сумму элементов.");
     }
 }

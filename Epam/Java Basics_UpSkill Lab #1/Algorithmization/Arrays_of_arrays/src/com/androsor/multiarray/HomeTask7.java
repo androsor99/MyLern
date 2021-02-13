@@ -1,8 +1,8 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
+import static com.androsor.multiarray.ArrayCreator.inputParameter;
 import static java.lang.Math.sin;
-import static com.androsor.multiarray.PrintArray.printArrayDouble;
+import static com.androsor.multiarray.ArrayPrinter.printArrayDouble;
 
 /**
  * Form a square matrix of order n according to the rule:
@@ -11,28 +11,40 @@ import static com.androsor.multiarray.PrintArray.printArrayDouble;
  */
 
 public class HomeTask7 {
+
     public static void main(String[] args) {
 
-        int n; // разрядность матрицы
-        double[][] myArray;
-        int countPositive = 0; // счетчик положительных элементов
+        int arrayWidth; // разрядность массива.
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите разрядность матрицы = ");
-        n = sc.nextInt();
+        System.out.print(" Введите разрядность массива arrayWidth = ");
+        arrayWidth = inputParameter();
 
-        myArray = new double[n][n];
+        System.out.println(" Исходный массив");
+        double[][] myArray = fillArray(arrayWidth);
+        printArrayDouble(myArray);
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                myArray[i][j] = sin((i * i - j * j) / n);
-                if (myArray[i][j] > 0) {
+        System.out.println("Количество положительных элементов матрицы: " + getCounterPositiveElement(myArray));
+    }
+
+    private static double[][] fillArray(int arrayWidth) {
+        double[][] array = new double[arrayWidth][arrayWidth];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                array[i][j] = sin((double) (i * i - j * j) / array.length);
+            }
+        }
+        return array;
+    }
+
+    private static int getCounterPositiveElement(double[][] array) {
+        int countPositive = 0;
+        for (double[] doubles : array) {
+            for (int j = 0; j < array.length; j++) {
+                if (doubles[j] > 0) {
                     countPositive++;
                 }
             }
         }
-        System.out.println(" Исходная матрица:");
-        printArrayDouble(myArray);
-        System.out.println("Количество положительных элементов матрицы: " + countPositive);
+        return countPositive;
     }
 }
