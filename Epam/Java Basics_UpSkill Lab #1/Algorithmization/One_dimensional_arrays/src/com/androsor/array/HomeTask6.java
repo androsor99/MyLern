@@ -1,7 +1,5 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
@@ -18,24 +16,24 @@ public class HomeTask6 {
 
         System.out.println(" Исходный массив: ");
         int[] myArray = createArray(arrayWidth);
-        System.out.println(" " + Arrays.toString(myArray));
+        printArray(myArray);
 
         System.out.print(" Сумма элементов массива с простыми индексами = " + getSum(myArray));
    }
 
-    private static int getSum(int[] myArray) {
+    private static int getSum(int[] array) {
         int sum = 0; // Сумма элементов массива
-        for (int i = 2; i < myArray.length; i++) {
-            if (primeNumber(i)) {
-                sum += myArray[i];
+        for (int i = 2; i < array.length; i++) {
+            if (isPrime(i)) {
+                sum += array[i];
             }
         }
         return sum;
     }
 
-    private static boolean primeNumber(int k) { // метод для проверки на простоту.
-        for (int j = 2; j < Math.sqrt(k) + 1; j++) {
-            if (k % j == 0) {
+    private static boolean isPrime(int value) { // метод для проверки на простоту.
+        for (int j = 2; j < Math.sqrt(value) + 1; j++) {
+            if (value % j == 0) {
                 return false;
             }
         }

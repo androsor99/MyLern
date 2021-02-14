@@ -1,7 +1,5 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
@@ -18,13 +16,11 @@ public class HomeTask4 {
 
         System.out.println(" Исходный массив:");
         int[] myArray = createArray(arrayWidth);
-        System.out.println(" " + Arrays.toString(myArray));
-
-        System.out.println("-----------------");
+        printArray(myArray);
 
         System.out.println(" Конечный массив: ");
         int[] swapArray = swapMaxAndMinElements(myArray);
-        System.out.println(" " + Arrays.toString(swapArray));
+        printArray(swapArray);
     }
 
     public static int[] swapMaxAndMinElements(int[] array) {
@@ -37,11 +33,9 @@ public class HomeTask4 {
             if (array[i] < itemMin) {
                 itemMin = array[i];
                 indexMin = i;
-            } else {
-                if (array[i] > itemMax) {
+            } else if (array[i] > itemMax) {
                     itemMax = array[i];
                     indexMax = i;
-                }
             }
         }
         int temp = array[indexMin]; // временная переменная

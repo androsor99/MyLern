@@ -1,7 +1,5 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
@@ -18,16 +16,16 @@ public class HomeTask5 {
 
         System.out.println(" Исходный массив: ");
         int[] myArray = createArray(arrayWidth);
-        System.out.println(" " + Arrays.toString(myArray));
+        printArray(myArray);
 
         System.out.println(" Список элементов массива у которых значение больше их индекса :");
         printListItems(myArray);
     }
 
-    private static void printListItems(int[] myArray) {
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] > i) {
-                System.out.print(myArray[i] + ", ");
+    private static void printListItems(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > i) {
+                System.out.print(array[i] + ", ");
             }
         }
     }

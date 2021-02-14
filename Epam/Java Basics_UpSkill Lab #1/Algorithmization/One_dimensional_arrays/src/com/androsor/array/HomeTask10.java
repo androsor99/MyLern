@@ -1,7 +1,6 @@
 package com.androsor.array;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import static com.androsor.array.ArrayCreator.*;
 
@@ -37,19 +36,5 @@ public class HomeTask10 {
             copyArray[array.length - 1] = 0;
         }
         return copyArray;
-    }
-
-    private static void printArray(int[] myArray) {
-        System.out.println("----------------------------------------");
-        System.out.println(" " + Arrays.toString(myArray));
-        System.out.println("----------------------------------------");
-    }
-
-    private static int[] createArray(int arrayWidth) {
-        int[] myArray = new int[arrayWidth];
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = new Random().nextInt(30);
-        }
-        return myArray;
     }
 }

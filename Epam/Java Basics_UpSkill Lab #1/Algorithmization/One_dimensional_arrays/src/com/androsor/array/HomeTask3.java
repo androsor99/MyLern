@@ -1,7 +1,5 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
@@ -19,7 +17,7 @@ public class HomeTask3 {
 
         System.out.println(" Исходный массив:");
         int[] myArray = createArray(arrayWidth);
-        System.out.println(Arrays.toString(myArray));
+        printArray(myArray);
 
         printNumberOfElements(myArray);
     }

@@ -16,24 +16,25 @@ public class HomeTask1 {
         System.out.print(" Введите количество элементов массива = ");
         arrayWidth = inputParameter();
 
+        int[] myArray = createArray(arrayWidth);
+        printArray(myArray);
+
         System.out.print(" Введите коэфициент кратности К = ");
         multiplicityFactor = inputParameter();
 
-        sum = getSum(arrayWidth, multiplicityFactor);
+        sum = getSum(myArray, multiplicityFactor);
         printSum(multiplicityFactor, sum);
     }
 
-    private static int getSum(int arrayWidth, int multiplicityFactor) {
+    private static int getSum(int[] array, int multiplicityFactor) {
         int sum = 0;
-        int[] myArray = new int[arrayWidth];
-        for (int i = 0; i < myArray.length; i++) { // заполняем массив arrayWidth числами
-            System.out.print(" Введите элемент массива myArray[" + i + "] = ");
-            myArray[i] = inputParameter();
-            if (myArray[i] % multiplicityFactor == 0) {
-                sum += myArray[i];
+        for (int element : array) {
+            if (element % multiplicityFactor == 0) {
+                sum += element;
             }
         }
         return sum;
+
     }
 
     private static void printSum(int multiplicityFactor, int sum) {

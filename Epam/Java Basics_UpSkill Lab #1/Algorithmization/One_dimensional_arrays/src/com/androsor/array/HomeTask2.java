@@ -1,7 +1,5 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
@@ -24,11 +22,11 @@ public class HomeTask2 {
 
         System.out.println(" Исходный массив:");
         int[] myArray = createArray(arrayWidth);
-        System.out.println(Arrays.toString(myArray));
+        printArray(myArray);
 
         System.out.println(" Замененный массив:");
         numberOfReplace = getNumberOfReplace(myArray, replacementNumber);
-        System.out.println(Arrays.toString(myArray));
+        printArray(myArray);
         System.out.println(" Число замен =  " + numberOfReplace);
     }
 

@@ -1,5 +1,7 @@
 package com.androsor.array;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class ArrayCreator {
@@ -10,12 +12,16 @@ public class ArrayCreator {
     }
 
     public static int[] createArray( int arrayWidth) {
-        System.out.println(" Заполните исходный массив элементами:");
-        int[] myArray = new int[arrayWidth];
-        for (int i = 0; i < arrayWidth; i++) { // заполняем массив arrayWidth числами
-            System.out.print(" Введите элемент массива myArray[" + i + "] = ");
-            myArray[i] = inputParameter();
+        int[] array = new int[arrayWidth];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (new Random().nextInt(20) - 10);
         }
-        return myArray;
+        return array;
+    }
+
+    public static void printArray(int[] array) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(array));
+        System.out.println("----------------------------------------");
     }
 }

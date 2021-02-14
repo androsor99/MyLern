@@ -1,12 +1,10 @@
 package com.androsor.array;
 
-import java.util.Arrays;
-
 import static com.androsor.array.ArrayCreator.*;
 
 /**
  * You are given a sequence of integers a1, a2, ..., an. Form a new sequence, discarding those terms from the original,
- *   which are equal to min (a1, a2, ..., an).
+ * which are equal to min (a1, a2, ..., an).
  */
 public class HomeTask8 {
 
@@ -18,55 +16,54 @@ public class HomeTask8 {
         arrayWidth = inputParameter();
 
         System.out.println(" Исходный массив: ");
-        System.out.println(" ------------------------------------------------------- ");
         int[] myArray = createArray((arrayWidth));
-        System.out.println(" " + Arrays.toString(myArray));
-        System.out.println(" ------------------------------------------------------- ");
+        printArray(myArray);
 
-        int minElement = getMinArray(myArray); // минимальный элемент в массиве
+        int minElement = getMinElementOfArray(myArray); // минимальный элемент в массиве
+        System.out.println(" Минимальный элемент в массиве = " + minElement);
 
-        int numberOfMinElements = getNumberOfElementsEqualToMin(minElement, myArray); // количество элементов не равных мин..
+        int numberOfElementsNotEqualMin = getNumberOfElementsNotEqualToMin(minElement, myArray); // количество элементов не равных мин..
+        System.out.println(" Количество повторов минимального элемента массива = " + (myArray.length - numberOfElementsNotEqualMin));
 
-        if ((numberOfMinElements == 1) || (numberOfMinElements == myArray.length)){
+        if (numberOfElementsNotEqualMin == 0) {
             System.out.println(" Весь массив состоиит из одного или из одинаковых элементов, составить новый массив невозможно ");
-        }
-        else {
+        } else {
             System.out.println(" Новая последовательность");
-            System.out.println("---------------------------------------------");
-            int[] myArrayNew = createNewArray(myArray, minElement, numberOfMinElements); // массив без мин элементов исходного массива.
-            System.out.println(Arrays.toString(myArrayNew));
+            int[] myArrayNew = createNewArray(myArray, minElement, numberOfElementsNotEqualMin); // массив без мин элемента исходного массива.
+            printArray(myArrayNew);
         }
     }
 
-    private static int[] createNewArray(int[] myArray, int minElement, int numberOfMinElements) {
-        int[] myArrayNew = new int[numberOfMinElements];
-        int j = 0;
-        for (int k : myArray) {
-            if (k != minElement) {
-                myArrayNew[j] = k;
-                j++;
+    private static int getMinElementOfArray(int[] array) {
+        int minElementOfArray = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < minElementOfArray) {
+                minElementOfArray = array[i];
             }
         }
-        return myArrayNew;
+        return minElementOfArray;
     }
 
-    private static int getNumberOfElementsEqualToMin(int minArray, int[] myArray) {
-        int counter = 0;
-        for (int j : myArray) {
-            if (j != minArray) {
-                counter++;
+    private static int getNumberOfElementsNotEqualToMin(int minElement, int[] array) {
+        int numberOfElement = 0;
+        for (int element : array) {
+            if (element != minElement) {
+                numberOfElement++;
             }
         }
-        return counter;
+        return numberOfElement;
     }
 
-    private static int getMinArray(int[] myArray) {
-        int minArray = myArray[0];
-        for (int i = 1; i < myArray.length; i++) {
-            if (myArray[i] < minArray) {
-                minArray = myArray[i];
+    private static int[] createNewArray(int[] array, int minElement, int numberElements) {
+        int[] arrayNew = new int[numberElements];
+        int index = 0;
+        for (int element : array) {
+            if (element != minElement) {
+                arrayNew[index] = element;
+                index++;
             }
         }
-        return minArray;
+        return arrayNew;
     }
 }
+
