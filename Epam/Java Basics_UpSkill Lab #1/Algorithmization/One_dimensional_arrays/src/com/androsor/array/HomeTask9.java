@@ -37,7 +37,7 @@ public class HomeTask9 {
             if (mostDuplicatesCurrent > mostDuplicates) {
                 mostDuplicates = mostDuplicatesCurrent;
                 mostDuplicateElement = array[i];
-            } else if  (mostDuplicates == mostDuplicatesCurrent && mostDuplicateElement > mostDuplicateElementCurrent) {
+            } else if (mostDuplicates == mostDuplicatesCurrent && mostDuplicateElement > mostDuplicateElementCurrent) {
                 mostDuplicateElement = array[i];
             }
         }
