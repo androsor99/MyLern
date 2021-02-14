@@ -18,7 +18,7 @@ public class HomeTask4 {
         int arrayWidth; // разрядность матрицы
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
 
         System.out.println(" Исходная матрица:");
         int[][] myArray = fillArray(arrayWidth);

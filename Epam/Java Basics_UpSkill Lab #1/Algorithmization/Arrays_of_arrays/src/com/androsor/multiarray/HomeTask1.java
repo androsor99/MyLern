@@ -13,16 +13,16 @@ public class HomeTask1{
         int arrayWidth; // разрядность массива.
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameter();
+        arrayWidth = inputParameterArray();
         
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
-        printingOddColumns(arrayWidth, myArray);
+        printOddColumns(arrayWidth, myArray);
     }
 
-    private static void printingOddColumns(int arrayWidth, int[][] myArray) {
+    private static void printOddColumns(int arrayWidth, int[][] myArray) {
         int count = 0; // счетчик для количества столбцов
         for (int i = 0; i < myArray.length; i += 2) {
             if (myArray[0][i] > myArray[arrayWidth - 1][i]) {

@@ -1,6 +1,6 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameter;
+import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static java.lang.Math.sin;
 import static com.androsor.multiarray.ArrayPrinter.printArrayDouble;
 
@@ -17,7 +17,7 @@ public class HomeTask7 {
         int arrayWidth; // разрядность массива.
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameter();
+        arrayWidth = inputParameterArray();
 
         System.out.println(" Исходный массив");
         double[][] myArray = fillArray(arrayWidth);
@@ -38,9 +38,9 @@ public class HomeTask7 {
 
     private static int getCounterPositiveElement(double[][] array) {
         int countPositive = 0;
-        for (double[] doubles : array) {
+        for (double[] items : array) {
             for (int j = 0; j < array.length; j++) {
-                if (doubles[j] > 0) {
+                if (items[j] > 0) {
                     countPositive++;
                 }
             }

@@ -15,11 +15,11 @@ public class HomeTask8 {
     public static void main (String[] args) {
 
         int arrayWidth; // разрядность матрицы
-        int num1; // Номер первого заменяемого столбца.
-        int num2; // Номер второго заменяемого столбца.
+        int column1; // Номер первого заменяемого столбца.
+        int column2; // Номер второго заменяемого столбца.
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
@@ -28,12 +28,12 @@ public class HomeTask8 {
 
         System.out.println(" Введите номера заменямых столбцов");
         System.out.print(" Номер первого столбца = ");
-        num1 = inputNumberColumn(arrayWidth);
+        column1 = inputNumberColumn(arrayWidth);
         System.out.print(" Номер второго столбца = ");
-        num2 = inputNumberColumn(arrayWidth);
+        column2 = inputNumberColumn(arrayWidth);
 
         System.out.println(" Матрица с измененными столбцами:");
-        printArrayInt (replacingColumns(num1, num2, myArray));
+        printArrayInt (replacingColumns(column1, column2, myArray));
     }
 
     private static int inputNumberColumn(int arrayWidth) {
@@ -47,12 +47,12 @@ public class HomeTask8 {
         return num;
     }
 
-    private static int[][] replacingColumns(int num1, int num2, int[][] array) {
+    private static int[][] replacingColumns(int column1, int column2, int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j ++) {
-                int temp = array[i][num1 -1];
-                array[i][num1 -1] = array[i][num2 -1];
-                array[i][num2 -1] = temp;
+                int temp = array[i][column1 - 1];
+                array[i][column1 - 1] = array[i][column2 - 1];
+                array[i][column2 - 1] = temp;
             }
         }
         return array;

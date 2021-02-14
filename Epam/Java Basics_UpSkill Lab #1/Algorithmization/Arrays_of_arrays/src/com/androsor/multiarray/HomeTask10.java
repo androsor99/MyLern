@@ -13,7 +13,7 @@ public class HomeTask10 {
         int arrayWidth; // разрядность матрицы
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);

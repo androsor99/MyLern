@@ -15,7 +15,7 @@ public class HomeTask13 {
         int arrayWidth; // разрядность матрицы
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
@@ -46,7 +46,6 @@ public class HomeTask13 {
             }
         }
     }
-
 
     private static void sortColumnsInDescendingOrder(int[][] array) {
         for (int j = 0; j < array.length; j++) {

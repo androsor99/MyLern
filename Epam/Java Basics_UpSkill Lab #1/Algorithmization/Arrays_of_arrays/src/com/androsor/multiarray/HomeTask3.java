@@ -13,25 +13,26 @@ public class HomeTask3 {
     public static void main (String[] args) {
 
         int arrayWidth; // разрядность матрицы
-        int k; // номер выводимой строки.
-        int p; // Номер выводимого столбца
+        int row; // номер выводимой строки.
+        int column; // Номер выводимого столбца
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
+
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
         System.out.print(" Введите номер выводимой строки = ");
-        k = inputParameter(arrayWidth);
-        printStringMatrix(k, myArray);
+        row = inputParameter(arrayWidth);
+        printRowMatrix(row, myArray);
 
         System.out.println();
 
         System.out.print(" Введите номер выводимого столбца = ");
-        p = inputParameter(arrayWidth);
-        printColumnMatrix(p, myArray);
+        column = inputParameter(arrayWidth);
+        printColumnMatrix(column, myArray);
     }
 
     private static int inputParameter(int arrayWidth) {
@@ -44,17 +45,17 @@ public class HomeTask3 {
         }
         return temp;
     }
-    private static void printColumnMatrix(int p, int[][] myArray) {
-        System.out.println( +p + "-ый столбец матрицы:");
+    private static void printColumnMatrix(int column, int[][] myArray) {
+        System.out.println( column + "-ый столбец матрицы:");
         for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i][p -1]);
+            System.out.println(myArray[i][column -1]);
         }
     }
 
-    private static void printStringMatrix(int k, int[][] myArray) {
-        System.out.print( +k +"-ая строка матрицы:  ");
+    private static void printRowMatrix(int row, int[][] myArray) {
+        System.out.print( row +"-ая строка матрицы:  ");
         for (int i = 0; i < myArray.length; i++) {
-            System.out.print(myArray[k -1][i] + " ");
+            System.out.print(myArray[row -1][i] + " ");
         }
     }
 }

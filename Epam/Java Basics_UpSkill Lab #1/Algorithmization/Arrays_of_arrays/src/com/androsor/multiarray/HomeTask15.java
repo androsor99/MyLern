@@ -3,7 +3,7 @@ package com.androsor.multiarray;
 import java.util.Arrays;
 
 import static com.androsor.multiarray.ArrayCreator.fillArray;
-import static com.androsor.multiarray.ArrayCreator.inputParameter;
+import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
 
 /**
@@ -16,41 +16,41 @@ public class HomeTask15 {
         int arrayWidth; // разрядность массива.
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameter();
+        arrayWidth = inputParameterArray();
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
-        System.out.println(" Максимальный элемент матрицы " + findingTheMaximumElement(myArray).toString());
-        int arrayMax = findingTheMaximumElement(myArray).getValue();
+        System.out.println(" Максимальный элемент матрицы " + findMaxElement(myArray).toString());
+        int arrayMax = findMaxElement(myArray).getValue();
 
         System.out.println(" Матрица с замененными нечетными элементами :");
         int[][] copyArray = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
         printArrayInt(replaceOddElements(copyArray,arrayMax));
     }
 
-    private static ElementMax findingTheMaximumElement(int [][] array) {
-        int indexArrayMaxI = 0; // Индекс строки максимального элемента.
-        int indexArrayMaxJ = 0; // Индекс столбца максимального элемента
-        int arrayMax = array[0][0]; // Максимальный элемент матрицы.
+    private static ElementMax findMaxElement(int [][] array) {
+        int indexMaxI = 0; // Индекс строки максимального элемента.
+        int indexMaxJ = 0; // Индекс столбца максимального элемента
+        int maxElement = array[0][0]; // Максимальный элемент матрицы.
         for (int j = 0; j < array.length; j++) {
             for (int i = 0; i < array.length; i++) {
-                if (array[i][j] > arrayMax) {
-                    arrayMax = array[i][j];
-                    indexArrayMaxI = i;
-                    indexArrayMaxJ = j;
+                if (array[i][j] > maxElement) {
+                    maxElement = array[i][j];
+                    indexMaxI = i;
+                    indexMaxJ = j;
                 }
             }
         }
-        return new ElementMax(indexArrayMaxI, indexArrayMaxJ, arrayMax);
+        return new ElementMax(indexMaxI, indexMaxJ, maxElement);
     }
 
-    private static int[][] replaceOddElements(int[][] array, int arrayMax) {
+    private static int[][] replaceOddElements(int[][] array, int maxElement) {
         for (int j = 0; j < array.length; j++) {
             for (int i = 0; i < array.length; i++) {
                 if (array[i][j] % 2 != 0) {
-                    array[i][j] = arrayMax;
+                    array[i][j] = maxElement;
                 }
             }
         }

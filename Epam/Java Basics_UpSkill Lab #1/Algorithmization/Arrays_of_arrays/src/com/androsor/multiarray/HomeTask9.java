@@ -14,7 +14,7 @@ public class HomeTask9 {
         int arrayWidth; // разрядность матрицы
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameter();
+        arrayWidth = ArrayCreator.inputParameterArray();
 
         System.out.println(" Исходный массив");
         int [][] myArray = fillArray(arrayWidth);
@@ -24,20 +24,20 @@ public class HomeTask9 {
     }
 
     private static void printSumOfColumnElements(int[][] array) {
-        int arrayMaxSumColumn = 0; // Максимальная сумма элементов столбцов матрицы.
-        int indexColumn = 0; // Индекс столбца матрицы с маусимальной суммой элементов.
+        int maxSumOfColumnElements = 0; // Максимальная сумма элементов в столбцах матрицы.
+        int column = 0; // Индекс столбца матрицы с маусимальной суммой элементов.
 
         for (int j = 0; j < array.length; j++) {
-            int arraySumColumn = 0; // Сумма элементов столбца матрицы
+            int sumOfColumnElements = 0; // Сумма элементов столбца матрицы
             for (int i = 0; i < array.length; i ++) {
-                arraySumColumn += array[i][j];
-                if (arraySumColumn > arrayMaxSumColumn) {
-                    arrayMaxSumColumn = arraySumColumn;
-                    indexColumn = j;
+                sumOfColumnElements += array[i][j];
+                if (sumOfColumnElements > maxSumOfColumnElements) {
+                    maxSumOfColumnElements = sumOfColumnElements;
+                    column = j;
                 }
             }
-            System.out.println(j + 1+ "-ый столбец содержит " + array.length + " элементов сумма которых = " + arraySumColumn);
+            System.out.println(j + 1+ "-ый столбец содержит " + array.length + " элементов сумма которых = " + sumOfColumnElements);
         }
-        System.out.println(indexColumn + 1 + "-ый столбец содержит максимальную сумму элементов.");
+        System.out.println(column + 1 + "-ый столбец содержит максимальную сумму элементов.");
     }
 }
