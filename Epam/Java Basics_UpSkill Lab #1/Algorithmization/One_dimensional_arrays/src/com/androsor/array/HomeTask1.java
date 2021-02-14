@@ -1,6 +1,6 @@
 package com.androsor.array;
 
-import java.util.Scanner;
+import static com.androsor.array.ArrayCreator.*;
 
 /**
  * The array A [N] contains natural numbers. Find the sum of those elements that are multiples of a given K.
@@ -24,7 +24,6 @@ public class HomeTask1 {
     }
 
     private static int getSum(int arrayWidth, int multiplicityFactor) {
-
         int sum = 0;
         int[] myArray = new int[arrayWidth];
         for (int i = 0; i < myArray.length; i++) { // заполняем массив arrayWidth числами
@@ -38,18 +37,10 @@ public class HomeTask1 {
     }
 
     private static void printSum(int multiplicityFactor, int sum) {
-
         if (sum > 0) {
             System.out.println(" Сумма элементов массива, которые кратны - " + multiplicityFactor + ", равна - " + sum);
-
         } else {
             System.out.println(" Массив не содержит элементов кратных К = " + multiplicityFactor);
         }
-    }
-
-    public static int inputParameter() {
-
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
     }
 }

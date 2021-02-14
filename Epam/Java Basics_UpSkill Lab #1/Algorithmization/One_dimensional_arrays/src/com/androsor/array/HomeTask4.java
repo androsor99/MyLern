@@ -2,6 +2,8 @@ package com.androsor.array;
 
 import java.util.Arrays;
 
+import static com.androsor.array.ArrayCreator.*;
+
 /**
  * Given are real numbers a1, a2, ..., an. Swap the largest and smallest items.
  */
@@ -12,10 +14,10 @@ public class HomeTask4 {
         int arrayWidth; // разрядность массива
 
         System.out.print(" Введите количество элементов ммассива arrayWidth = ");
-        arrayWidth = HomeTask1.inputParameter();
+        arrayWidth = inputParameter();
 
         System.out.println(" Исходный массив:");
-        int[] myArray = HomeTask2.createArray(arrayWidth);
+        int[] myArray = createArray(arrayWidth);
         System.out.println(" " + Arrays.toString(myArray));
 
         System.out.println("-----------------");
@@ -26,7 +28,6 @@ public class HomeTask4 {
     }
 
     public static int[] swapMaxAndMinElements(int[] array) {
-
         int itemMin = array[0]; // Принимаеи за мин. начальный элемент массива.
         int itemMax = array[0]; // Принимаем за max. первый элемент массива.
         int indexMax = 0; // Индекс максимального элемента
@@ -36,8 +37,7 @@ public class HomeTask4 {
             if (array[i] < itemMin) {
                 itemMin = array[i];
                 indexMin = i;
-            }
-            else {
+            } else {
                 if (array[i] > itemMax) {
                     itemMax = array[i];
                     indexMax = i;

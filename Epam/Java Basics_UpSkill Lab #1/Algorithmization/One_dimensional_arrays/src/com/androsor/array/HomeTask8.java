@@ -2,6 +2,8 @@ package com.androsor.array;
 
 import java.util.Arrays;
 
+import static com.androsor.array.ArrayCreator.*;
+
 /**
  * You are given a sequence of integers a1, a2, ..., an. Form a new sequence, discarding those terms from the original,
  *   which are equal to min (a1, a2, ..., an).
@@ -13,11 +15,11 @@ public class HomeTask8 {
         int arrayWidth; // разрядность массива
 
         System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = HomeTask1.inputParameter();
+        arrayWidth = inputParameter();
 
         System.out.println(" Исходный массив: ");
         System.out.println(" ------------------------------------------------------- ");
-        int[] myArray = HomeTask2.createArray((arrayWidth));
+        int[] myArray = createArray((arrayWidth));
         System.out.println(" " + Arrays.toString(myArray));
         System.out.println(" ------------------------------------------------------- ");
 
@@ -37,7 +39,6 @@ public class HomeTask8 {
     }
 
     private static int[] createNewArray(int[] myArray, int minElement, int numberOfMinElements) {
-
         int[] myArrayNew = new int[numberOfMinElements];
         int j = 0;
         for (int k : myArray) {
@@ -50,7 +51,6 @@ public class HomeTask8 {
     }
 
     private static int getNumberOfElementsEqualToMin(int minArray, int[] myArray) {
-
         int counter = 0;
         for (int j : myArray) {
             if (j != minArray) {
@@ -61,7 +61,6 @@ public class HomeTask8 {
     }
 
     private static int getMinArray(int[] myArray) {
-
         int minArray = myArray[0];
         for (int i = 1; i < myArray.length; i++) {
             if (myArray[i] < minArray) {
