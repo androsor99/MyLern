@@ -13,8 +13,9 @@ public class ArrayCreator {
 
     public static int[] createArray( int arrayWidth) {
         int[] array = new int[arrayWidth];
+        Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = (new Random().nextInt(20) - 10);
+            array[i] = (random.nextInt(20) - 10);
         }
         return array;
     }
