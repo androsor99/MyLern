@@ -18,14 +18,16 @@ public class HomeTask1 {
 
         System.out.print(" Введите количество элементов первого ммассива M = ");
         arrayWidthM = inputParameter();
-        int[] myArrayM = createArray(arrayWidthM);
+
         System.out.println(" Первый массив с количеством элементов M = " + arrayWidthM);
+        int[] myArrayM = createArray(arrayWidthM);
         printArray(myArrayM);
 
         System.out.print(" Введите количество элементов первого ммассива N = ");
         arrayWidthN = inputParameter();
-        int[] myArrayN = createArray(arrayWidthN);
+
         System.out.println(" Второй массив с количеством элементов N = " + arrayWidthN);
+        int[] myArrayN = createArray(arrayWidthN);
         printArray(myArrayN);
 
         System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
