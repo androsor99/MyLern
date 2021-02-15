@@ -1,65 +1,75 @@
 package com.androsor.sort;
 
 import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+
+import static com.androsor.sort.ArrayCreator.*;
 
 /**
  * Implement Shell sort.
  */
-
 public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int[] myArray; // массив с N количеством элементов.
-        int n; // Разрядность массивов.
+        int arrayWidth; // Разрядность массивов.
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов первого ммассива N = ");
-        n = sc.nextInt();
-        Random random = new Random();
-        myArray = new int[n];
-        for (int i = 0; i < n; i++) {
-            myArray[i] = random.nextInt(100);
-        }
+        System.out.print(" Введите количество элементов массива N = ");
+        arrayWidth = inputParameter();
 
-        System.out.println(" Исходный массив с количеством элементов N = " + n);
-        System.out.println(Arrays.toString(myArray));
-        System.out.println();
-
+        System.out.println(" Исходный массив с количеством элементов N = " + arrayWidth);
+        int[] myArray = createArray(arrayWidth);
+        printArray(myArray);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        shellSortArray(myArray);
-        System.out.println(Arrays.toString(myArray));
+        int[] ascendingSortedArray = sortAscending(myArray);
+        printArray(ascendingSortedArray);
+
+        System.out.println(" Отсортированный массив по убыванию");
+        int[] descendingSortedArray = sortDescending(myArray);
+        printArray(descendingSortedArray);
     }
 
-    // Метод сортировки по Шеллу на возрастание.
-    public static void shellSortArray(int[] array) {
-
-        int inner, outer;
-        int temp;
-
-        int h = 1;
-        // Ищем начальное значение интервала сортировки.
-        while (h <= array.length / 3) {
+    private static int[] sortAscending(int[] array) {
+        int[] copyArray = Arrays.copyOf(array, array.length);
+        int inner, outer, temp;
+        int h = 1; // интервал сортировки
+        while (h <= copyArray.length / 3) { // Ищем начальное значение интервала сортировки.
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
-
-        while (h > 0) {
-            // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
-            for (outer = h; outer < array.length; outer++) {
-                temp = array[outer];
+        while (h >= 1) {
+            for (outer = h; outer < copyArray.length; outer++) {// Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
+                temp = copyArray[outer];
                 inner = outer;
-                // Сортируем массив с шагом h.
-                while (inner > h - 1 && array[inner - h] >= temp) {
-                    array[inner] = array[inner - h];
+                while (inner > h - 1 && copyArray[inner - h] >= temp) {// Сортируем массив с шагом h.
+                    copyArray[inner] = copyArray[inner - h];
                     inner -= h;
                 }
-                array[inner] = temp;
+                copyArray[inner] = temp;
             }
-            //на каждом шаге уменьшаем h
-            h = (h - 1) / 3;
+            h = (h - 1) / 3; //на каждом шаге уменьшаем h
         }
+        return copyArray;
+    }
+
+    private static int[] sortDescending(int[] array) {
+        int[] copyArray = Arrays.copyOf(array, array.length);
+        int inner, outer, temp;
+        int h = 1; // интервал сортировки
+        while (h <= copyArray.length / 3) { // Ищем начальное значение интервала сортировки.
+            h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
+        }
+        while (h >= 1) {
+            for (outer = h; outer < copyArray.length; outer++) {// Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
+                temp = copyArray[outer];
+                inner = outer;
+                while (inner > h - 1 && copyArray[inner - h] <= temp) {// Сортируем массив с шагом h.
+                    copyArray[inner] = copyArray[inner - h];
+                    inner -= h;
+                }
+                copyArray[inner] = temp;
+            }
+            h = (h - 1) / 3; //на каждом шаге уменьшаем h
+        }
+        return copyArray;
     }
 }
