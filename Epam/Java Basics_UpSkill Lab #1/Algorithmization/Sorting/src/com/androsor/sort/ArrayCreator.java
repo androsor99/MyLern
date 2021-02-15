@@ -13,8 +13,9 @@ public class ArrayCreator {
 
     public static int[] createArray(int m) {
         int[] array = new int[m];
+        Random random = new Random();
         for (int i = 0; i < m; i++) {
-            array[i] = new Random().nextInt(100);
+            array[i] = random.nextInt(100);
         }
         return array;
     }
