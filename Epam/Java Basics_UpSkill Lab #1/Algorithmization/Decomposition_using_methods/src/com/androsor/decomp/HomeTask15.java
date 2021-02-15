@@ -1,5 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.Data.*;
+
 /**
  *Find all natural n-digit numbers whose digits form a strictly increasing sequence (for example, 1234, 5789).
  *  To solve the problem, use decomposition.
@@ -9,10 +11,10 @@ public class HomeTask15 {
 
     public static void main(String [] args) {
 
-        int n = HomeTask1.dataInput(" Введите число N = ");
+        int n = inputData(" Введите число N = ");
         while ((n <= 1) || (n > 9)) {
             System.out.println(" Число должно быть меньше 9 и равным или больше 2!");
-            n = HomeTask1.dataInput(" Введите число N = ");
+            n = inputData(" Введите число N = ");
         }
 
         method1(n);

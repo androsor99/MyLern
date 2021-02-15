@@ -2,6 +2,8 @@ package com.androsor.decomp;
 
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 /**
  * Write a method (s) that checks whether the given three numbers are comprise.
  */
@@ -32,6 +34,13 @@ public class HomeTask6 {
     // Метод нахождения взаимно простых чисе.
     public static boolean primeNumber(int a, int b, int c) {
         // Числа являются взаимно простыми, если их НОД равен 1
-        return HomeTask1.greatestCommonDivisor(HomeTask1.greatestCommonDivisor(a, b), c) == 1;
+        return getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c) == 1;
+    }
+
+    private static int getGreatestCommonDivisor(int a, int b) { // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
+        if (b == 0) {
+            return (abs(a));
+        }
+        return getGreatestCommonDivisor(b, a % b);
     }
 }

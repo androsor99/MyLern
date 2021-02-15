@@ -10,7 +10,7 @@ public class HomeTask3 {
 
     public static void main(String[] args) {
 
-        double sideLengthTriangle; // Длина стороны треугольника.
+        double lengthSideTriangle; // Длина стороны треугольника.
 
         System.out.print(" Введите длину стороны треугольника = ");
         Scanner sc = new Scanner(System.in);
@@ -21,16 +21,17 @@ public class HomeTask3 {
                     " Повторите ввод.");
             System.out.print(" Введите длину стороны треугольника = ");
         }
-        sideLengthTriangle = sc.nextDouble();
+        lengthSideTriangle = sc.nextDouble();
 
-        while (sideLengthTriangle <= 0) {
+        while (lengthSideTriangle <= 0) {
             System.out.println(" Введенная длина стороны треугольника должна быть числом и иметь положительное значение." +
                     " Повторите ввод.");
             System.out.print(" Введите длину стороны треугольника = ");
-            sideLengthTriangle = sc.nextDouble();
+            lengthSideTriangle = sc.nextDouble();
+
         }
         System.out.printf("Площадь правильного шестиугольника со стороной %.2f равна %.2f",
-                sideLengthTriangle, 6 * areaTriangle(sideLengthTriangle));
+                lengthSideTriangle, 6 * areaTriangle(lengthSideTriangle));
     }
 
     // Метод расчета площади треугольника.

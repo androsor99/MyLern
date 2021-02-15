@@ -1,46 +1,33 @@
 package com.androsor.decomp;
 
-import java.util.Scanner;
+import static com.androsor.decomp.Data.*;
+import static java.lang.Math.*;
 
 /**
  * Write a method (methods) for finding the greatest common divisor and the least common multiple of two natural numbers:
  * LCM(a * b) = a * b / GCD(a, b)
  */
-
 public class HomeTask1 {
 
     public static void main(String[] args) {
-        int a; // вводимы натуральные числа.
-        int b;
 
-        a = dataInput("Введите натуральное число a = ");
-        b = dataInput("Введите натуральное число b = ");
+        int a, b; // вводимые натуральные числа.
 
-        System.out.println(" НОД(" + a + "," + b + ") = " + greatestCommonDivisor(a, b));
-        System.out.println(" НОК(" + a + "," + b + ") = " + leastCommonMultiple(a, b));
+        a = inputData("Введите натуральное число a = ");
+        b = inputData("Введите натуральное число b = ");
+
+        System.out.println(" НОД (" + a + "," + b + ") = " + getGreatestCommonDivisor(a, b));
+        System.out.println(" НОК (" + a + "," + b + ") = " + getLeastCommonMultiple(a, b));
     }
 
-    // Метод ввода данных.
-    public  static  int dataInput(String massage) {
-        System.out.print(massage);
-        Scanner sc = new Scanner(System.in);
-        while (!sc.hasNextInt()) {
-            sc.next();
-            System.out.println(" Введенные данные не являются натуральными числами. Повторите ввод.");
-        }
-        return sc.nextInt();
-    }
-
-    // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
-    public static int greatestCommonDivisor(int a, int b) {
+    private static int getGreatestCommonDivisor(int a, int b) { // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
         if (b == 0) {
-            return (Math.abs(a));
+            return (abs(a));
         }
-        return greatestCommonDivisor(b, a % b);
+        return getGreatestCommonDivisor(b, a % b);
     }
 
-    // Метод нахождения наименьшего общего кратного (НОК/LSM(Least common multiple)
-    public static int leastCommonMultiple(int a, int b) {
-        return (a * b / greatestCommonDivisor(a, b));
+    private static int getLeastCommonMultiple(int a, int b) { // Метод нахождения наименьшего общего кратного (НОК/LSM(Least common multiple)
+        return (a * b / getGreatestCommonDivisor(a, b));
     }
 }

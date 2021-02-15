@@ -2,6 +2,8 @@ package com.androsor.decomp;
 
 import java.util.Random;
 
+import static com.androsor.decomp.Data.*;
+
 /**
  * Given natural numbers K and N. Write a method (methods) for forming an array A, whose elements are numbers whose sum
  * of digits is equal to K and which are not greater than N.
@@ -10,20 +12,20 @@ public class HomeTask12 {
 
     public static void main (String[]args) {
 
-        int k = HomeTask1.dataInput(" Введите число k = ");
+        int k = inputData(" Введите число k = ");
         while (k < 0) {
             System.out.println(" Число должно быть больше нуля.");
-            k = HomeTask1.dataInput(" Введите число k = ");
+            k = inputData(" Введите число k = ");
         }
-        int n = HomeTask1.dataInput(" Введите число n = ");
+        int n = inputData(" Введите число n = ");
         while (n <= k) {
             System.out.println(" Число должно быть больше нуля и больше числа k");
-            n = HomeTask1.dataInput(" Введите число k = ");
+            n = inputData(" Введите число k = ");
         }
-        int b = HomeTask1.dataInput(" Введите длину желаемого массива b = ");
+        int b = inputData(" Введите длину желаемого массива b = ");
         while (b < 0) {
             System.out.println(" Число должно быть больше нуля.");
-            b = HomeTask1.dataInput(" Введите длину желаемого массива b = ");
+            b = inputData(" Введите длину желаемого массива b = ");
         }
 
         System.out.println(" Массив из элементов согласно условию задачи:");

@@ -1,5 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.Data.*;
+
 /**
  * A natural number with n digits is called an Armstrong number if the sum of its digits raised to the power n is equal
  * to the number itself. Find all Armstrong numbers from 1 to k. To solve the problem, use decomposition.
@@ -9,10 +11,10 @@ public class HomeTask14 {
 
     public static void main(String[] args) {
 
-        int k = HomeTask1.dataInput(" Введите число К = ");
+        int k = inputData(" Введите число К = ");
         while (k < 0) {
             System.out.println(" Число должно быть положительным!");
-            k = HomeTask1.dataInput(" Введите число К = ");
+            k = inputData(" Введите число К = ");
         }
 
         System.out.printf(" В промежутке от 1 до %d существуют следующие числа Армстронга: \n", k);

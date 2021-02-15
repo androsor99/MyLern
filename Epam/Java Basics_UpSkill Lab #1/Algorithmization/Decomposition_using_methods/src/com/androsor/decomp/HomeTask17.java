@@ -1,5 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.Data.*;
+
 /**
  * Write a program that determines the sum of n - digit numbers containing only odd digits. Also determine how many
  * even digits are in the found amount. To solve the problem, use decomposition.
@@ -9,10 +11,10 @@ public class HomeTask17 {
 
     public static void main(String [] args) {
 
-        int n = HomeTask1.dataInput(" Введите число N = ");
+        int n = inputData(" Введите число N = ");
         while (n < 0) {
             System.out.println(" Число должно быть положительным!");
-            n = HomeTask1.dataInput(" Введите число N = ");
+            n = inputData(" Введите число N = ");
         }
 
         System.out.printf(" Количество действий над числом (согласно йсловию задачи) = %d ", subtraction(n));
