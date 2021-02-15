@@ -12,20 +12,20 @@ public class HomeTask12 {
 
     public static void main (String[]args) {
 
-        int k = inputData(" Введите число k = ");
+        int k = inputDataInt(" Введите число k = ");
         while (k < 0) {
             System.out.println(" Число должно быть больше нуля.");
-            k = inputData(" Введите число k = ");
+            k = inputDataInt(" Введите число k = ");
         }
-        int n = inputData(" Введите число n = ");
+        int n = inputDataInt(" Введите число n = ");
         while (n <= k) {
             System.out.println(" Число должно быть больше нуля и больше числа k");
-            n = inputData(" Введите число k = ");
+            n = inputDataInt(" Введите число k = ");
         }
-        int b = inputData(" Введите длину желаемого массива b = ");
+        int b = inputDataInt(" Введите длину желаемого массива b = ");
         while (b < 0) {
             System.out.println(" Число должно быть больше нуля.");
-            b = inputData(" Введите длину желаемого массива b = ");
+            b = inputDataInt(" Введите длину желаемого массива b = ");
         }
 
         System.out.println(" Массив из элементов согласно условию задачи:");

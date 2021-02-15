@@ -10,10 +10,10 @@ public class HomeTask16 {
 
     public static void main(String [] args) {
 
-        int n = inputData(" Введите число N = ");
+        int n = inputDataInt(" Введите число N = ");
         while (n < 0) {
             System.out.println(" Число должно быть положительным!");
-            n = inputData(" Введите число N = ");
+            n = inputDataInt(" Введите число N = ");
         }
 
         int sum = sumArray(arrayDigitCapacity(n));

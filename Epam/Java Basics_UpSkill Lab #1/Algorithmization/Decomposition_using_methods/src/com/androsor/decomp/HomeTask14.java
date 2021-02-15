@@ -11,10 +11,10 @@ public class HomeTask14 {
 
     public static void main(String[] args) {
 
-        int k = inputData(" Введите число К = ");
+        int k = inputDataInt(" Введите число К = ");
         while (k < 0) {
             System.out.println(" Число должно быть положительным!");
-            k = inputData(" Введите число К = ");
+            k = inputDataInt(" Введите число К = ");
         }
 
         System.out.printf(" В промежутке от 1 до %d существуют следующие числа Армстронга: \n", k);

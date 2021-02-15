@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Data {
 
-    public  static  int inputData(String massage) {
+    public static int inputDataInt(String massage) {
         System.out.print(massage);
         Scanner sc = new Scanner(System.in);
         while (!sc.hasNextInt()) {
@@ -12,5 +12,15 @@ public class Data {
             System.out.println(" Введенные данные не являются натуральными числами. Повторите ввод.");
         }
         return sc.nextInt();
+    }
+
+    public  static double inputDataDouble(String massage) {
+        System.out.print(massage);
+        Scanner sc = new Scanner(System.in);
+        while (!sc.hasNextDouble()) {
+            sc.next();
+            System.out.println(" Введенные данные не являются натуральными числами. Повторите ввод.");
+        }
+        return sc.nextDouble();
     }
 }

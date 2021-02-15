@@ -12,14 +12,14 @@ public class HomeTask2 {
 
         int a, b, c, d; // вводимые натуральные числа.
 
-        a = inputData("Введите натуральное число a = ");
-        b = inputData("Введите натуральное число b = ");
-        c = inputData("Введите натуральное число c = ");
-        d = inputData("Введите натуральное число d = ");
+        a = inputDataInt("Введите натуральное число a = ");
+        b = inputDataInt("Введите натуральное число b = ");
+        c = inputDataInt("Введите натуральное число c = ");
+        d = inputDataInt("Введите натуральное число d = ");
 
         int gcdABCD = getGreatestCommonDivisor(getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c), d);
 
-        System.out.printf(" НОД (%d, %d, %d, %d) = %d", a, b, c, d, gcdABCD);
+        printGreatestCommonDivisor(a, b, c, d, gcdABCD);
     }
 
     private static int getGreatestCommonDivisor(int a, int b) { // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
@@ -27,5 +27,9 @@ public class HomeTask2 {
             return (abs(a));
         }
         return getGreatestCommonDivisor(b, a % b);
+    }
+
+    private static void printGreatestCommonDivisor(int a, int b, int c, int d, int gcdABCD) {
+        System.out.printf(" НОД (%d, %d, %d, %d) = %d", a, b, c, d, gcdABCD);
     }
 }

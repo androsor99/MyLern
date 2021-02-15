@@ -11,10 +11,10 @@ public class HomeTask15 {
 
     public static void main(String [] args) {
 
-        int n = inputData(" Введите число N = ");
+        int n = inputDataInt(" Введите число N = ");
         while ((n <= 1) || (n > 9)) {
             System.out.println(" Число должно быть меньше 9 и равным или больше 2!");
-            n = inputData(" Введите число N = ");
+            n = inputDataInt(" Введите число N = ");
         }
 
         method1(n);

@@ -1,41 +1,33 @@
 package com.androsor.decomp;
 
-import java.util.Scanner;
+import static java.lang.Math.*;
+import static com.androsor.decomp.Data.*;
 
 /**
  * Calculate the area of a regular hexagon from the side using the triangle area method.
  */
-
 public class HomeTask3 {
 
     public static void main(String[] args) {
 
         double lengthSideTriangle; // Длина стороны треугольника.
 
-        System.out.print(" Введите длину стороны треугольника = ");
-        Scanner sc = new Scanner(System.in);
+        lengthSideTriangle = abs(inputDataDouble(" Введите длину стороны треугольника = "));
 
-        while (!sc.hasNextDouble()) {
-            sc.next();
-            System.out.println(" Введенная длина стороны треугольника должна быть числом и иметь положительное значение." +
-                    " Повторите ввод.");
-            System.out.print(" Введите длину стороны треугольника = ");
-        }
-        lengthSideTriangle = sc.nextDouble();
-
-        while (lengthSideTriangle <= 0) {
-            System.out.println(" Введенная длина стороны треугольника должна быть числом и иметь положительное значение." +
-                    " Повторите ввод.");
-            System.out.print(" Введите длину стороны треугольника = ");
-            lengthSideTriangle = sc.nextDouble();
-
-        }
-        System.out.printf("Площадь правильного шестиугольника со стороной %.2f равна %.2f",
-                lengthSideTriangle, 6 * areaTriangle(lengthSideTriangle));
+        double areaHexagon = getAreaHexagon(getAreaTriangle(lengthSideTriangle));
+        printAreaHexagon(lengthSideTriangle, areaHexagon);
     }
 
-    // Метод расчета площади треугольника.
-    public static double areaTriangle(double a) {
-        return (Math.sqrt(3) / 4) * (a * a);
+    private static double getAreaHexagon(double areaTriangle) {// Метод расчета площади треугольника.
+        return 6 * areaTriangle;
+    }
+
+    private static double getAreaTriangle(double side) {// Метод расчета площади правильного треугольника.
+        return (sqrt(3) / 4) * (side * side);
+    }
+
+    private static void printAreaHexagon(double lengthSideTriangle, double areaHexagon) {
+        System.out.printf("Площадь правильного шестиугольника со стороной = %.2f равна - %.2f",
+                lengthSideTriangle, areaHexagon);
     }
 }

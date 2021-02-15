@@ -2,43 +2,46 @@ package com.androsor.decomp;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
+
+import static com.androsor.decomp.Data.*;
+import static java.lang.Math.*;
 
 /**
  * Write a program that finds the second largest number in the array A [N] (print out a number that is less than
  * the maximum element of the array, but larger than all other elements).
  */
-
 public class HomeTask5 {
-
 
     public static void main(String[] args) {
 
-        int n; // Разрядность массивов.
+        int arrayWidth; // Разрядность массивов.
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите количество элементов массива N = ");
-        n = sc.nextInt();
-        int[] myArray = new int[n];
+        arrayWidth = abs(inputDataInt(" Введите длину массива arrayWidth = "));
 
-        enterArray(myArray);
         System.out.println(" Исходный массив: ");
-        System.out.println(" " + Arrays.toString(myArray));
-        secondMax(myArray);
+        int[] myArray = fillArray(arrayWidth);
+        printArray(myArray);
+
+        printSecondLargestElement(myArray);
     }
 
-    // Метод заполнения массива .
-    public static void enterArray (int[] myArray) {
+    private static int[] fillArray(int arrayWidth) {
+        int[] array = new int[arrayWidth];
         Random random = new Random();
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = random.nextInt(100);
+        for (int i = 0; i < array.length; i++) {
+            array[i] = 100 - (random.nextInt(200));
         }
+        return array;
     }
 
-    // Метод нахожления второго по величине элемента массива.
-    public static void secondMax(int[] array) {
+    private static void printArray(int[] array) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(array));
+        System.out.println("----------------------------------------");
+    }
+
+    public static void printSecondLargestElement(int[] array) {
         Arrays.sort(array); // Сортируем массив по возрастанию.
-        // System.out.println(" " + Arrays.toString(array));
         if (array.length < 2) {
             System.out.println(" В массиве один элемент: " + array[0]);
         } else {
