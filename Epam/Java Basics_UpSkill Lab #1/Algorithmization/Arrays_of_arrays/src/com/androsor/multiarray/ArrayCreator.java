@@ -10,9 +10,10 @@ public class ArrayCreator {
 
     public static int[][] fillArray (int arrayWidth) {
         int[][] array = new int[arrayWidth][arrayWidth];
+        Random random = new Random();
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
-                array[i][j] = (new Random().nextInt(100) - 50);
+                array[i][j] = (random.nextInt(100) - 50);
             }
         }
         return array;

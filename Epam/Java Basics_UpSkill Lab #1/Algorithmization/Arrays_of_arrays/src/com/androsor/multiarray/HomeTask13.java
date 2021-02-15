@@ -21,43 +21,44 @@ public class HomeTask13 {
         int [][] myArray = fillArray(arrayWidth);
         printArrayInt(myArray);
 
-
         System.out.println(" Матрица с отсортированными по убыванию элементами столбцов: ");
-        int[][] sortArray1 = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
-        sortColumnsInDescendingOrder(sortArray1);
+        int[][] sortArray1 = sortColumnsInDescendingOrder(myArray);
         printArrayInt(sortArray1);
 
         System.out.println(" Матрица с отсортированными по возростанию элементами столбцов: ");
-        int[][] sortArray2 = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
-        sortColumnsInAscendingOrder(sortArray2);
+        int[][] sortArray2 = sortColumnsInAscendingOrder(myArray);
         printArrayInt(sortArray2);
     }
 
-    private static void sortColumnsInAscendingOrder(int[][] array) {
-        for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length; i++) {
-                for (int k = i + 1; k < array.length; k++) {
-                    if (array[k][j] < array[i][j]) {
-                        int temp = array[k][j];
-                        array[k][j] = array[i][j];
-                        array[i][j] = temp;
+    private static int[][] sortColumnsInAscendingOrder(int[][] array) {
+        int[][] copyArray = Arrays.stream(array).map(int[]::clone).toArray(int[][]::new);
+        for (int j = 0; j < copyArray.length; j++) {
+            for (int i = 0; i < copyArray.length; i++) {
+                for (int k = i + 1; k < copyArray.length; k++) {
+                    if (copyArray[k][j] < copyArray[i][j]) {
+                        int temp = copyArray[k][j];
+                        copyArray[k][j] = copyArray[i][j];
+                        copyArray[i][j] = temp;
                     }
                 }
             }
         }
+        return copyArray;
     }
 
-    private static void sortColumnsInDescendingOrder(int[][] array) {
-        for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length; i++) {
-                for (int k = i + 1; k < array.length; k++) {
-                    if (array[k][j] > array[i][j]) {
-                        int temp = array[k][j];
-                        array[k][j] = array[i][j];
-                        array[i][j] = temp;
+    private static int[][] sortColumnsInDescendingOrder(int[][] array) {
+        int[][] copyArray = Arrays.stream(array).map(int[]::clone).toArray(int[][]::new);
+        for (int j = 0; j < copyArray.length; j++) {
+            for (int i = 0; i < copyArray.length; i++) {
+                for (int k = i + 1; k < copyArray.length; k++) {
+                    if (copyArray[k][j] > copyArray[i][j]) {
+                        int temp = copyArray[k][j];
+                        copyArray[k][j] = copyArray[i][j];
+                        copyArray[i][j] = temp;
                     }
                 }
             }
         }
+        return copyArray;
     }
 }
