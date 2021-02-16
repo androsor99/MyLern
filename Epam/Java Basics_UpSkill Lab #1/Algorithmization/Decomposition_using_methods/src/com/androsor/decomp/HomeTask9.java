@@ -1,73 +1,44 @@
 package com.androsor.decomp;
 
-import java.util.Scanner;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
 
 /**
  * Given the numbers X, Y, Z, T - the length of the sides of the quadrangle. Write a method (s) for calculating its area
  * if the angle between the length X and Y is a straight line.
  */
-
 public class HomeTask9 {
 
     public static void main (String[] args) {
 
-        double sideTriangleX;
-        double sideTriangleY;
-        double sideTriangleZ;
-        double sideTriangleT;
-        double areaQuadrangle;
+        int sideTriangleX = abs(inputDataInt(" Введите длину стороны четырехугольника X = "));
+        int sideTriangleY = abs(inputDataInt(" Введите длину стороны четырехугольника Y = "));
+        int sideTriangleZ = abs(inputDataInt(" Введите длину стороны четырехугольника Z = "));
+        int sideTriangleT = abs(inputDataInt(" Введите длину стороны четырехугольника T = "));
 
-        sideTriangleX = dataInput(" Введите длину стороны четырехугольника X = ");
-        sideTriangleY = dataInput(" Введите длину стороны четырехугольника Y = ");
-        sideTriangleZ = dataInput(" Введите длину стороны четырехугольника Z = ");
-        sideTriangleT = dataInput(" Введите длину стороны четырехугольника T = ");
+        double hypo = getHypotenuse(sideTriangleX,sideTriangleY); // Находим гипотенузу.
+        double halfPerimeter1 = getHalfPerimeter(sideTriangleX, sideTriangleY, hypo); // Полупериметр треугольника
+        double halfPerimeter2 = getHalfPerimeter(sideTriangleZ, sideTriangleT, hypo);
+        double triangleSquare1 = getTriangleSquare(sideTriangleX, sideTriangleY, hypo, halfPerimeter1);
+        double triangleSquare2 = getTriangleSquare(sideTriangleZ, sideTriangleT, hypo, halfPerimeter2);
 
-        double hypo = findHypotenuse(sideTriangleX,sideTriangleY); // Находим гипотенузу.
-        double halfPerimeter1 = findHalfPerimeter(sideTriangleX, sideTriangleY, hypo); // Полупериметр треугольника
-        double halfPerimeter2 = findHalfPerimeter(sideTriangleZ, sideTriangleT, hypo);
-
-
-        areaQuadrangle = findTriangleSquare(sideTriangleX, sideTriangleY, hypo, halfPerimeter1) +
-                findTriangleSquare(sideTriangleZ, sideTriangleT, hypo, halfPerimeter2); // Площадь четырехугольника.
-
-        System.out.printf(" Площадь четырехугольника = %.3f", areaQuadrangle);
+        System.out.printf(" Площадь четырехугольника = %.2f", getQuadrangleSquare(triangleSquare1, triangleSquare2));
     }
 
-    // Метод ввода данных.
-    public  static  double dataInput(String massage) {
-        System.out.print(massage);
-        Scanner sc = new Scanner(System.in);
-        while (!sc.hasNextDouble()) {
-            sc.next();
-            System.out.print(" Введенные данные не являются  числами. Повторите ввод. ");
-        }
-        return sc.nextDouble();
+    private static double getHalfPerimeter(double side1, double side2, double side3) {
+        return (side1 + side2 + side3 ) / 2;
+    }
+    private static double getHypotenuse(double leg1, double leg2) {
+        return sqrt(pow(leg1, 2) + pow(leg2, 2));
     }
 
-    // Метод нахождения гипотенузы.
-    public static double findHypotenuse(double num1, double num2) {
-
-        double hypo;
-        hypo = Math.sqrt(Math.pow(num1, 2) + Math.pow(num2, 2));
-        return hypo;
+    private static double getQuadrangleSquare(double triangleSquare1, double triangleSquare2) {
+        return triangleSquare1 + triangleSquare2;
     }
 
-    // Метод нахождения полупериметра
-    public static double findHalfPerimeter(double num1, double num2,double hypo) {
-
-        double halfPerimeter;
-        halfPerimeter = (num1 + num2 + hypo ) / 2;
-        return halfPerimeter;
-    }
-
-    // Метод нахождения площади треугольника ( формула Герона)
-    public static double findTriangleSquare(double num1, double num2,double hypo,double hp) {
-
-        double square;
-        square = Math.sqrt(hp* (hp - num1) * (hp-num2) *( hp -  hypo));
-        return square;
+    private static double getTriangleSquare(double side1, double side2, double side3, double halfPerimeter) { // формула Герона
+        return sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) * (halfPerimeter - side3));
     }
 }
-
-
-

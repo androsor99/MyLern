@@ -1,7 +1,8 @@
 package com.androsor.decomp;
 
-import static java.lang.Math.*;
-import static com.androsor.decomp.Data.*;
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
+import static com.androsor.decomp.Data.inputDataDouble;
 
 /**
  * Calculate the area of a regular hexagon from the side using the triangle area method.

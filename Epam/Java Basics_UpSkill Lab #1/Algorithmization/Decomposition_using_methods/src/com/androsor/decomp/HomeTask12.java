@@ -12,15 +12,12 @@ public class HomeTask12 {
 
     public static void main (String[]args) {
 
-        int k = inputDataInt(" Введите число k = ");
-        while (k < 0) {
-            System.out.println(" Число должно быть больше нуля.");
-            k = inputDataInt(" Введите число k = ");
-        }
-        int n = inputDataInt(" Введите число n = ");
-        while (n <= k) {
-            System.out.println(" Число должно быть больше нуля и больше числа k");
-            n = inputDataInt(" Введите число k = ");
+        int numberK = inputDataInt(" Введите число numberK = ");
+
+        int numberN = inputDataInt(" Введите число numberN = ");
+        while (numberN <= numberK) {
+            System.out.println(" Число должно быть больше нуля и больше числа numberK");
+            numberN = inputDataInt(" Введите число numberK = ");
         }
         int b = inputDataInt(" Введите длину желаемого массива b = ");
         while (b < 0) {
@@ -30,7 +27,7 @@ public class HomeTask12 {
 
         System.out.println(" Массив из элементов согласно условию задачи:");
 
-        arrayRandom(k,n,b);
+        arrayRandom(numberK,numberN,b);
     }
     // Метод создания и заполнения массива из цифр числа.
     public static int [] myArray(int number) {

@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.*;
-import static java.lang.Math.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * Write a method (s) for calculating the sum of the factorials of all odd numbers from 1 to 9.

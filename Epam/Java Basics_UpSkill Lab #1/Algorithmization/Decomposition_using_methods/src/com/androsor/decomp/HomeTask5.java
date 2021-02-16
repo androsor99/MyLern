@@ -3,8 +3,8 @@ package com.androsor.decomp;
 import java.util.Arrays;
 import java.util.Random;
 
-import static com.androsor.decomp.Data.*;
-import static java.lang.Math.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * Write a program that finds the second largest number in the array A [N] (print out a number that is less than

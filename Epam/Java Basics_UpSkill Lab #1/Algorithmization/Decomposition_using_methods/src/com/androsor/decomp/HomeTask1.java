@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.*;
-import static java.lang.Math.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * Write a method (methods) for finding the greatest common divisor and the least common multiple of two natural numbers:

@@ -1,67 +1,49 @@
 package com.androsor.decomp;
 
 import java.util.Arrays;
-import java.util.Scanner;
+
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * A natural number N is given. Write a method (methods) for forming an array,
  * the elements of which are the digits of the number N.
  */
-
 public class HomeTask10 {
 
     public static void main(String[] args) {
 
-        int number;
-        int[] myArray;
+        int number = abs(inputDataInt(" Введите натуральное число: "));
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print(" Введите натуральное число: ");
-        while (!sc.hasNextInt()) {
-            sc.next();
-            System.out.println(" Введенное значеине должно быть числом и иметь положительное значение." +
-                    " Повторите ввод.");
-            System.out.print(" Введите натуральное число:  ");
-        }
-        number = sc.nextInt();
-
-        while (number <= 0) {
-            System.out.println(" Введенное значеине должно быть числом и иметь положительное значение." +
-                    " Повторите ввод.");
-            System.out.print(" Введите натуральное число:  ");
-            number = sc.nextInt();
-        }
-
-        int arraylength = findArrayLength(number);
-        System.out.println(" Длина массива из цифр введенного числа = " + arraylength);
-
-        myArray = addElements(number, arraylength);
-        System.out.println(" Массив из цифр введенного числа: " + Arrays.toString(myArray));
-
+        System.out.println(" Массив из цифр введенного числа: ");
+        int[] myArray = fillArray(number, getArrayWidth(number));
+        printArray(myArray);
     }
 
-    // Метод нахождения длины массива (равен количеству цифер числа)
-    public static int findArrayLength(int num) {
-        int counter = 0;
-
-        while (num != 0) {
-            counter++;
-            num = num / 10;
-        }
-        return counter;
-    }
-
-    // Метод разбиения числа на цифры
-    public static int[] addElements(int number, int arrayLength) {
-        int[] myArr = new int[arrayLength];
-
+    public static int[] fillArray(int number, int arrayWidth) { // Метод разбиения числа на цифры
+        int[] array = new int[arrayWidth];
         while (number != 0) {
-            for (int i = arrayLength - 1; i >= 0; i--) {
+            for (int i = array.length -1; i >= 0; i--) {
                 int digit = number % 10;
-                myArr[i] = digit;
+                array[i] = digit;
                 number = number / 10;
             }
         }
-        return myArr;
+        return array;
+    }
+
+    public static int getArrayWidth(int number) { // Метод нахождения длины массива (равен количеству цифер числа)
+        int value = 0;
+        while (number != 0) {
+            number = number / 10;
+            value++;
+        }
+        return value;
+    }
+
+    private static void printArray(int[] array) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(array));
+        System.out.println("----------------------------------------");
     }
 }

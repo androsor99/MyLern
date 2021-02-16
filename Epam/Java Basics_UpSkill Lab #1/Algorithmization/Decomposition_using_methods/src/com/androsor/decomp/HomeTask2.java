@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.*;
+import static com.androsor.decomp.Data.inputDataInt;
 import static java.lang.Math.abs;
 
 /**

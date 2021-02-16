@@ -2,10 +2,9 @@ package com.androsor.decomp;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
-import static com.androsor.decomp.Data.*;
-import static java.lang.Math.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * An array D is given. Determine the following sums: D [l] + D [2] + D [3]; D [3] + D [4] + D [5]; D [4] + D [5] + D [6].
@@ -15,32 +14,26 @@ public class HomeTask8 {
 
     public static void main (String[] args) {
 
-
         int arrayWidth = getArrayWidth(abs(inputDataInt(" Введите длинну массива: ")));
+
+        System.out.println(" Исходный массив: ");
+        int[] myArray = fillArray(arrayWidth);
+        printArray(myArray);
 
         int indexFrom = getIndexFrom(abs(inputDataInt(" Вычисление суммы от элемента массива №: ")), arrayWidth);
 
-        int indexTo = abs(inputDataInt(" Вычисление суммы до элемента массива №: "));
+        int indexTo = getIndexTo(abs(inputDataInt(" Вычисление суммы до элемента массива №: ")), indexFrom, arrayWidth );
 
-        while (indexTo > arrayWidth) {
-            System.out.println(" Конечное положение должно быть а пределах заданного массива длиной " + arrayWidth + ". Повторите ввод");
-            System.out.print("Вычисление суммы до: ");
-            //indexTo = sc.nextInt();
+        System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d = %d ", indexFrom, indexTo, getSum(myArray, indexFrom, indexTo));
+    }
+
+    public static int[] fillArray(int arrayWidth) {
+        int[] array = new int[arrayWidth];
+        Random random = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(10);
         }
-
-
-        while ((indexTo - indexFrom) <= 1) {
-            System.out.println(" В интервале значений начальной и конечных точек должен находится хотя бы один элемент массива. Повторите ввод");
-            System.out.print("Вычисление суммы от элемента массива №: ");
-            //indexFrom = sc.nextInt();
-            System.out.print("Вычисление суммы до элемента массива №: ");
-            //indexTo = sc.nextInt();
-        }
-        int[] myArray = new int[arrayWidth];
-        enterArray(myArray);
-        System.out.println(" Исходный массив: ");
-        System.out.println(" " + Arrays.toString(myArray));
-        sum(myArray, indexFrom, indexTo);
+        return array;
     }
 
     private static int getArrayWidth(int arrayWidth) {
@@ -51,30 +44,35 @@ public class HomeTask8 {
         return arrayWidth;
     }
 
-
-    private static int getIndexFrom(int index, int arrayWidth) {
-        while ((index >= arrayWidth - 1) || (index == 0)) {
+    private static int getIndexFrom(int indexFrom, int arrayWidth) {
+        while ((indexFrom > arrayWidth - 2) || (indexFrom == 0)) {
             System.out.println(" Начальное положение должно быть а пределах заданного массива длиной " + arrayWidth + ". Повторите ввод");
-            index = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
+            indexFrom = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
         }
-        return index;
+        return indexFrom;
     }
 
-    // Метод заполнения массива .
-    public static void enterArray (int[] myArray) {
-        Random random = new Random();
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = random.nextInt(10);
+    private static int getIndexTo(int indexTo, int indexFrom, int arrayWidth) {
+        while ((indexTo > arrayWidth) || ((indexTo) - indexFrom) < 2) {
+            System.out.println(" В интервале значений начальной и конечных точек должен находится хотя бы один элемент массива " +
+                    "и конечная точка не должна выходить за пределы массива. Повторите ввод");
+            indexTo = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
         }
+        return indexTo;
     }
-    // Метод нахождения суммы трех соседних элементов
-    public static void sum (int [] array, int k, int m) {
-        System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d : ", k, m);
-        for (int i = k; i < m -1; i++) {
-            int sum;
-            sum = array[i - 1] + array[i] + array[i + 1];
-            System.out.print(sum + ", ");
+
+    public static int getSum(int [] array, int indexFrom, int indexTo) {
+        int sum = 0;
+        for (int i = indexFrom; i < indexTo - 1; i++) {
+            int sumCurrent = array[i -1] + array[i] + array[i + 1];
+            sum += sumCurrent;
         }
+        return sum;
+    }
+
+    private static void printArray(int[] array) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(array));
+        System.out.println("----------------------------------------");
     }
 }
-

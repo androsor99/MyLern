@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
 import static java.lang.Math.abs;
-import static com.androsor.decomp.Data.*;
+import static com.androsor.decomp.Data.inputDataInt;
 
 /**
  * Write a method (s) that checks whether the given three numbers are comprise.

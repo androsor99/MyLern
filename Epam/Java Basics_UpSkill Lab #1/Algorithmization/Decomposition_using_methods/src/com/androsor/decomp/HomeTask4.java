@@ -2,8 +2,10 @@ package com.androsor.decomp;
 
 import java.util.Random;
 
-import static com.androsor.decomp.Data.*;
-import static java.lang.Math.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 /**
  * On the plane, n points are given by their coordinates. Write a method (methods) that determine between which of the pairs of points
@@ -12,6 +14,7 @@ import static java.lang.Math.*;
 public class HomeTask4 {
 
     public static void main(String[] args) {
+
         int numberOfPoints; // Количество заданных точек.
 
         numberOfPoints = getNumberOfPoints(abs(inputDataInt(" Введите количество заданных точек numberOfPoints = ")));
@@ -24,6 +27,15 @@ public class HomeTask4 {
         printCoordinatesOfPointsWithMaxDistance(coordinates_X, coordinates_Y);
     }
 
+    private static int[] fillArray(int arrayWidth) { // Метод заполнения массива координатами.
+        int[] array = new int[arrayWidth];
+        Random random = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = 100 - (random.nextInt(200));
+        }
+        return array;
+    }
+
     private static double getDistance(int x1, int y1, int x2, int y2) { // Метод нахождения расстояния между двумя точками
         return sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)); // Расстояние между двумя точками заданными координатами.
     }
@@ -34,15 +46,6 @@ public class HomeTask4 {
             numberOfPoints = abs(inputDataInt(" Введите количество заданных точек numberOfPoints = "));
         }
         return numberOfPoints;
-    }
-
-    private static int[] fillArray(int arrayWidth) { // Метод заполнения массива координатами.
-        int[] array = new int[arrayWidth];
-        Random random = new Random();
-        for (int i = 0; i < array.length; i++) {
-            array[i] = 100 - (random.nextInt(200));
-        }
-        return array;
     }
 
     public static void printCoordinatesOfPointsWithMaxDistance(int[] x, int[] y) {
