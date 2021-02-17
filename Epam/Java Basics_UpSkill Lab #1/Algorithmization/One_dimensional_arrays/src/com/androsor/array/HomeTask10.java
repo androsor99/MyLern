@@ -2,7 +2,9 @@ package com.androsor.array;
 
 import java.util.Arrays;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * An integer array with elements of n is given. Compress the array, discarding every second element from it

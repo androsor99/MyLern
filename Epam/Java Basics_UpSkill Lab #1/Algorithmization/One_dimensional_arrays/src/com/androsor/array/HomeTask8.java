@@ -1,6 +1,8 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * You are given a sequence of integers a1, a2, ..., an. Form a new sequence, discarding those terms from the original,

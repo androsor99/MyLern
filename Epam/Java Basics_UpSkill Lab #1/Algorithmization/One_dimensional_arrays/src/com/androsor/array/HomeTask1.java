@@ -1,6 +1,8 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * The array A [N] contains natural numbers. Find the sum of those elements that are multiples of a given K.
@@ -34,7 +36,6 @@ public class HomeTask1 {
             }
         }
         return sum;
-
     }
 
     private static void printSum(int multiplicityFactor, int sum) {

@@ -1,6 +1,8 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * You are given real numbers a (1), a (2), ..., a (2n).

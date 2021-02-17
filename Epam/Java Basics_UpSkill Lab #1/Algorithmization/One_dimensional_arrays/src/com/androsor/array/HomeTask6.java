@@ -1,6 +1,8 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * A sequence of N real numbers is given. Calculate the sum of numbers whose ordinal numbers are prime numbers.

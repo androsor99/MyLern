@@ -1,6 +1,8 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
 
 /**
  * Given are real numbers a1, a2, ..., an. Swap the largest and smallest items.

@@ -1,6 +1,9 @@
 package com.androsor.array;
 
-import static com.androsor.array.ArrayCreator.*;
+import static com.androsor.array.ArrayCreator.inputParameter;
+import static com.androsor.array.ArrayCreator.createArray;
+import static com.androsor.array.ArrayCreator.printArray;
+
 /**
  * Find the most frequent number in an array of integers with n elements. If there are several such numbers,
  * then determine the smallest of them.
