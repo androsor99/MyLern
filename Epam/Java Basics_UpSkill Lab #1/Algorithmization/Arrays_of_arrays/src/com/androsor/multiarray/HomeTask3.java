@@ -2,8 +2,10 @@ package com.androsor.multiarray;
 
 import java.util.Scanner;
 
-import static com.androsor.multiarray.ArrayCreator.*;
-import static com.androsor.multiarray.ArrayPrinter.*;
+import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * A matrix is given. Print the k-th row and p-th column of the matrix.
@@ -12,50 +14,46 @@ public class HomeTask3 {
 
     public static void main (String[] args) {
 
-        int arrayWidth; // разрядность матрицы
-        int row; // номер выводимой строки.
-        int column; // Номер выводимого столбца
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
+        int [][] numbers = fillArray(length);
+        printArrayInt(numbers);
 
         System.out.print(" Введите номер выводимой строки = ");
-        row = inputParameter(arrayWidth);
-        printRowMatrix(row, myArray);
+        int row = inputParameter(length);
+        printRowMatrix(row, numbers);
 
         System.out.println();
 
         System.out.print(" Введите номер выводимого столбца = ");
-        column = inputParameter(arrayWidth);
-        printColumnMatrix(column, myArray);
+        int column = inputParameter(length);
+        printColumnMatrix(column, numbers);
     }
 
-    private static int inputParameter(int arrayWidth) {
+    private static int inputParameter(int length) {
         Scanner scanner = new Scanner(System.in);
-        int temp = scanner.nextInt();
-        while (temp > arrayWidth) {
+        int parameter = scanner.nextInt();
+        while (parameter > length) {
             System.out.println(" Значение выводимой строки/столбца не должно превышать разрядность матрицы");
             System.out.print(" Повторите ввод = ");
-            temp = scanner.nextInt();
+            parameter = abs(scanner.nextInt());
         }
-        return temp;
-    }
-    private static void printColumnMatrix(int column, int[][] myArray) {
-        System.out.println( column + "-ый столбец матрицы:");
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.println(myArray[i][column -1]);
-        }
+        return parameter;
     }
 
-    private static void printRowMatrix(int row, int[][] myArray) {
-        System.out.print( row +"-ая строка матрицы:  ");
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.print(myArray[row -1][i] + " ");
+    private static void printRowMatrix(int row, int[][] numbers) {
+        System.out.printf(" %d-ая строка матрицы: ", row);
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.printf("%d, ",numbers[row -1][i]);
+        }
+    }
+    private static void printColumnMatrix(int column, int[][] numbers) {
+        System.out.printf(" %d-ый столбец матрицы:\n", column);
+        for (int[] number : numbers) {
+            System.out.printf(" %d\n", number[column - 1]);
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.androsor.multiarray;
 
 import java.util.Scanner;
+
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -16,36 +18,33 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // разрядность матрицы
-
         System.out.print(" Введите разрядность матрицы = ");
-        arrayWidth = inputParameter();
+        int light = inputParameter();
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
-    }
-
-    private static int[][] fillArray(int arrayWidth) {
-        int[][] array = new int[arrayWidth][arrayWidth];
-        int length = array.length; // укорачиваем каждую следующую строку на один элемент.
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < length; j++) {
-                array[i][j] = i + 1;
-            }
-            length--;
-        }
-        return array;
+        printArrayInt(fillArray(light));
     }
 
     private static int inputParameter() {
         Scanner scanner = new Scanner(System.in);
-        int temp = scanner.nextInt();
-        while (temp % 2 != 0) {
+        int parameter = abs(scanner.nextInt());
+        while (parameter % 2 != 0) {
             System.out.println(" Значение разрядности должно быть четным по условию");
             System.out.print(" Введите разрядность матрицы = ");
-            temp = scanner.nextInt();
+            parameter = abs(scanner.nextInt());
         }
-        return temp;
+        return parameter;
+    }
+
+    private static int[][] fillArray(int length) {
+        int[][] numbers = new int[length][length];
+        int lengthCurrent = numbers.length;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < lengthCurrent; j++) {
+                numbers[i][j] = i + 1;
+            }
+            lengthCurrent--;
+        }
+        return numbers;
     }
 }

@@ -2,8 +2,10 @@ package com.androsor.multiarray;
 
 import java.util.Scanner;
 
+import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static com.androsor.multiarray.ArrayCreator.fillArray;
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * In a numerical matrix, swap two columns of any column, that is, put all the elements of one column in the
@@ -14,47 +16,42 @@ public class HomeTask8 {
 
     public static void main (String[] args) {
 
-        int arrayWidth; // разрядность матрицы
-        int column1; // Номер первого заменяемого столбца.
-        int column2; // Номер второго заменяемого столбца.
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = ArrayCreator.inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
-
+        int [][] numbers = fillArray(length);
+        printArrayInt(numbers);
 
         System.out.println(" Введите номера заменямых столбцов");
         System.out.print(" Номер первого столбца = ");
-        column1 = inputNumberColumn(arrayWidth);
+        int column_1 = inputNumberColumn(length);
         System.out.print(" Номер второго столбца = ");
-        column2 = inputNumberColumn(arrayWidth);
+        int column_2 = inputNumberColumn(length);
 
         System.out.println(" Матрица с измененными столбцами:");
-        printArrayInt (replacingColumns(column1, column2, myArray));
+        printArrayInt(replacingColumns(column_1, column_2, numbers));
     }
 
-    private static int inputNumberColumn(int arrayWidth) {
+    private static int inputNumberColumn(int length) {
         Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
-        while (num > arrayWidth) {
+        int column = abs(scanner.nextInt());
+        while (column > length) {
             System.out.println(" Значение заменяемого столбца не должно превышать разрядность матрицы");
             System.out.print(" Номер столбца =  ");
-            num = scanner.nextInt();
+            column = abs(scanner.nextInt());
         }
-        return num;
+        return column;
     }
 
-    private static int[][] replacingColumns(int column1, int column2, int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j ++) {
-                int temp = array[i][column1 - 1];
-                array[i][column1 - 1] = array[i][column2 - 1];
-                array[i][column2 - 1] = temp;
+    private static int[][] replacingColumns(int column_1, int column_2, int[][] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j ++) {
+                int temp = numbers[i][column_1 - 1];
+                numbers[i][column_1 - 1] = numbers[i][column_2 - 1];
+                numbers[i][column_2 - 1] = temp;
             }
         }
-        return array;
+        return numbers;
     }
 }

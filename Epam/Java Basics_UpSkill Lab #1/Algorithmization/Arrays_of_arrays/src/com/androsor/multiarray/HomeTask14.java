@@ -4,6 +4,7 @@ import java.util.Random;
 
 import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * Generate a random m x n matrix consisting of zeros and ones, with the number of ones in each column being equal
@@ -13,36 +14,34 @@ public class HomeTask14 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // разрядность матрицы
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
         System.out.println(" Исходная матрица:");
-        int[][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
+        int[][] numbers = fillArray(length);
+        printArrayInt(numbers);
     }
 
-    private static int[][] fillArray(int arrayWidth) {
-        int[][] array = new int[arrayWidth][arrayWidth];
-        for (int j = 0; j < array.length; j++) {
-            int duplicate0 = 0; // счетчик встреч 0
-            int duplicate1 = 0; // счетчик встреч 1
-            for (int i = 0; i < array.length; i++) {
-                array[i][j] = new Random ().nextInt(2);
-                if (array[i][j] == 1) {
-                    duplicate1++;
+    private static int[][] fillArray(int length) {
+        int[][] numbers = new int[length][length];
+        for (int j = 0; j < numbers.length; j++) {
+            int duplicateZero = 0; // счетчик встреч 0
+            int duplicateOne = 0; // счетчик встреч 1
+            for (int i = 0; i < numbers.length; i++) {
+                numbers[i][j] = new Random ().nextInt(2);
+                if (numbers[i][j] == 1) {
+                    duplicateOne++;
                 } else {
-                    duplicate0++;
+                    duplicateZero++;
                 }
-                if ((array[i][j] == 1) && (duplicate1 > j + 1)) {
-                    array[i][j] = 0;
+                if ((numbers[i][j] == 1) && (duplicateOne > j + 1)) {
+                    numbers[i][j] = 0;
                 }
-                if ((array[i][j] == 0) && (duplicate0) >= (array.length - j)) {
-                    array[i][j] = 1;
+                if ((numbers[i][j] == 0) && (duplicateZero) >= (numbers.length - j)) {
+                    numbers[i][j] = 1;
                 }
             }
         }
-        return array;
+        return numbers;
     }
 }

@@ -2,6 +2,7 @@ package com.androsor.multiarray;
 
 import java.util.Scanner;
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -15,39 +16,36 @@ public class HomeTask6 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // разрядность матрицы
-
         System.out.print(" Введите разрядность матрицы = ");
-        arrayWidth = inputParameter();
+        int length = inputParameter();
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillyArray(arrayWidth);
-        printArrayInt(myArray);
-    }
-
-    private static int[][] fillyArray(int arrayWidth) {
-        int[][] array = new int[arrayWidth][arrayWidth];
-        for (int i = 0; i < array.length / 2 + 1; i++) { // заполняем первую половину строк.
-            for (int j = i; j < array.length - i; j++) {
-                array[i][j] = 1;
-            }
-        }
-        for (int i = array.length / 2; i < array.length; i++) { // заполняем вторую половину строк.
-            for (int j = array.length - i - 1; j < i + 1; j++) {
-                array[i][j] = 1;
-            }
-        }
-        return array;
+        printArrayInt(fillyArray(length));
     }
 
     private static int inputParameter() {
         Scanner scanner = new Scanner(System.in);
-        int temp = scanner.nextInt();
-        while (temp % 2 != 0) {
+        int parameter = abs(scanner.nextInt());
+        while (parameter % 2 != 0) {
             System.out.println(" Значение разрядности должно быть четным по условию");
             System.out.print(" Введите разрядность матрицы = ");
-            temp = scanner.nextInt();
+            parameter = abs(scanner.nextInt());
         }
-        return temp;
+        return parameter;
+    }
+
+    private static int[][] fillyArray(int length) {
+        int[][] numbers = new int[length][length];
+        for (int i = 0; i < numbers.length / 2 + 1; i++) { // заполняем первую половину строк.
+            for (int j = i; j < numbers.length - i; j++) {
+                numbers[i][j] = 1;
+            }
+        }
+        for (int i = numbers.length / 2; i < numbers.length; i++) { // заполняем вторую половину строк.
+            for (int j = numbers.length - i - 1; j < i + 1; j++) {
+                numbers[i][j] = 1;
+            }
+        }
+        return numbers;
     }
 }

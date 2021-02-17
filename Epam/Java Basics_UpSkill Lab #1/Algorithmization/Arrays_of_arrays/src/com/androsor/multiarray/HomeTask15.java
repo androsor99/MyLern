@@ -5,6 +5,7 @@ import java.util.Arrays;
 import static com.androsor.multiarray.ArrayCreator.fillArray;
 import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * Find the largest element of the matrix and replace all odd elements with it.
@@ -13,48 +14,46 @@ public class HomeTask15 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // разрядность массива.
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
+        int [][] numbers = fillArray(length);
+        printArrayInt(numbers);
 
-        System.out.println(" Максимальный элемент матрицы " + findMaxElement(myArray).toString());
-        int arrayMax = findMaxElement(myArray).getValue();
+        System.out.println(" Максимальный элемент матрицы " + findMaxElement(numbers).toString());
+        int maxElementArray = findMaxElement(numbers).getValue();
 
         System.out.println(" Матрица с замененными нечетными элементами :");
-        int[][] copyArray = Arrays.stream(myArray).map(int[]::clone).toArray(int[][]::new);
-        printArrayInt(replaceOddElements(copyArray,arrayMax));
+        printArrayInt(replaceOddElements(numbers,maxElementArray));
     }
 
-    private static ElementMax findMaxElement(int [][] array) {
+    private static ElementMax findMaxElement(int [][] numbers) {
         int indexMaxI = 0; // Индекс строки максимального элемента.
         int indexMaxJ = 0; // Индекс столбца максимального элемента
-        int maxElement = array[0][0]; // Максимальный элемент матрицы.
-        for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i][j] > maxElement) {
-                    maxElement = array[i][j];
-                    indexMaxI = i;
-                    indexMaxJ = j;
+        int max = numbers[0][0]; // Максимальный элемент матрицы.
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                if (numbers[i][j] > max) {
+                    max = numbers[i][j];
+                    indexMaxI = i + 1;
+                    indexMaxJ = j + 1;
                 }
             }
         }
-        return new ElementMax(indexMaxI, indexMaxJ, maxElement);
+        return new ElementMax(indexMaxI, indexMaxJ, max);
     }
 
-    private static int[][] replaceOddElements(int[][] array, int maxElement) {
-        for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i][j] % 2 != 0) {
-                    array[i][j] = maxElement;
+    private static int[][] replaceOddElements(int[][] numbers, int maxElement) {
+        int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
+        for (int j = 0; j < copyArray.length; j++) {
+            for (int i = 0; i < copyArray.length; i++) {
+                if (copyArray[i][j] % 2 != 0) {
+                    copyArray[i][j] = maxElement;
                 }
             }
         }
-        return array;
+        return copyArray;
     }
 
     private static class ElementMax {

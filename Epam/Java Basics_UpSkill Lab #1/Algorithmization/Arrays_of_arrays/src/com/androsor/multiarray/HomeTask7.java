@@ -2,6 +2,7 @@ package com.androsor.multiarray;
 
 import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 import static java.lang.Math.sin;
+import static java.lang.Math.abs;
 import static com.androsor.multiarray.ArrayPrinter.printArrayDouble;
 
 /**
@@ -14,37 +15,35 @@ public class HomeTask7 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // разрядность массива.
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
         System.out.println(" Исходный массив");
-        double[][] myArray = fillArray(arrayWidth);
-        printArrayDouble(myArray);
+        double[][] numbers = fillArray(length);
+        printArrayDouble(numbers);
 
-        System.out.println("Количество положительных элементов матрицы: " + getCounterPositiveElement(myArray));
+        System.out.println("Количество положительных элементов матрицы: " + getNumberOfPositiveElements(numbers));
     }
 
-    private static double[][] fillArray(int arrayWidth) {
-        double[][] array = new double[arrayWidth][arrayWidth];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                array[i][j] = sin((double) (i * i - j * j) / array.length);
+    private static double[][] fillArray(int length) {
+        double[][] numbers = new double[length][length];
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                numbers[i][j] = sin((double) (i * i - j * j) / numbers.length);
             }
         }
-        return array;
+        return numbers;
     }
 
-    private static int getCounterPositiveElement(double[][] array) {
-        int countPositive = 0;
-        for (double[] items : array) {
-            for (int j = 0; j < array.length; j++) {
+    private static int getNumberOfPositiveElements(double[][] numbers) {
+        int count = 0;
+        for (double[] items : numbers) {
+            for (int j = 0; j < numbers.length; j++) {
                 if (items[j] > 0) {
-                    countPositive++;
+                    count++;
                 }
             }
         }
-        return countPositive;
+        return count;
     }
 }

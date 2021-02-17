@@ -1,7 +1,9 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.*;
-import static com.androsor.multiarray.ArrayPrinter.*;
+import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
+import static com.androsor.multiarray.ArrayCreator.fillArray;
+import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static java.lang.Math.abs;
 
 /**
  * You are given a square matrix. Display the elements on the diagonal.
@@ -10,31 +12,29 @@ public class HomeTask2 {
 
     public static void main (String[] args) {
 
-        int arrayWidth; // разрядность массива.
-
-        System.out.print(" Введите разрядность массива arrayWidth = ");
-        arrayWidth = inputParameterArray();
+        System.out.print(" Введите разрядность массива length = ");
+        int length = abs(inputParameterArray());
 
         System.out.println(" Исходный массив");
-        int [][] myArray = fillArray(arrayWidth);
-        printArrayInt(myArray);
+        int [][] numbers = fillArray(length);
+        printArrayInt(numbers);
 
-        printMainDiagonal(myArray);
+        printMainDiagonal(numbers);
         System.out.println();
-        printSideDiagonal(myArray);
+        printSideDiagonal(numbers);
     }
 
-    private static void printMainDiagonal(int[][] myArray) {
-        System.out.print(" Диагональ 1:  ");
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.print(myArray[i][i] + " ");
+    private static void printMainDiagonal(int[][] numbers) {
+        System.out.print(" Диагональ главная:  ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i][i] + ", ");
         }
     }
 
-    private static void printSideDiagonal(int[][] myArray) {
-        System.out.print(" Диагональ 2:  ");
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.print(myArray[myArray.length - 1 - i][i]  + " " );
+    private static void printSideDiagonal(int[][] numbers) {
+        System.out.print(" Диагональ побочная:  ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[numbers.length - 1 - i][i]  + ", " );
         }
     }
 }
