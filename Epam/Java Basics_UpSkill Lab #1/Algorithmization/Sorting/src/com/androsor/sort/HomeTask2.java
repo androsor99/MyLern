@@ -2,7 +2,9 @@ package com.androsor.sort;
 
 import java.util.Arrays;
 
-import static com.androsor.sort.ArrayCreator.*;
+import static com.androsor.sort.ArrayCreator.inputParameter;
+import static com.androsor.sort.ArrayCreator.createArray;
+import static com.androsor.sort.ArrayCreator.printArray;
 
 /**
  * Implement selection sort.
@@ -11,26 +13,24 @@ public class HomeTask2 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // Разрядность массивов.
-
         System.out.print(" Введите количество элементов массива N = ");
-        arrayWidth = inputParameter();
+        int length = inputParameter();
 
-        System.out.println(" Исходный массив с количеством элементов N = " + arrayWidth);
-        int[] myArray = createArray(arrayWidth);
-        printArray(myArray);
+        System.out.println(" Исходный массив с количеством элементов N = " + length);
+        int[] numbers = createArray(length);
+        printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] ascendingSortedArray = sortAscending(myArray);
-        printArray(ascendingSortedArray);
+        int[] sortedNumbersAscending = sortAscending(numbers);
+        printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] descendingSortedArray = sortDescending(myArray);
-        printArray(descendingSortedArray);
+        int[] sortedNumbersDescending = sortDescending(numbers);
+        printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
+    private static int[] sortAscending(int[] numbers) {
+        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
         for (int i = 0; i < copyArray.length; i++) {
             int minItem = copyArray[i];
             int indexMinItem = i;
@@ -40,17 +40,13 @@ public class HomeTask2 {
                     indexMinItem = j;
                 }
             }
-            if (i != indexMinItem) {
-                int temp = copyArray[i];
-                copyArray[i] = copyArray[indexMinItem];
-                copyArray[indexMinItem] = temp;
-            }
+            rearrangeArrayElements(copyArray, i, indexMinItem);
         }
         return copyArray;
     }
 
-    private static int[] sortDescending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
+    private static int[] sortDescending(int[] numbers) {
+        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
         for (int i = 0; i < copyArray.length; i++) {
             int maxItem = copyArray[i];
             int indexMaxItem = i;
@@ -60,12 +56,16 @@ public class HomeTask2 {
                     indexMaxItem = j;
                 }
             }
-            if (i != indexMaxItem) {
-                int temp = copyArray[i];
-                copyArray[i] = copyArray[indexMaxItem];
-                copyArray[indexMaxItem] = temp;
-            }
+            rearrangeArrayElements(copyArray, i, indexMaxItem);
         }
         return copyArray;
+    }
+
+    private static void rearrangeArrayElements(int[] numbers, int indexFrom, int indexTo) {
+        if (indexFrom != indexTo) {
+            int temp = numbers[indexFrom];
+            numbers[indexFrom] = numbers[indexTo];
+            numbers[indexTo] = temp;
+        }
     }
 }

@@ -2,7 +2,8 @@ package com.androsor.sort;
 
 import java.util.Arrays;
 
-import static com.androsor.sort.ArrayCreator.*;
+import static com.androsor.sort.ArrayCreator.inputParameter;
+import static com.androsor.sort.ArrayCreator.createArray;
 import static com.androsor.sort.ArrayCreator.printArray;
 
 /**
@@ -12,26 +13,24 @@ public class HomeTask4 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // Разрядность массивов.
-
         System.out.print(" Введите количество элементов массива N = ");
-        arrayWidth = inputParameter();
+        int length = inputParameter();
 
-        System.out.println(" Исходный массив с количеством элементов N = " + arrayWidth);
-        int[] myArray = createArray(arrayWidth);
-        printArray(myArray);
+        System.out.println(" Исходный массив с количеством элементов N = " + length);
+        int[] numbers = createArray(length);
+        printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] ascendingSortedArray = sortAscending(myArray);
-        printArray(ascendingSortedArray);
+        int[] sortedNumbersAscending = sortAscending(numbers);
+        printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] descendingSortedArray = sortDescending(myArray);
-        printArray(descendingSortedArray);
+        int[] sortedNumbersDescending = sortDescending(numbers);
+        printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
+    private static int[] sortAscending(int[] numbers) {
+        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
         for (int i = 0; i < copyArray.length; i++) {
             int temp = copyArray[i];
             int j = i - 1;
@@ -44,8 +43,8 @@ public class HomeTask4 {
         return copyArray;
     }
 
-    private static int[] sortDescending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
+    private static int[] sortDescending(int[] numbers) {
+        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
         for (int i = 0; i < copyArray.length; i++) {
             int temp = copyArray[i];
             int j = i - 1;

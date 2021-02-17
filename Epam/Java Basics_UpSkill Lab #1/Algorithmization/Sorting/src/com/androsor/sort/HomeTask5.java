@@ -2,7 +2,9 @@ package com.androsor.sort;
 
 import java.util.Arrays;
 
-import static com.androsor.sort.ArrayCreator.*;
+import static com.androsor.sort.ArrayCreator.inputParameter;
+import static com.androsor.sort.ArrayCreator.createArray;
+import static com.androsor.sort.ArrayCreator.printArray;
 
 /**
  * Implement Shell sort.
@@ -11,22 +13,20 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // Разрядность массивов.
-
         System.out.print(" Введите количество элементов массива N = ");
-        arrayWidth = inputParameter();
+        int length = inputParameter();
 
-        System.out.println(" Исходный массив с количеством элементов N = " + arrayWidth);
-        int[] myArray = createArray(arrayWidth);
-        printArray(myArray);
+        System.out.println(" Исходный массив с количеством элементов N = " + length);
+        int[] numbers = createArray(length);
+        printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] ascendingSortedArray = sortAscending(myArray);
-        printArray(ascendingSortedArray);
+        int[] sortedNumbersAscending = sortAscending(numbers);
+        printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] descendingSortedArray = sortDescending(myArray);
-        printArray(descendingSortedArray);
+        int[] sortedNumbersDescending = sortDescending(numbers);
+        printArray(sortedNumbersDescending);
     }
 
     private static int[] sortAscending(int[] array) {
@@ -37,10 +37,10 @@ public class HomeTask5 {
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
         while (h >= 1) {
-            for (outer = h; outer < copyArray.length; outer++) {// Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
+            for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
                 temp = copyArray[outer];
                 inner = outer;
-                while (inner > h - 1 && copyArray[inner - h] >= temp) {// Сортируем массив с шагом h.
+                while (inner > h - 1 && copyArray[inner - h] >= temp) { // Сортируем массив с шагом h.
                     copyArray[inner] = copyArray[inner - h];
                     inner -= h;
                 }
@@ -59,10 +59,10 @@ public class HomeTask5 {
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
         while (h >= 1) {
-            for (outer = h; outer < copyArray.length; outer++) {// Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
+            for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
                 temp = copyArray[outer];
                 inner = outer;
-                while (inner > h - 1 && copyArray[inner - h] <= temp) {// Сортируем массив с шагом h.
+                while (inner > h - 1 && copyArray[inner - h] <= temp) { // Сортируем массив с шагом h.
                     copyArray[inner] = copyArray[inner - h];
                     inner -= h;
                 }

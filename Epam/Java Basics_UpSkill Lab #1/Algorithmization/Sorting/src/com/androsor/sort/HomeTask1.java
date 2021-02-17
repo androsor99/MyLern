@@ -2,7 +2,9 @@ package com.androsor.sort;
 
 import java.util.Scanner;
 
-import static com.androsor.sort.ArrayCreator.*;
+import static com.androsor.sort.ArrayCreator.inputParameter;
+import static com.androsor.sort.ArrayCreator.createArray;
+import static com.androsor.sort.ArrayCreator.printArray;
 
 /**
  * Two one-dimensional arrays with different number of elements and a natural number k are given.
@@ -13,35 +15,32 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        int arrayWidthM, arrayWidthN; // Разрядность массивов.
-        int index; // Индекс элемента первого массива после кторого будет вставлен второй массив.
-
         System.out.print(" Введите количество элементов первого ммассива M = ");
-        arrayWidthM = inputParameter();
+        int length_M = inputParameter();
 
-        System.out.println(" Первый массив с количеством элементов M = " + arrayWidthM);
-        int[] myArrayM = createArray(arrayWidthM);
-        printArray(myArrayM);
+        System.out.println(" Первый массив с количеством элементов M = " + length_M);
+        int[] numbersM = createArray(length_M);
+        printArray(numbersM);
 
         System.out.print(" Введите количество элементов первого ммассива N = ");
-        arrayWidthN = inputParameter();
+        int length_N = inputParameter();
 
-        System.out.println(" Второй массив с количеством элементов N = " + arrayWidthN);
-        int[] myArrayN = createArray(arrayWidthN);
-        printArray(myArrayN);
+        System.out.println(" Второй массив с количеством элементов N = " + length_N);
+        int[] numbersN = createArray(length_N);
+        printArray(numbersN);
 
         System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
-        index = inputIndex(arrayWidthM);
+        int index_K = inputIndex(length_M);
 
-        System.out.println(" Объединенный массив с количеством элементов M + N = " + (arrayWidthM + arrayWidthN));
-        int[] myArrayMN = concatenateArrays(index, myArrayM, myArrayN);
-        printArray(myArrayMN);
+        System.out.println(" Объединенный массив с количеством элементов M + N = " + (length_M + length_N));
+        int[] numbersMN = concatenateArrays(index_K, numbersM, numbersN);
+        printArray(numbersMN);
     }
 
-    private static int inputIndex(int arrayWidth) {
+    private static int inputIndex(int length) {
         Scanner scanner = new Scanner(System.in);
         int index = scanner.nextInt();
-        while ((index > arrayWidth) || (index < 0)) {
+        while ((index > length) || (index < 0)) {
             System.out.println(" Индекс элемента первого массива не должен превышать его длину и быть больше нуля");
             System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
             index = scanner.nextInt();
@@ -49,11 +48,11 @@ public class HomeTask1 {
         return index;
     }
 
-    private static int[] concatenateArrays(int index, int[] myArrayM, int[] myArrayN) {
-        int[] myArrayMN = new int [myArrayM.length + myArrayN.length];
-        System.arraycopy(myArrayM, 0, myArrayMN, 0, index);
-        System.arraycopy(myArrayN, 0, myArrayMN, index, myArrayN.length);
-        System.arraycopy(myArrayM, index, myArrayMN, (index + myArrayN.length), (myArrayM.length - index));
-        return myArrayMN;
+    private static int[] concatenateArrays(int index, int[] numbersM, int[] numbersN) {
+        int[] numbers = new int [numbersM.length + numbersN.length];
+        System.arraycopy(numbersM, 0, numbers, 0, index);
+        System.arraycopy(numbersN, 0, numbers, index, numbersN.length);
+        System.arraycopy(numbersM, index, numbers, (index + numbersN.length), (numbersM.length - index));
+        return numbers;
     }
 }
