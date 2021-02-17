@@ -11,9 +11,7 @@ public class HomeTask3 {
 
     public static void main(String[] args) {
 
-        double lengthSideTriangle; // Длина стороны треугольника.
-
-        lengthSideTriangle = abs(inputDataDouble(" Введите длину стороны треугольника = "));
+        double lengthSideTriangle = abs(inputDataDouble(" Введите длину стороны треугольника = "));
 
         double areaHexagon = getAreaHexagon(getAreaTriangle(lengthSideTriangle));
         printAreaHexagon(lengthSideTriangle, areaHexagon);

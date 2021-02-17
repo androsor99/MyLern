@@ -16,29 +16,29 @@ public class HomeTask10 {
         int number = abs(inputDataInt(" Введите натуральное число: "));
 
         System.out.println(" Массив из цифр введенного числа: ");
-        int[] myArray = fillArray(number, getArrayWidth(number));
-        printArray(myArray);
+        int[] numbers = fillArray(number, getArrayLength(number));
+        printArray(numbers);
     }
 
-    public static int[] fillArray(int number, int arrayWidth) { // Метод разбиения числа на цифры
-        int[] array = new int[arrayWidth];
+    private static int[] fillArray(int number, int length) {
+        int[] numbers = new int[length];
         while (number != 0) {
-            for (int i = array.length -1; i >= 0; i--) {
+            for (int i = numbers.length -1; i >= 0; i--) {
                 int digit = number % 10;
-                array[i] = digit;
+                numbers[i] = digit;
                 number = number / 10;
             }
         }
-        return array;
+        return numbers;
     }
 
-    public static int getArrayWidth(int number) { // Метод нахождения длины массива (равен количеству цифер числа)
-        int value = 0;
+    private static int getArrayLength(int number) { // Метод нахождения длины массива (равен количеству цифер числа)
+        int length = 0;
         while (number != 0) {
             number = number / 10;
-            value++;
+            length++;
         }
-        return value;
+        return length;
     }
 
     private static void printArray(int[] array) {

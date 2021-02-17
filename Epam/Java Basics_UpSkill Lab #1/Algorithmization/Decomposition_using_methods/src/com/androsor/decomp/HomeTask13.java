@@ -12,7 +12,6 @@ public class HomeTask13 {
 
     public static void main(String[] args) {
 
-
         int number = getNumber(abs(inputDataInt(" Введите число N = ")));
 
         printTwins(number);
@@ -26,15 +25,6 @@ public class HomeTask13 {
         return number;
     }
 
-    private static boolean isPrime(int value) { // метод для проверки на простоту.
-        for (int j = 2; j < Math.sqrt(value) + 1; j++) {
-            if (value % j == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     private static void printTwins(int number) {
         System.out.printf(" На отрезке от %d до %d существуют следующие пары: \n", number, 2 * number);
         for (int i = number; i < (number * 2) - 2; i++) {
@@ -42,5 +32,14 @@ public class HomeTask13 {
                 System.out.printf(" Пара \"чисел-близнецов\": %d %d  \n", i, (i + 2));
             }
         }
+    }
+
+    private static boolean isPrime(int value) { // метод для проверки на простоту.
+        for (int j = 2; j < Math.sqrt(value) + 1; j++) {
+            if (value % j == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

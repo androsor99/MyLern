@@ -15,15 +15,6 @@ public class HomeTask11 {
         printDigitsOfNumber(number1, number2);
     }
 
-    public static int getNumberOfDigits(int number) {
-        int value = 0;
-        while (number != 0) {
-            number = number / 10;
-            value++;
-        }
-        return value;
-    }
-
     public static void printDigitsOfNumber( int number1, int number2) {
         int counter1 = getNumberOfDigits(number1);
         int counter2 = getNumberOfDigits(number2);
@@ -35,5 +26,14 @@ public class HomeTask11 {
         } else {
             System.out.println(" Кол-во  цифр в каждом числе одинаково");
         }
+    }
+
+    private static int getNumberOfDigits(int number) {
+        int value = 0;
+        while (number != 0) {
+            number = number / 10;
+            value++;
+        }
+        return value;
     }
 }

@@ -15,12 +15,8 @@ public class HomeTask7 {
         printSumFactorials(number);
     }
 
-    private static long getFactorial(int value) { // Метод нахождения факториала.
-        long factorial = 1;
-        for (int i = 1; i <= value; i++) {
-            factorial *= i;
-        }
-        return factorial;
+    private static void printSumFactorials(int number) {
+        System.out.println(" Сумма факториалов всех нечетных чисел от 1 до " + number + " равен = " + getSumFactorials(number));
     }
 
     private static long getSumFactorials(int number) { // Метод нахождения суммы факториалов.
@@ -31,7 +27,11 @@ public class HomeTask7 {
         return sum;
     }
 
-    private static void printSumFactorials(int number) {
-        System.out.println(" Сумма факториалов всех нечетных чисел от 1 до " + number + " равен = " + getSumFactorials(number));
+    private static long getFactorial(int value) { // Метод нахождения факториала.
+        long factorial = 1;
+        for (int i = 1; i <= value; i++) {
+            factorial *= i;
+        }
+        return factorial;
     }
 }

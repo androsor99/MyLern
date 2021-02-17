@@ -14,46 +14,52 @@ public class HomeTask8 {
 
     public static void main (String[] args) {
 
-        int arrayWidth = getArrayWidth(abs(inputDataInt(" Введите длинну массива: ")));
+        int length = getArrayLength(abs(inputDataInt(" Введите длинну массива: ")));
 
         System.out.println(" Исходный массив: ");
-        int[] myArray = fillArray(arrayWidth);
-        printArray(myArray);
+        int[] numbers = fillArray(length);
+        printArray(numbers);
 
-        int indexFrom = getIndexFrom(abs(inputDataInt(" Вычисление суммы от элемента массива №: ")), arrayWidth);
+        int indexFrom = getIndexFrom(abs(inputDataInt(" Вычисление суммы от элемента массива №: ")), length);
 
-        int indexTo = getIndexTo(abs(inputDataInt(" Вычисление суммы до элемента массива №: ")), indexFrom, arrayWidth );
+        int indexTo = getIndexTo(abs(inputDataInt(" Вычисление суммы до элемента массива №: ")), indexFrom, length );
 
-        System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d = %d ", indexFrom, indexTo, getSum(myArray, indexFrom, indexTo));
+        System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d = %d ", indexFrom, indexTo, getSum(numbers, indexFrom, indexTo));
     }
 
-    public static int[] fillArray(int arrayWidth) {
-        int[] array = new int[arrayWidth];
-        Random random = new Random();
-        for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(10);
-        }
-        return array;
-    }
-
-    private static int getArrayWidth(int arrayWidth) {
-        while (arrayWidth < 3) {
+    private static int getArrayLength(int length) {
+        while (length < 3) {
             System.out.println(" Длина массива должна быть ровна 3 и более. Повторите ввод");
-            arrayWidth = abs(inputDataInt(" Введите длинну массива: "));
+            length = abs(inputDataInt(" Введите длинну массива: "));
         }
-        return arrayWidth;
+        return length;
     }
 
-    private static int getIndexFrom(int indexFrom, int arrayWidth) {
-        while ((indexFrom > arrayWidth - 2) || (indexFrom == 0)) {
-            System.out.println(" Начальное положение должно быть а пределах заданного массива длиной " + arrayWidth + ". Повторите ввод");
+    public static int[] fillArray(int length) {
+        int[] numbers = new int[length];
+        Random random = new Random();
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = random.nextInt(10);
+        }
+        return numbers;
+    }
+
+    private static void printArray(int[] numbers) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(numbers));
+        System.out.println("----------------------------------------");
+    }
+
+    private static int getIndexFrom(int indexFrom, int length) {
+        while ((indexFrom > length - 2) || (indexFrom == 0)) {
+            System.out.println(" Начальное положение должно быть а пределах заданного массива длиной " + length + ". Повторите ввод");
             indexFrom = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
         }
         return indexFrom;
     }
 
-    private static int getIndexTo(int indexTo, int indexFrom, int arrayWidth) {
-        while ((indexTo > arrayWidth) || ((indexTo) - indexFrom) < 2) {
+    private static int getIndexTo(int indexTo, int indexFrom, int length) {
+        while ((indexTo > length) || ((indexTo) - indexFrom) < 2) {
             System.out.println(" В интервале значений начальной и конечных точек должен находится хотя бы один элемент массива " +
                     "и конечная точка не должна выходить за пределы массива. Повторите ввод");
             indexTo = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
@@ -61,18 +67,12 @@ public class HomeTask8 {
         return indexTo;
     }
 
-    public static int getSum(int [] array, int indexFrom, int indexTo) {
+    public static int getSum(int [] numbers, int indexFrom, int indexTo) {
         int sum = 0;
         for (int i = indexFrom; i < indexTo - 1; i++) {
-            int sumCurrent = array[i -1] + array[i] + array[i + 1];
+            int sumCurrent = numbers[i -1] + numbers[i] + numbers[i + 1];
             sum += sumCurrent;
         }
         return sum;
-    }
-
-    private static void printArray(int[] array) {
-        System.out.println("----------------------------------------");
-        System.out.println(" " + Arrays.toString(array));
-        System.out.println("----------------------------------------");
     }
 }

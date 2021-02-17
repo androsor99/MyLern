@@ -26,19 +26,19 @@ public class HomeTask9 {
 
         System.out.printf(" Площадь четырехугольника = %.2f", getQuadrangleSquare(triangleSquare1, triangleSquare2));
     }
-
-    private static double getHalfPerimeter(double side1, double side2, double side3) {
-        return (side1 + side2 + side3 ) / 2;
-    }
     private static double getHypotenuse(double leg1, double leg2) {
         return sqrt(pow(leg1, 2) + pow(leg2, 2));
     }
 
-    private static double getQuadrangleSquare(double triangleSquare1, double triangleSquare2) {
-        return triangleSquare1 + triangleSquare2;
+    private static double getHalfPerimeter(double side1, double side2, double side3) {
+        return (side1 + side2 + side3 ) / 2;
     }
 
     private static double getTriangleSquare(double side1, double side2, double side3, double halfPerimeter) { // формула Герона
         return sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) * (halfPerimeter - side3));
+    }
+
+    private static double getQuadrangleSquare(double triangleSquare1, double triangleSquare2) {
+        return triangleSquare1 + triangleSquare2;
     }
 }

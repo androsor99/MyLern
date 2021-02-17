@@ -11,10 +11,8 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        int a, b; // вводимые натуральные числа.
-
-        a = inputDataInt("Введите натуральное число a = ");
-        b = inputDataInt("Введите натуральное число b = ");
+        int a = inputDataInt("Введите натуральное число a = ");
+        int b = inputDataInt("Введите натуральное число b = ");
 
         System.out.println(" НОД (" + a + "," + b + ") = " + getGreatestCommonDivisor(a, b));
         System.out.println(" НОК (" + a + "," + b + ") = " + getLeastCommonMultiple(a, b));

@@ -10,12 +10,10 @@ public class HomeTask2 {
 
     public static void main(String[] args) {
 
-        int a, b, c, d; // вводимые натуральные числа.
-
-        a = inputDataInt("Введите натуральное число a = ");
-        b = inputDataInt("Введите натуральное число b = ");
-        c = inputDataInt("Введите натуральное число c = ");
-        d = inputDataInt("Введите натуральное число d = ");
+        int a = inputDataInt("Введите натуральное число a = ");
+        int b = inputDataInt("Введите натуральное число b = ");
+        int c = inputDataInt("Введите натуральное число c = ");
+        int d = inputDataInt("Введите натуральное число d = ");
 
         int gcdABCD = getGreatestCommonDivisor(getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c), d);
 

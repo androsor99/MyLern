@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.androsor.decomp.Data.inputDataInt;
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
 
 /**
  * Given natural numbers K and N. Write a method (methods) for forming an array A, whose elements are numbers whose sum
@@ -18,18 +18,18 @@ public class HomeTask12 {
 
         int numberN = abs(inputDataInt(" Введите число numberN = "));
 
-        List<Integer> myArray = fillArray(numberK, numberN);
-        printArray(myArray);
+        List<Integer> numbers = fillArray(numberK, numberN);
+        printArray(numbers);
     }
 
     private static List<Integer> fillArray(int numberK, int numberN) {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i <= numberN; i++) {
             if (getSumDigitsOfNumber(i) == numberK) {
-                list.add(i);
+                numbers.add(i);
             }
         }
-        return list;
+        return numbers;
     }
 
     private static int getSumDigitsOfNumber(int number) {
@@ -41,13 +41,13 @@ public class HomeTask12 {
         return sum;
     }
 
-    private static void printArray(List<Integer> list) {
-        if (list.isEmpty()) {
+    private static void printArray(List<Integer> numbers) {
+        if (numbers.isEmpty()) {
             System.out.println(" Создать массив невозможно. На заданном диапазоне не существует чисел удовлетворяющих вводимым данным!");
         } else {
             System.out.println(" Массив из элементов согласно условию задачи:");
             System.out.println("----------------------------------------");
-            System.out.println(" " + list.toString());
+            System.out.println(" " + numbers.toString());
             System.out.println("----------------------------------------");
         }
     }

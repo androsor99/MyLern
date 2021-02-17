@@ -14,39 +14,36 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int arrayWidth; // Разрядность массивов.
-
-        arrayWidth = abs(inputDataInt(" Введите длину массива arrayWidth = "));
+        int length = abs(inputDataInt(" Введите длину массива length = "));
 
         System.out.println(" Исходный массив: ");
-        int[] myArray = fillArray(arrayWidth);
-        printArray(myArray);
+        int[] numbers = fillArray(length);
+        printArray(numbers);
 
-        printSecondLargestElement(myArray);
+        printSecondLargestElement(numbers);
     }
 
-    private static int[] fillArray(int arrayWidth) {
-        int[] array = new int[arrayWidth];
+    private static int[] fillArray(int length) {
+        int[] numbers = new int[length];
         Random random = new Random();
-        for (int i = 0; i < array.length; i++) {
-            array[i] = 100 - (random.nextInt(200));
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = 100 - (random.nextInt(200));
         }
-        return array;
+        return numbers;
     }
 
-    private static void printArray(int[] array) {
+    private static void printArray(int[] numbers) {
         System.out.println("----------------------------------------");
-        System.out.println(" " + Arrays.toString(array));
+        System.out.println(" " + Arrays.toString(numbers));
         System.out.println("----------------------------------------");
     }
 
-    public static void printSecondLargestElement(int[] array) {
-        Arrays.sort(array); // Сортируем массив по возрастанию.
-        if (array.length < 2) {
-            System.out.println(" В массиве один элемент: " + array[0]);
+    public static void printSecondLargestElement(int[] numbers) {
+        Arrays.sort(numbers); // Сортируем массив по возрастанию.
+        if (numbers.length < 2) {
+            System.out.println(" В массиве один элемент: " + numbers[0]);
         } else {
-            System.out.println(" Второй по величине элемент массива = " + array[array.length - 2]);
+            System.out.println(" Второй по величине элемент массива = " + numbers[numbers.length - 2]);
         }
     }
 }
-
