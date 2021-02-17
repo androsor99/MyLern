@@ -32,7 +32,7 @@ public class HomeTask3 {
             } else if (elem > 0) {
                 numberOfPositive++;
             } else {
-            numberOfNegative++;
+                numberOfNegative++;
             }
         }
         System.out.println(" Количество положительных элементов =  " + numberOfPositive);

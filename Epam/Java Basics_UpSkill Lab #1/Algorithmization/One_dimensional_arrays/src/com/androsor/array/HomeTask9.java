@@ -22,30 +22,29 @@ public class HomeTask9 {
     }
 
     private static void printDuplicateItems(int[] array) {
-        int mostDuplicateElementCurrent = array[0]; //текущий ниболее встречающийся элемент.
-        int mostDuplicates = 0; // Наибольшее число повторов.
-        int mostDuplicateElement = array[0]; // Наиболее часто встречающийся элемент массива.
-
+        int duplicateElement = array[0]; // Наиболее часто встречающийся элемент массива.
+        int iteration = 1; // Наибольшее число встреч.
+        int minElement = array[0]; // мин элемент массива.
         for (int i = 0; i < array.length - 1; i++) {
-            int mostDuplicatesCurrent = 0; // устанавливаем\сбрасываем текущее число повторов.
+            int count = 1; // устанавливаем\сбрасываем текущее число повторов.
             for (int j = i + 1; j < array.length; j++) {
                 if (array[i] == array[j]) {
-                    mostDuplicateElementCurrent = array[i];
-                    mostDuplicatesCurrent++;
+                    count++;
+                } else if (minElement > array[j]) {
+                    minElement = array[j];
                 }
             }
-            if (mostDuplicatesCurrent > mostDuplicates) {
-                mostDuplicates = mostDuplicatesCurrent;
-                mostDuplicateElement = array[i];
-            } else if (mostDuplicates == mostDuplicatesCurrent && mostDuplicateElement > mostDuplicateElementCurrent) {
-                mostDuplicateElement = array[i];
+            if (count > iteration) {
+                iteration = count;
+                duplicateElement = array[i];
+            } else if (iteration == count && duplicateElement > array[i]) {
+                duplicateElement = array[i];
             }
         }
-        if (mostDuplicates == 0) {
-            System.out.println(" Повторяющихся элементов в массиве нет");
+        if (iteration == 1) {
+            System.out.println(" Наименьший часто встречающийся элемент массива = " + minElement);
         } else {
-            System.out.println(" Наименьший часто встречающийся элемент массива = " + mostDuplicateElement);
+            System.out.println(" Наименьший часто встречающийся элемент массива = " + duplicateElement);
         }
     }
 }
-

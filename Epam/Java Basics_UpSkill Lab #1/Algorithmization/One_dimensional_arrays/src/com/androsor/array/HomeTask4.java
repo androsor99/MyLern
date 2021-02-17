@@ -34,8 +34,8 @@ public class HomeTask4 {
                 itemMin = array[i];
                 indexMin = i;
             } else if (array[i] > itemMax) {
-                    itemMax = array[i];
-                    indexMax = i;
+                itemMax = array[i];
+                indexMax = i;
             }
         }
         int temp = array[indexMin]; // временная переменная
