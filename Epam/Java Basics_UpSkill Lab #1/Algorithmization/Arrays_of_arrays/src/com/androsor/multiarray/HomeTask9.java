@@ -11,7 +11,7 @@ import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
  */
 public class HomeTask9 {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
         int length = abs(inputParameterArray());

@@ -14,7 +14,7 @@ import static java.lang.Math.abs;
  */
 public class HomeTask8 {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
         int length = abs(inputParameterArray());
