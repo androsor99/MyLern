@@ -18,11 +18,10 @@ public class HomeTask4 {
         int numberOfPoints = getNumberOfPoints(abs(inputDataInt(" Введите количество заданных точек numberOfPoints = ")));
 
         System.out.println("Заданы точки с координатами:");
-        int[] coordinates_X = fillArray(numberOfPoints);
-        int[] coordinates_Y = fillArray(numberOfPoints);
-        printPointCoordinates(coordinates_X, coordinates_Y);
+        int[][] coordinates = fillArray(numberOfPoints);
+        printPointCoordinates(coordinates);
 
-        printCoordinatesOfPointsWithMaxDistance(coordinates_X, coordinates_Y);
+        printCoordinatesOfPointsWithMaxDistance(coordinates);
     }
 
     private static int getNumberOfPoints(int numberOfPoints) {
@@ -33,28 +32,30 @@ public class HomeTask4 {
         return numberOfPoints;
     }
 
-    private static int[] fillArray(int length) { // Метод заполнения массива координатами.
-        int[] numbers = new int[length];
+    private static int[][] fillArray (int length) {
+        int[][] numbers = new int[2][length];
         Random random = new Random();
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = 100 - (random.nextInt(200));
+            for (int j = 0; j < numbers[0].length; j++) {
+                numbers[i][j] = (random.nextInt(100) - 50);
+            }
         }
         return numbers;
     }
 
-    private static void printPointCoordinates(int[] coordinates_X, int[] coordinates_Y) {
-        for (int i = 0; i < coordinates_X.length; i++) {
-            System.out.printf("%1d-ая Точка с координатами [%d ; %d]\n",i + 1, coordinates_X[i], coordinates_Y[i]);
+    private static void printPointCoordinates(int[][] coordinates) {
+        for (int i = 0; i < coordinates[0].length; i++) {
+            System.out.printf("%1d-ая Точка с координатами [%d ; %d]\n",i + 1, coordinates[0][i], coordinates[1][i]);
         }
     }
 
-    public static void printCoordinatesOfPointsWithMaxDistance(int[] x, int[] y) {
+    public static void printCoordinatesOfPointsWithMaxDistance(int[][] coordinates) {
         int tempIndexI = 0;
         int tempIndexJ = 0;
         double distanceMax = 0;
-        for (int i = 0; i < x.length-1; i++) {
-            for (int j = i + 1; j < x.length; j++) {
-                double distance = getDistance(x[i], y[i], x[j], y[j]);
+        for (int i = 0; i < coordinates[0].length - 1; i++) {
+            for (int j = i + 1; j < coordinates[0].length; j++) {
+                double distance = getDistance(coordinates[0][i], coordinates[1][i], coordinates[0][j], coordinates[1][j]);
                 if (distanceMax < distance) {
                     tempIndexI = i;
                     tempIndexJ = j;
@@ -63,7 +64,7 @@ public class HomeTask4 {
             }
         }
         System.out.printf(" Между точками с координатами [%d ; %d] и [%d ; %d] максимальное расстояние",
-                x[tempIndexI], y[tempIndexI], x[tempIndexJ], y[tempIndexJ]);
+                coordinates[0][tempIndexI], coordinates[1][tempIndexI], coordinates[0][tempIndexJ], coordinates[1][tempIndexJ]);
     }
 
     private static double getDistance(int x1, int y1, int x2, int y2) { // Метод нахождения расстояния между двумя точками

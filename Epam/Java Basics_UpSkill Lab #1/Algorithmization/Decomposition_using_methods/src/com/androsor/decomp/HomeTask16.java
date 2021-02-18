@@ -1,6 +1,7 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * Write a program that determines the sum of n - digit numbers containing only odd digits. Also determine how many
@@ -10,64 +11,51 @@ public class HomeTask16 {
 
     public static void main(String [] args) {
 
-        int n = inputDataInt(" Введите число N = ");
-        while (n < 0) {
-            System.out.println(" Число должно быть положительным!");
-            n = inputDataInt(" Введите число N = ");
-        }
+        int number = abs(inputDataInt(" Введите число N = "));
 
-        int sum = sumArray(arrayDigitCapacity(n));
+        int sum = getSumElementsArray(fillArray(number));
 
-        System.out.printf(" Сумма нечетных цифр n-значного числа равна %d \n", sum);
+        System.out.printf(" Сумма нечетных цифр числа равна %d = ", sum);
 
-        System.out.printf(" Колличество четных цифр в найденной сумме: %d", evenNumber(sum));
+        System.out.printf(" Колличество четных цифр в найденной сумме: %d", getNumberOfEvenDigits(sum));
     }
 
-    // Метод нахождения разрядности числа
-    public static int digitCapacity(int number) {
-
-        int count = 0;
-        while (number > 0) {
-            count++;
-            number = number / 10;
-        }
-        return count;
-    }
-
-    // Метод заполнения массива цифрами числа.
-    public static int [] arrayDigitCapacity(int number) {
-
-        int temp = number;
-        int[] myArray = new int[digitCapacity(number)];
-
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = temp % 10;
-            temp = temp / 10;
-        }
-        return myArray;
-    }
-
-    // Метод нахождения суммы нечетных цифр числа
-    public static int sumArray (int [] myArray) {
-
+    public static int getSumElementsArray(int[] numbers) {
         int sum = 0;
-        for (int i = 0; i < myArray.length; i++){
-            if (myArray[i] % 2 != 0) {
-                sum = sum + myArray[i];
+        for (int number : numbers) {
+            if (number % 2 != 0) {
+                sum = sum + number;
             }
         }
         return sum;
     }
 
-    // Метод нахождения количества четных цифер в сумме.
-    public static int evenNumber (int number){
-
+    private static int[] fillArray(int number) {
+        int[] numbers = new int[getNumberOfDigits(number)];
         int temp = number;
-        int[] myArray = new int[digitCapacity(number)];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = temp % 10;
+            temp = temp / 10;
+        }
+        return numbers;
+    }
+
+    private static int getNumberOfDigits(int number) {
+        int value = 0;
+        while (number != 0) {
+            number = number / 10;
+            value++;
+        }
+        return value;
+    }
+
+    public static int getNumberOfEvenDigits(int number) {
+        int[] numbers = new int[getNumberOfDigits(number)];
+        int temp = number;
         int countEven = 0;
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = temp % 10;
-            if (myArray[i] % 2 == 0) {
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = temp % 10;
+            if (numbers[i] % 2 == 0) {
                 countEven++;
             }
             temp = temp / 10;

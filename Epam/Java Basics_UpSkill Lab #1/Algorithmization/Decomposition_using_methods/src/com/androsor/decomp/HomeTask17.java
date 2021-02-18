@@ -39,7 +39,7 @@ public class HomeTask17 {
         int count = 0;
 
         while (total>0) {
-            total = total - sumArray(HomeTask16.arrayDigitCapacity(total));
+            //total = total - sumArray(HomeTask16.fillArray(total));
             count++;
         }
         return count;
