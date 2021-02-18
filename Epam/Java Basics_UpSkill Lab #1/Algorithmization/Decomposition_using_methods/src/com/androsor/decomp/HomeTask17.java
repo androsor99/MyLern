@@ -1,47 +1,49 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.*;
+import static com.androsor.decomp.Data.inputDataInt;
+import static java.lang.Math.abs;
 
 /**
  * Write a program that determines the sum of n - digit numbers containing only odd digits. Also determine how many
  * even digits are in the found amount. To solve the problem, use decomposition.
  */
-
 public class HomeTask17 {
 
     public static void main(String [] args) {
 
-        int n = inputDataInt(" Введите число N = ");
-        while (n < 0) {
-            System.out.println(" Число должно быть положительным!");
-            n = inputDataInt(" Введите число N = ");
-        }
+        int number = abs(inputDataInt(" Введите число N = "));
 
-        System.out.printf(" Количество действий над числом (согласно йсловию задачи) = %d ", subtraction(n));
+        System.out.printf(" Количество действий над числом (согласно условию задачи) = %d ", getNumberOfActions(number));
     }
 
+    private static int getNumberOfActions(int number) {
+        int buffer = number;
+        int count = 0;
+        while (buffer > 0) {
+            buffer = buffer - getSum(buffer);
+            count++;
+        }
+        return count;
+    }
 
-    // Метод нахождения суммы цифр числа.
-    public static int sumArray (int [] myArray) {
-
+    private static int getSum(int number) {
+        int[] numbers = new int[getNumberOfDigits(number)];
         int sum = 0;
-
-        for (int i = 0; i < myArray.length; i++){
-                sum = sum + myArray[i];
+        int temp = number;
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = temp % 10;
+            sum += numbers[i];
+            temp = temp / 10;
         }
         return sum;
     }
 
-    // Метод нахождения количества дейсвий (Из заданного числа вычли сумму его цифр. Из результата вновь вычли сумму его цифр и т.д. ) .
-    public static int subtraction (int number){
-
-        int total = number;
-        int count = 0;
-
-        while (total>0) {
-            //total = total - sumArray(HomeTask16.fillArray(total));
-            count++;
+    private static int getNumberOfDigits(int number) {
+        int value = 0;
+        while (number != 0) {
+            number = number / 10;
+            value++;
         }
-        return count;
+        return value;
     }
 }
