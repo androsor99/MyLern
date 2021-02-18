@@ -10,7 +10,6 @@ import static com.androsor.multiarray.ArrayPrinter.printArrayDouble;
  * a [i, j] = sin ((i ^ 2 - j ^ 2) / n)
  * and count the number of positive elements in it.
  */
-
 public class HomeTask7 {
 
     public static void main(String[] args) {

@@ -30,7 +30,7 @@ public class HomeTask8 {
         int column_2 = inputNumberColumn(length);
 
         System.out.println(" Матрица с измененными столбцами:");
-        printArrayInt(replacingColumns(column_1, column_2, numbers));
+        printArrayInt(replaceColumns(column_1, column_2, numbers));
     }
 
     private static int inputNumberColumn(int length) {
@@ -44,7 +44,7 @@ public class HomeTask8 {
         return column;
     }
 
-    private static int[][] replacingColumns(int column_1, int column_2, int[][] numbers) {
+    private static int[][] replaceColumns(int column_1, int column_2, int[][] numbers) {
         for (int i = 0; i < numbers.length; i++) {
             for (int j = 0; j < numbers.length; j ++) {
                 int temp = numbers[i][column_1 - 1];
