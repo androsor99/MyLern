@@ -1,5 +1,7 @@
 package com.androsor.string_char;
 
+import static com.androsor.string_char.Data.enterFromConsole;
+
 /**
  * Remove all extra spaces in the line, that is, replace series of consecutive spaces with single spaces.
  * Remove trailing spaces in the line.
@@ -10,7 +12,7 @@ public class HomeTask5 {
     public static void main (String [] args) {
 
         String strDoubleSpace;
-        strDoubleSpace = HomeTask1.enterFromConsole("Введите строку с произвольным количеством пробелов между словами:");
+        strDoubleSpace = enterFromConsole("Введите строку с произвольным количеством пробелов между словами:");
 
         System.out.println("Отформатированная строка:");
         findingSpacesString(strDoubleSpace);

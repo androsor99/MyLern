@@ -1,59 +1,42 @@
 package com.androsor.string_char;
 
-import java.util.Scanner;
+import static java.lang.Character.isUpperCase;
 
 /**
  * Given an array of camelCase variable names. Convert titles to snake_case.
  */
-
 public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        String strCamelCase;
-        strCamelCase = enterFromConsole("Ведите строку с использованием стиля camelCase:"); // строка для проверки camelCase epamTrening systemOutPrint.
+        System.out.println(" Строки с использованием стиля camelCase:");
+        String[] strings = new String[] {"strCamelCase", "epamTraining", "systemOutPrintln"};
+        printToConsole(strings);
 
-        String[] stringArray;
-        stringArray = new String[] {strCamelCase};
-
-        System.out.println("Исходная строка с использованием стиля snake_case:");
-        camelCaseToSnakeCase(stringArray);
+        System.out.println(" Строки с использованием стиля snake_case:");
+        String[] stringsNew = transformCamelCaseToSnakeCase(strings);
+        printToConsole(stringsNew);
     }
 
-    // Метод перевода camelCase в snake_case.
-    public static void camelCaseToSnakeCase(String[] stringArray) {
-
-        for (int i = 0; i < stringArray.length; i++) {
-            char[] charArray = stringArray[i].toCharArray();
-            stringArray[i] = "";
-
-            for (int j = 0; j < charArray.length; j++) {
-                char c = charArray[j];
-                if (Character.isUpperCase(c))
-                    stringArray[i] += "_" + String.valueOf(c).toLowerCase();
-
-                else
-                    stringArray[i] += c;
+    public static String[] transformCamelCaseToSnakeCase(String[] strings) {
+        String[] stringsNew = new String[strings.length];
+        for (int i = 0; i < stringsNew.length; i++) {
+            char[] symbols = strings[i].toCharArray();
+            stringsNew[i] = "";
+            for (char symbol : symbols) {
+                if (isUpperCase(symbol)) {
+                    stringsNew[i] += "_" + String.valueOf(symbol).toLowerCase();
+                } else {
+                    stringsNew[i] += symbol;
+                }
             }
         }
-
-        for (int i = 0; i < stringArray.length; i++) {
-            System.out.println(stringArray[i] + " ");
-
-        }
+        return stringsNew;
     }
 
-
-    // Метод ввода строки с консоли
-    public  static  String enterFromConsole(String message) {
-
-        @SuppressWarnings("resurce")
-        Scanner sc = new Scanner(System.in);
-        System.out.println(message);
-
-        String str;
-        str = sc.nextLine();
-
-        return str ;
+    private static void printToConsole(String[] strings) {
+        for (String string : strings) {
+            System.out.printf("\t\t%s\n", string);
+        }
     }
 }
