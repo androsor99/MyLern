@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * Check if the given word is a palindrome.
  */
@@ -11,7 +11,7 @@ public class HomeTask3 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите слово или предложение:");
+        str = enterStringFromConsole("Введите слово или предложение:");
         str = str.replaceAll("\\s", "");
 
         StringBuilder strPalindrome = new StringBuilder(str);

@@ -1,42 +1,29 @@
 package com.androsor.string_object;
 
-import java.util.Scanner;
+import static com.androsor.string_object.Data.enterStringFromConsole;
+import static com.androsor.string_object.Data.enterCharFromConsole;
 
 /**
  * In the line insert after each 'a' character 'b'.
  */
-
 public class HomeTask2 {
 
     public static void main(String[] args) {
 
-        String stringReplaceable;
-        char symbolA;
-        char symbolB;
+        String line = enterStringFromConsole("Введите строку:");
+        char symbolA = enterCharFromConsole("Введите заменяемый символ:");
+        char symbolB = enterCharFromConsole("Введите заменяющий символ:");
 
-        stringReplaceable = HomeTask1.enterFromConsole("Введите строку:");
-        symbolA = enterCharFromConsole("Введите заменяемый символ:");
-        symbolB = enterCharFromConsole("Введите заменяющий символ:");
+        System.out.printf("Измененная строка:\n %s", replaceCharactersInString(line, symbolA, symbolB));
+    }
 
-        StringBuilder newString = new StringBuilder(stringReplaceable);
-
-        for ( int i = 0; i < newString.length(); i++) {
-
-            if (newString.charAt(i) == symbolA) {
-                newString.insert(i + 1, symbolB);
+    private static String replaceCharactersInString(String line, char symbolA, char symbolB) {
+        StringBuilder stringNew = new StringBuilder(line);
+        for ( int i = 0; i < stringNew.length(); i++) {
+            if (stringNew.charAt(i) == symbolA) {
+                stringNew.insert(i + 1, symbolB);
             }
         }
-
-        System.out.printf("Измененная строка:\n %s", newString);
-
-    }
-    // Метод ввода символов с консоли
-    public  static  char enterCharFromConsole(String message) {
-
-        @SuppressWarnings("resurce")
-        Scanner sc = new Scanner(System.in);
-        System.out.println(message);
-
-        return sc.next().charAt(0);
+        return stringNew.toString();
     }
 }

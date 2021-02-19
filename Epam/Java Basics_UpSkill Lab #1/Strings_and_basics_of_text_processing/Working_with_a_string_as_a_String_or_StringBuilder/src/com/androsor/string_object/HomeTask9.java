@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * Count the number of lowercase (small) and uppercase (uppercase) letters in the entered line.
  * Consider only English letters.
@@ -11,7 +11,7 @@ public class HomeTask9 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите строку:");
+        str = enterStringFromConsole("Введите строку:");
 
         System.out.printf("В заданной строке содержится %d строчных английских букв и " +
                 "%d прописных английских букв.",  findLowerCaseEnglish(str), findUpperCaseEnglish(str));

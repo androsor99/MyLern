@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * Using the copy function and the concatenation operation, form the word "торт" from the parts of the word "информатика".
  */
@@ -9,7 +9,7 @@ public class HomeTask4 {
     public static void main(String[] args) {
 
         String str;
-        str = HomeTask1.enterFromConsole("Введите слово или строку");
+        str = enterStringFromConsole("Введите слово или строку");
 
         System.out.printf("Было: %s \n", str);
         System.out.printf("Стало: %s \n", changeString(str));

@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * Count how many times the letter "a" occurs among the characters of a given string.
  */
@@ -10,7 +10,7 @@ public class HomeTask5 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите строку:");
+        str = enterStringFromConsole("Введите строку:");
 
         int count = 0;
 

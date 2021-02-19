@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * A string of words is entered, separated by spaces. Find the longest word and display it on the screen.
  * The case when there may be several longest words, do not process.
@@ -11,7 +11,7 @@ public class HomeTask8 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите строку:");
+        str = enterStringFromConsole("Введите строку:");
 
         System.out.printf("Самое длинное слово в строке : \"%s\"", findLargeWord(str));
 

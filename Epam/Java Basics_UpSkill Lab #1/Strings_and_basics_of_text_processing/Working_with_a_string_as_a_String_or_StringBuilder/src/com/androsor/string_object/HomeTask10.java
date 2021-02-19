@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 import java.util.StringTokenizer;
 
 public class HomeTask10 {
@@ -8,7 +8,7 @@ public class HomeTask10 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите строку:");
+        str = enterStringFromConsole("Введите строку:");
 
         System.out.printf("Предложенный текст состоит из %d предложений.", countSentence(str));
 

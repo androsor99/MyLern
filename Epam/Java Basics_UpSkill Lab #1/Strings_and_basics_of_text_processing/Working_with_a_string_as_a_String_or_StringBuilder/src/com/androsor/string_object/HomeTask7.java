@@ -1,5 +1,5 @@
 package com.androsor.string_object;
-
+import static com.androsor.string_object.Data.enterStringFromConsole;
 /**
  * A string is entered. It is required to remove duplicate characters and all spaces from it. For example,
  * if "abc cde def" was entered, then "abcdef" should be output.
@@ -11,7 +11,7 @@ public class HomeTask7 {
 
         String str;
 
-        str = HomeTask1.enterFromConsole("Введите строку:");
+        str = enterStringFromConsole("Введите строку:");
 
         String newString = deleteRepeat(str);
 
