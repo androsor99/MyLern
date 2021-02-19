@@ -1,8 +1,8 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
-import static com.androsor.multiarray.ArrayCreator.fillArray;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static java.lang.Math.abs;
 
 /**
@@ -13,23 +13,23 @@ public class HomeTask1{
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
         
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArray(length);
+        int [][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
-        printOddColumns(length, numbers);
+        printOddColumns(numbers);
     }
 
-    private static void printOddColumns(int length, int[][] numbers) {
+    private static void printOddColumns(int[][] numbers) {
         int count = 0; // счетчик для количества столбцов
         for (int i = 0; i < numbers.length; i += 2) {
-            if (numbers[0][i] > numbers[length - 1][i]) {
+            if (numbers[0][i] > numbers[numbers.length - 1][i]) {
                 count ++;
                 System.out.println(i + 1 +"-ый нечетный столбец у которого первый элемент больше последнего");
-                for (int[] number : numbers) {
-                    System.out.println(number[i]);
+                for (int j = 0; j < numbers[0].length; j++) {
+                    System.out.println(numbers[0][j]);
                 }
             }
         }

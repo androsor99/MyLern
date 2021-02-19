@@ -3,7 +3,7 @@ package com.androsor.multiarray;
 import java.util.Scanner;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayStandard;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -42,17 +42,17 @@ public class HomeTask16 {
     // Метод для матрицы 4х4. Составление магического квадрата путем перестановки главной и дополнительных
     // диаганалей матрицы.
 
-    public static int [][] fillMagicMatrixEven (int arrayWidth) {
-        int [][] magicMatrix = fillArrayStandard(arrayWidth);
-        for (int i = 0; i < magicMatrix.length / 2; i++) { // Перестановка главной диагонали.
+    public static int [][] fillMagicMatrixEven (int length) {
+        int [][] magicMatrix = fillArrayStandard(length);
+        for (int i = 0; i < length / 2; i++) { // Перестановка главной диагонали.
             int temp = magicMatrix[i][i];
-            magicMatrix[i][i] = magicMatrix[magicMatrix.length - 1 - i][magicMatrix.length - 1 - i];
-            magicMatrix[magicMatrix.length - 1 - i][magicMatrix.length - 1 - i] = temp;
+            magicMatrix[i][i] = magicMatrix[length - 1 - i][length - 1 - i];
+            magicMatrix[length - 1 - i][length - 1 - i] = temp;
         }
-        for (int i = 0; i < magicMatrix.length / 2 ; i++) { // Перестановка элементов побочной диагонали
-            int temp = magicMatrix[magicMatrix.length - 1 - i][i];
-            magicMatrix[magicMatrix.length - 1 - i][i] = magicMatrix[i][magicMatrix.length - 1 - i];
-            magicMatrix[i][magicMatrix.length - 1 - i] = temp;
+        for (int i = 0; i < length / 2 ; i++) { // Перестановка элементов побочной диагонали
+            int temp = magicMatrix[length - 1 - i][i];
+            magicMatrix[length - 1 - i][i] = magicMatrix[i][length - 1 - i];
+            magicMatrix[i][length - 1 - i] = temp;
         }
         return magicMatrix;
     }
@@ -67,14 +67,14 @@ public class HomeTask16 {
     //      3)  Если он заблокирован, то опускаемся в следующую строку (из исходного положения)
     //      4)  Если в правом верхнем углу, то опускаемся вниз до следующей строки.
 
-    public static int [][] fillMagicMatrixOdd(int arrayWidth) {
-        int [][] magicMatrix = new int[arrayWidth][arrayWidth];
+    public static int [][] fillMagicMatrixOdd(int length) {
+        int [][] magicMatrix = new int[length][length];
         int indexI = 0; // начальный индекс строки.
-        int indexJ = magicMatrix.length / 2; // начальный индекс столбца.
+        int indexJ = length / 2; // начальный индекс столбца.
         int currentIndexI; // текущий индекс строки
         int currentIndexJ; // текущий индекс столбца
 
-        for (int value = 1; value <= magicMatrix.length * magicMatrix.length; value ++) {
+        for (int value = 1; value <=length * length; value ++) {
             magicMatrix[indexI][indexJ] = value;
             currentIndexI = indexI;
             currentIndexJ = indexJ;
@@ -82,16 +82,16 @@ public class HomeTask16 {
             indexJ += 1;
 
             if (indexI == -1) {
-                indexI = magicMatrix.length - 1;
+                indexI = length - 1;
             }
-            if (indexJ == magicMatrix.length) {
+            if (indexJ == length) {
                 indexJ = 0;
             }
             if (magicMatrix[indexI][indexJ] != 0) {
                 indexI = currentIndexI + 1;
                 indexJ = currentIndexJ;
                 if (indexI == -1) {
-                    indexI = magicMatrix.length - 1;
+                    indexI = length - 1;
                 }
             }
         }

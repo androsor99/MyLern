@@ -2,7 +2,7 @@ package com.androsor.multiarray;
 
 import java.util.Scanner;
 
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -38,8 +38,8 @@ public class HomeTask5 {
 
     private static int[][] fillArray(int length) {
         int[][] numbers = new int[length][length];
-        int lengthCurrent = numbers.length;
-        for (int i = 0; i < numbers.length; i++) {
+        int lengthCurrent = length;
+        for (int i = 0; i < length; i++) {
             for (int j = 0; j < lengthCurrent; j++) {
                 numbers[i][j] = i + 1;
             }

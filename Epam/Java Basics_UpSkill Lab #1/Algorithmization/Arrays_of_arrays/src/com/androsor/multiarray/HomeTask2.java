@@ -1,8 +1,8 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
-import static com.androsor.multiarray.ArrayCreator.fillArray;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -13,10 +13,10 @@ public class HomeTask2 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArray(length);
+        int [][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         printMainDiagonal(numbers);

@@ -1,7 +1,7 @@
 package com.androsor.multiarray;
 
 import java.util.Scanner;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -36,13 +36,13 @@ public class HomeTask6 {
 
     private static int[][] fillyArray(int length) {
         int[][] numbers = new int[length][length];
-        for (int i = 0; i < numbers.length / 2 + 1; i++) { // заполняем первую половину строк.
-            for (int j = i; j < numbers.length - i; j++) {
+        for (int i = 0; i < length / 2 + 1; i++) { // заполняем первую половину строк.
+            for (int j = i; j < length - i; j++) {
                 numbers[i][j] = 1;
             }
         }
-        for (int i = numbers.length / 2; i < numbers.length; i++) { // заполняем вторую половину строк.
-            for (int j = numbers.length - i - 1; j < i + 1; j++) {
+        for (int i = length / 2; i < length; i++) { // заполняем вторую половину строк.
+            for (int j = length - i - 1; j < i + 1; j++) {
                 numbers[i][j] = 1;
             }
         }

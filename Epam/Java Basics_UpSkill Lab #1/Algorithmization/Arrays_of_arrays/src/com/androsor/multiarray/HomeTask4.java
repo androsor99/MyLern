@@ -1,7 +1,7 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -18,7 +18,7 @@ public class HomeTask4 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходная матрица:");
         printArrayInt(fillArray(length));
@@ -26,12 +26,12 @@ public class HomeTask4 {
 
     private static int[][] fillArray(int length) {
         int[][] numbers = new int[length][length];
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 if (i % 2 == 0) {
                     numbers[i][j] = j + 1;
                 } else {
-                    numbers[i][j] = numbers.length - j;
+                    numbers[i][j] = length - j;
                 }
             }
         }

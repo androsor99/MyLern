@@ -1,9 +1,9 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayDouble;
 import static java.lang.Math.sin;
 import static java.lang.Math.abs;
-import static com.androsor.multiarray.ArrayPrinter.printArrayDouble;
 
 /**
  * Form a square matrix of order n according to the rule:
@@ -15,7 +15,7 @@ public class HomeTask7 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
         double[][] numbers = fillArray(length);
@@ -26,9 +26,9 @@ public class HomeTask7 {
 
     private static double[][] fillArray(int length) {
         double[][] numbers = new double[length][length];
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
-                numbers[i][j] = sin((double) (i * i - j * j) / numbers.length);
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                numbers[i][j] = sin((double) (i * i - j * j) / length);
             }
         }
         return numbers;

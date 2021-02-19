@@ -2,8 +2,8 @@ package com.androsor.multiarray;
 
 import java.util.Random;
 
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -15,7 +15,7 @@ public class HomeTask14 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходная матрица:");
         int[][] numbers = fillArray(length);
@@ -24,10 +24,10 @@ public class HomeTask14 {
 
     private static int[][] fillArray(int length) {
         int[][] numbers = new int[length][length];
-        for (int j = 0; j < numbers.length; j++) {
+        for (int j = 0; j < length; j++) {
             int duplicateZero = 0; // счетчик встреч 0
             int duplicateOne = 0; // счетчик встреч 1
-            for (int i = 0; i < numbers.length; i++) {
+            for (int i = 0; i < length; i++) {
                 numbers[i][j] = new Random ().nextInt(2);
                 if (numbers[i][j] == 1) {
                     duplicateOne++;
@@ -37,7 +37,7 @@ public class HomeTask14 {
                 if ((numbers[i][j] == 1) && (duplicateOne > j + 1)) {
                     numbers[i][j] = 0;
                 }
-                if ((numbers[i][j] == 0) && (duplicateZero) >= (numbers.length - j)) {
+                if ((numbers[i][j] == 0) && (duplicateZero) >= (length - j)) {
                     numbers[i][j] = 1;
                 }
             }

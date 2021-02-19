@@ -18,9 +18,9 @@ public class HomeTask11 {
 
         System.out.println(" Исходный массив");
         int [][] elements = fillArray(rows, columns, numbers);
-        printArray(elements, columns);
+        printArray(elements);
 
-        printRowWithIteration(elements, columns, number, iteration);
+        printRowWithIteration(elements, number, iteration);
     }
 
     private static int[][] fillArray(int rows, int columns, int numbers) {
@@ -33,10 +33,10 @@ public class HomeTask11 {
         return elements;
     }
 
-    private static void printArray(int[][] elements, int columns) {
+    private static void printArray(int[][] elements) {
         System.out.println("----------------------------------------------------------------------------------------");
         for (int[] element : elements) {
-            for (int j = 0; j < columns; j++) {
+            for (int j = 0; j < elements[0].length; j++) {
                 System.out.printf("%4d", element[j]);
             }
             System.out.println();
@@ -44,11 +44,11 @@ public class HomeTask11 {
         System.out.println("----------------------------------------------------------------------------------------");
     }
 
-    private static void printRowWithIteration(int[][] elements, int columns, int number, int iteration) {
+    private static void printRowWithIteration(int[][] elements, int number, int iteration) {
         boolean flag = false; // вводим временную переменную для определения несовпадения количества встреч цифры 5.
         for (int i = 0; i < elements.length; i++) {
             int count = 0;// число встреч цифры 5 в строке матрицы.
-            for (int j = 0; j < columns; j++) {
+            for (int j = 0; j < elements[0].length; j++) {
                 if (elements[i][j] == number) {
                     count++;
                 }

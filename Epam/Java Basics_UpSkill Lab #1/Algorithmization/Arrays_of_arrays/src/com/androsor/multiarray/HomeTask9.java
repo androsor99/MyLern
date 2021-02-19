@@ -1,9 +1,9 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.fillArray;
-import static com.androsor.multiarray.ArrayPrinter.printArrayInt;
+import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
-import static com.androsor.multiarray.ArrayCreator.inputParameterArray;
 
 /**
  * A matrix of non-negative numbers is given. Calculate the sum of the items in each column. Determine which
@@ -14,10 +14,10 @@ public class HomeTask9 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(inputParameterArray());
+        int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArray(length);
+        int [][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         printSumOfColumnElements(numbers);
