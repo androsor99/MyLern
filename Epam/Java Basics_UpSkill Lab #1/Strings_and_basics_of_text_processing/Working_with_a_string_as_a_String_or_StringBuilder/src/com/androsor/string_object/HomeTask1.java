@@ -32,16 +32,11 @@ public class HomeTask1 {
     }
 
     // Метод ввода строки с консоли
-    public  static  String enterFromConsole(String message) {
-
+    public static String enterFromConsole(String message) {
         @SuppressWarnings("resurce")
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println(message);
-
-        String str;
-        str = sc.nextLine();
-
-        return str ;
+        return scanner.nextLine();
     }
 }
 
