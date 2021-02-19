@@ -6,8 +6,8 @@ public class Data {
 
     public static String enterFromConsole(String message) {
         @SuppressWarnings("resurce")
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println(message);
-        return sc.nextLine();
+        return scanner.nextLine();
     }
 }
