@@ -1,27 +1,25 @@
 package com.androsor.string_object;
+
 import static com.androsor.string_object.Data.enterStringFromConsole;
+
 /**
  * Check if the given word is a palindrome.
  */
-
 public class HomeTask3 {
-
 
     public static void main (String [] args){
 
-        String str;
+        String line = enterStringFromConsole("Введите слово или предложение:");
 
-        str = enterStringFromConsole("Введите слово или предложение:");
-        str = str.replaceAll("\\s", "");
+        checkForPalindrome(line);
+    }
 
-        StringBuilder strPalindrome = new StringBuilder(str);
+    private static void checkForPalindrome(String line) {
 
-        if (str.equalsIgnoreCase(strPalindrome.reverse().toString())) {
-
+        StringBuilder stringBuilder = new StringBuilder(line.replaceAll("[^А-Яа-я]", ""));
+        if (stringBuilder.toString().equalsIgnoreCase((stringBuilder.reverse().toString()))) {
             System.out.println("Введенное слово/предложение является полиндромом.");
-
-        }else {
-
+        } else {
             System.out.println("Введенное слово/предложение не является полиндромом." );
         }
     }

@@ -8,29 +8,22 @@ public class HomeTask4 {
 
     public static void main(String[] args) {
 
-        String str;
-        str = enterStringFromConsole("Введите слово или строку");
+        String line = enterStringFromConsole("Введите слово или строку");
 
-        System.out.printf("Было: %s \n", str);
-        System.out.printf("Стало: %s \n", changeString(str));
+        System.out.printf("Было: %s \n", line);
+        System.out.printf("Стало: %s \n", makeWordFromLetters(line));
     }
 
-    public static String changeString(String string) {
+    public static String makeWordFromLetters(String string) {
+        StringBuilder word = new StringBuilder();
 
-        StringBuilder strTemp = new StringBuilder();
-
-        strTemp.append(string.charAt(string.indexOf("т")));
-        strTemp.append(string.charAt(string.indexOf("о")));
-        strTemp.append(string.charAt(string.indexOf("р")));
-        strTemp.append(string.charAt(string.indexOf("т")));
-
-        String word = strTemp.toString();
-
-        if (!word.equals("торт")) {
-
+        word.append(string.charAt(string.indexOf("т")));
+        word.append(string.charAt(string.indexOf("о")));
+        word.append(string.charAt(string.indexOf("р")));
+        word.append(string.charAt(string.indexOf("т")));
+        if (!word.toString().equals("торт")) {
             System.out.println(" Слово ТОРТ составить невозможно!");
         }
-
-        return word;
+        return word.toString();
     }
 }
