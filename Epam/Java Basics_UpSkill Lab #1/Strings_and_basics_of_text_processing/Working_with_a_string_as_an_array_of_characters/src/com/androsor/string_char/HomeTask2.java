@@ -1,6 +1,6 @@
 package com.androsor.string_char;
 
-import static com.androsor.string_char.Data.enterFromConsole;
+import static com.androsor.string_char.IOUtils.enterFromConsole;
 
 /**
  * Замените в строке все вхождения 'word' на 'letter'.

@@ -1,6 +1,6 @@
 package com.androsor.string_char;
 
-import static com.androsor.string_char.Data.enterFromConsole;
+import static com.androsor.string_char.IOUtils.enterFromConsole;
 import static java.lang.Character.isDigit;
 
 /**

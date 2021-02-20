@@ -1,7 +1,7 @@
 package com.androsor.string_char;
 
-import static com.androsor.string_char.Data.enterFromConsole;
-import static java.lang.Character.*;
+import static com.androsor.string_char.IOUtils.enterFromConsole;
+import static java.lang.Character.isDigit;
 
 /**
  * Find the number of numbers in the string.
