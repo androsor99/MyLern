@@ -1,6 +1,6 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.Data.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 import java.util.StringTokenizer;
 

@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import java.util.Scanner;
 
-public class Data {
+public class IOUtils {
 
     public static String enterStringFromConsole(String message) {
         @SuppressWarnings("resurce")

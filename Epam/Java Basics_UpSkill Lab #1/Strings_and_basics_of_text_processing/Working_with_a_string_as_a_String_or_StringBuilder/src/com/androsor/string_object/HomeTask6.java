@@ -1,6 +1,6 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.Data.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
  * Get a new one from the given string by repeating each character twice.

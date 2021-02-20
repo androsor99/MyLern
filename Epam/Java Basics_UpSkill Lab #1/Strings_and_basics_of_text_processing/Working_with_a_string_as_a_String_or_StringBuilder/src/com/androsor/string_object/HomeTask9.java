@@ -1,6 +1,6 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.Data.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
  * Count the number of lowercase (small) and uppercase (uppercase) letters in the entered line.

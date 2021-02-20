@@ -1,7 +1,7 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.Data.enterStringFromConsole;
-import static com.androsor.string_object.Data.enterCharFromConsole;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.enterCharFromConsole;
 
 /**
  * In the line insert after each 'a' character 'b'.
