@@ -1,8 +1,8 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleDouble;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
-import static com.androsor.decomp.Data.inputDataDouble;
 
 /**
  * Calculate the area of a regular hexagon from the side using the triangle area method.
@@ -11,7 +11,7 @@ public class HomeTask3 {
 
     public static void main(String[] args) {
 
-        double lengthSideTriangle = abs(inputDataDouble(" Введите длину стороны треугольника = "));
+        double lengthSideTriangle = abs(enterParameterFromConsoleDouble(" Введите длину стороны треугольника = "));
 
         double areaHexagon = getAreaHexagon(getAreaTriangle(lengthSideTriangle));
         printAreaHexagon(lengthSideTriangle, areaHexagon);
@@ -26,7 +26,7 @@ public class HomeTask3 {
     }
 
     private static void printAreaHexagon(double lengthSideTriangle, double areaHexagon) {
-        System.out.printf("Площадь правильного шестиугольника со стороной = %.2f равна - %.2f",
+        System.out.printf(" Площадь правильного шестиугольника со стороной = %.2f равна - %.2f",
                 lengthSideTriangle, areaHexagon);
     }
 }

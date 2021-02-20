@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -12,15 +12,16 @@ public class HomeTask13 {
 
     public static void main(String[] args) {
 
-        int number = getNumber(abs(inputDataInt(" Введите число N = ")));
+        int number = getNumber();
 
         printTwins(number);
     }
 
-    private static int getNumber(int number) {
-        while (number <= 2) {
+    private static int getNumber() {
+        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
+        if (number <= 2) {
             System.out.println(" Начало диапазона вычислений должно быть больше 2 по условию задачи");
-            number = abs(inputDataInt(" Введите число N = "));
+            return getNumber();
         }
         return number;
     }

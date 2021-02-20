@@ -3,7 +3,7 @@ package com.androsor.decomp;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -14,9 +14,9 @@ public class HomeTask12 {
 
     public static void main (String[]args) {
 
-        int numberK = abs(inputDataInt(" Введите число numberK = "));
+        int numberK = abs(enterParameterFromConsoleInt(" Введите число numberK = "));
 
-        int numberN = abs(inputDataInt(" Введите число numberN = "));
+        int numberN = abs(enterParameterFromConsoleInt(" Введите число numberN = "));
 
         List<Integer> numbers = fillArray(numberK, numberN);
         printArray(numbers);
@@ -25,20 +25,20 @@ public class HomeTask12 {
     private static List<Integer> fillArray(int numberK, int numberN) {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i <= numberN; i++) {
-            if (getSumDigitsOfNumber(i) == numberK) {
+            if (isSumDigitsOfNumber(i, numberK)) {
                 numbers.add(i);
             }
         }
         return numbers;
     }
 
-    private static int getSumDigitsOfNumber(int number) {
-        int sum = 0;
+    private static boolean isSumDigitsOfNumber(int number, int value) {
+        int sumDigitsNumber = 0;
         while (number != 0) {
-            sum = sum + number % 10;
+            sumDigitsNumber = sumDigitsNumber + number % 10;
             number = number / 10;
         }
-        return sum;
+        return sumDigitsNumber == value;
     }
 
     private static void printArray(List<Integer> numbers) {

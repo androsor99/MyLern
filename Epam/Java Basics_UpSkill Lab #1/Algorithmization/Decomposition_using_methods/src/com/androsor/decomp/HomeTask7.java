@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -10,7 +10,7 @@ public class HomeTask7 {
 
     public static void main(String[] args) {
 
-        int number = abs(inputDataInt(" Введите значение числа для которого нужно посчитать сумму фактариалов всех нечетных чисел в промежутке от 1 до N = "));
+        int number = abs(enterParameterFromConsoleInt(" Введите значение числа для которого нужно посчитать сумму фактариалов всех нечетных чисел в промежутке от 1 до N = "));
 
         printSumFactorials(number);
     }

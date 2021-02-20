@@ -3,8 +3,10 @@ package com.androsor.decomp;
 import java.util.Arrays;
 import java.util.Random;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
+import static java.util.Arrays.sort;
+
 
 /**
  * Write a program that finds the second largest number in the array A [N] (print out a number that is less than
@@ -14,7 +16,7 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int length = abs(inputDataInt(" Введите длину массива length = "));
+        int length = abs(enterParameterFromConsoleInt(" Введите длину массива length = "));
 
         System.out.println(" Исходный массив: ");
         int[] numbers = fillArray(length);
@@ -26,7 +28,7 @@ public class HomeTask5 {
     private static int[] fillArray(int length) {
         int[] numbers = new int[length];
         Random random = new Random();
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i < length; i++) {
             numbers[i] = 100 - (random.nextInt(200));
         }
         return numbers;
@@ -39,7 +41,7 @@ public class HomeTask5 {
     }
 
     public static void printSecondLargestElement(int[] numbers) {
-        Arrays.sort(numbers); // Сортируем массив по возрастанию.
+        sort(numbers); // Сортируем массив по возрастанию.
         if (numbers.length < 2) {
             System.out.println(" В массиве один элемент: " + numbers[0]);
         } else {

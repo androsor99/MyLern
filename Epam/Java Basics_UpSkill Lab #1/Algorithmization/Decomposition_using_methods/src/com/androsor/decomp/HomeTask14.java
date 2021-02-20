@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.pow;
 
 /**
@@ -11,16 +11,17 @@ public class HomeTask14 {
 
     public static void main(String[] args) {
 
-        int numberK = getNumber(inputDataInt(" Введите число К = "));
+        int numberK = getNumber();
 
         System.out.printf(" В промежутке от 1 до %d существуют следующие числа Армстронга: \n", numberK);
         printArmstrongNumber(numberK);
     }
 
-    private static int getNumber(int number) {
-        while (number < 0) {
+    private static int getNumber() {
+        int number = enterParameterFromConsoleInt(" Введите число К = ");
+        if (number < 0) {
             System.out.println(" Число должно быть положительным!");
-            number = inputDataInt(" Введите число К = ");
+            return getNumber();
         }
         return number;
     }

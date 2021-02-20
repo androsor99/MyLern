@@ -21,7 +21,7 @@ public class HomeTask15 {
         int[] numbers = new int[length];
         numbers[0] = 1;
         while (numbers[length - 1] < 9) {
-            for (int i = 1; i < numbers.length; i++) {
+            for (int i = 1; i < length; i++) {
                 numbers[i] = numbers[0] + i;
             }
             printElementArray(numbers);

@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 
 /**
  * Write a method (s) that determines which of the given two numbers has more digits.
@@ -9,8 +9,8 @@ public class HomeTask11 {
 
     public static void main(String[] args) {
 
-        int number1 = inputDataInt(" Введите первое число: ");
-        int number2 = inputDataInt(" Введите второе число: ");
+        int number1 = enterParameterFromConsoleInt(" Введите первое число: ");
+        int number2 = enterParameterFromConsoleInt(" Введите второе число: ");
 
         printDigitsOfNumber(number1, number2);
     }

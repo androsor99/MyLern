@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
@@ -13,10 +13,10 @@ public class HomeTask9 {
 
     public static void main (String[] args) {
 
-        int sideTriangleX = abs(inputDataInt(" Введите длину стороны четырехугольника X = "));
-        int sideTriangleY = abs(inputDataInt(" Введите длину стороны четырехугольника Y = "));
-        int sideTriangleZ = abs(inputDataInt(" Введите длину стороны четырехугольника Z = "));
-        int sideTriangleT = abs(inputDataInt(" Введите длину стороны четырехугольника T = "));
+        int sideTriangleX = abs(enterParameterFromConsoleInt(" Введите длину стороны четырехугольника X = "));
+        int sideTriangleY = abs(enterParameterFromConsoleInt(" Введите длину стороны четырехугольника Y = "));
+        int sideTriangleZ = abs(enterParameterFromConsoleInt(" Введите длину стороны четырехугольника Z = "));
+        int sideTriangleT = abs(enterParameterFromConsoleInt(" Введите длину стороны четырехугольника T = "));
 
         double hypo = getHypotenuse(sideTriangleX,sideTriangleY); // Находим гипотенузу.
         double halfPerimeter1 = getHalfPerimeter(sideTriangleX, sideTriangleY, hypo); // Полупериметр треугольника

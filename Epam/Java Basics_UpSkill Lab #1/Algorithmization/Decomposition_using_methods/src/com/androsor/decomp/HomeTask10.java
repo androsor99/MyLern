@@ -2,7 +2,7 @@ package com.androsor.decomp;
 
 import java.util.Arrays;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -13,7 +13,7 @@ public class HomeTask10 {
 
     public static void main(String[] args) {
 
-        int number = abs(inputDataInt(" Введите натуральное число: "));
+        int number = abs(enterParameterFromConsoleInt(" Введите натуральное число: "));
 
         System.out.println(" Массив из цифр введенного числа: ");
         int[] numbers = fillArray(number, getArrayLength(number));
@@ -23,7 +23,7 @@ public class HomeTask10 {
     private static int[] fillArray(int number, int length) {
         int[] numbers = new int[length];
         while (number != 0) {
-            for (int i = numbers.length -1; i >= 0; i--) {
+            for (int i = length -1; i >= 0; i--) {
                 int digit = number % 10;
                 numbers[i] = digit;
                 number = number / 10;

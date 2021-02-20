@@ -1,7 +1,10 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import java.util.Arrays;
+
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
+import static java.lang.Math.pow;
 
 /**
  * Write a program that determines the sum of n - digit numbers containing only odd digits. Also determine how many
@@ -11,54 +14,72 @@ public class HomeTask16 {
 
     public static void main(String [] args) {
 
-        int number = abs(inputDataInt(" Введите число N = "));
 
-        int sum = getSumElementsArray(fillArray(number));
+        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
 
-        System.out.printf(" Сумма нечетных цифр числа равна %d = ", sum);
+        System.out.printf(" Массив чисел разрядности %d составленных из нечетных цифр:\n", number);
+        int[] numbers = fillArray(number);
+        printArray(numbers);
 
-        System.out.printf(" Колличество четных цифр в найденной сумме: %d", getNumberOfEvenDigits(sum));
+        long sumOddDigitsOfNumber = getSumOddDigitsOfNumber(numbers);
+        System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d %n", number, sumOddDigitsOfNumber);
+
+        System.out.printf("В найденной сумме %d четных цифр", getNumberOfEvenDigits(sumOddDigitsOfNumber));
     }
 
-    public static int getSumElementsArray(int[] numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            if (number % 2 != 0) {
-                sum = sum + number;
+    public static int[] fillArray(int number) {
+        int length = (int) pow(5, number);
+        int[] numbers = new int[length];
+        int i = 0;
+            for (int j = getInitialValue(number); j < (int) pow(10, number); j++) {
+                if (getNumberOfOddDigits(j) == number) {
+                    numbers[i] = j;
+                    i++;
+                }
             }
-        }
-        return sum;
-    }
-
-    private static int[] fillArray(int number) {
-        int[] numbers = new int[getNumberOfDigits(number)];
-        int temp = number;
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = temp % 10;
-            temp = temp / 10;
-        }
         return numbers;
     }
 
-    private static int getNumberOfDigits(int number) {
-        int value = 0;
-        while (number != 0) {
-            number = number / 10;
-            value++;
+    private static int getInitialValue(int number){
+        int initialValue = 1;
+        for (int i = 1; i < number; i++) {
+            initialValue += (int) pow(10, i);
         }
-        return value;
+        return initialValue;
     }
 
-    public static int getNumberOfEvenDigits(int number) {
-        int[] numbers = new int[getNumberOfDigits(number)];
-        int temp = number;
+    private static void printArray(int[] numbers) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(numbers));
+        System.out.println("----------------------------------------");
+    }
+
+    private static long getSumOddDigitsOfNumber(int[] numbers){
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+       return sum;
+    }
+
+    public static int getNumberOfOddDigits(long number) {
+        int countOdd = 0;
+        for (char symbol : String.valueOf(number).toCharArray()){
+            int digit = Integer.parseInt(String.valueOf(symbol));
+            if (digit % 2 != 0) {
+                countOdd++;
+            }
+        }
+        return countOdd;
+    }
+
+    public static int getNumberOfEvenDigits(long number) {
         int countEven = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = temp % 10;
-            if (numbers[i] % 2 == 0) {
+        for (char symbol : String.valueOf(number).toCharArray()){
+            int digit = Integer.parseInt(String.valueOf(symbol));
+            if (digit % 2 == 0 && digit != 0) {
                 countEven++;
             }
-            temp = temp / 10;
         }
         return countEven;
     }

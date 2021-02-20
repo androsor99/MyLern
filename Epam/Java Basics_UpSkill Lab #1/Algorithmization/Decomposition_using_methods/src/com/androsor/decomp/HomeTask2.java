@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -10,10 +10,10 @@ public class HomeTask2 {
 
     public static void main(String[] args) {
 
-        int a = inputDataInt("Введите натуральное число a = ");
-        int b = inputDataInt("Введите натуральное число b = ");
-        int c = inputDataInt("Введите натуральное число c = ");
-        int d = inputDataInt("Введите натуральное число d = ");
+        int a = enterParameterFromConsoleInt("Введите натуральное число a = ");
+        int b = enterParameterFromConsoleInt("Введите натуральное число b = ");
+        int c = enterParameterFromConsoleInt("Введите натуральное число c = ");
+        int d = enterParameterFromConsoleInt("Введите натуральное число d = ");
 
         int gcdABCD = getGreatestCommonDivisor(getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c), d);
 

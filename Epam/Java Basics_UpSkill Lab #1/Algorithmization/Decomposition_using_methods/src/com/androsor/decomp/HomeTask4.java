@@ -2,7 +2,7 @@ package com.androsor.decomp;
 
 import java.util.Random;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -15,7 +15,7 @@ public class HomeTask4 {
 
     public static void main(String[] args) {
 
-        int numberOfPoints = getNumberOfPoints(abs(inputDataInt(" Введите количество заданных точек numberOfPoints = ")));
+        int numberOfPoints = getNumberOfPoints();
 
         System.out.println("Заданы точки с координатами:");
         int[][] coordinates = fillArray(numberOfPoints);
@@ -24,10 +24,11 @@ public class HomeTask4 {
         printCoordinatesOfPointsWithMaxDistance(coordinates);
     }
 
-    private static int getNumberOfPoints(int numberOfPoints) {
-        while (numberOfPoints == 1) {
+    private static int getNumberOfPoints() {
+        int numberOfPoints = abs(enterParameterFromConsoleInt(" Введите количество заданных точек numberOfPoints = "));
+        if (numberOfPoints == 1) {
             System.out.println(" Одной точки не достаточно!");
-            numberOfPoints = abs(inputDataInt(" Введите количество заданных точек numberOfPoints = "));
+            return getNumberOfPoints();
         }
         return numberOfPoints;
     }
@@ -35,8 +36,8 @@ public class HomeTask4 {
     private static int[][] fillArray (int length) {
         int[][] numbers = new int[2][length];
         Random random = new Random();
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers[0].length; j++) {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < length; j++) {
                 numbers[i][j] = (random.nextInt(100) - 50);
             }
         }

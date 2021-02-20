@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -11,39 +11,26 @@ public class HomeTask17 {
 
     public static void main(String [] args) {
 
-        int number = abs(inputDataInt(" Введите число N = "));
+        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
 
         System.out.printf(" Количество действий над числом (согласно условию задачи) = %d ", getNumberOfActions(number));
     }
 
     private static int getNumberOfActions(int number) {
-        int buffer = number;
         int count = 0;
-        while (buffer > 0) {
-            buffer = buffer - getSum(buffer);
+        while (number > 0) {
+            number = number - getSumDigitsOfNumber(number);
             count++;
         }
         return count;
     }
 
-    private static int getSum(int number) {
-        int[] numbers = new int[getNumberOfDigits(number)];
+    private static int getSumDigitsOfNumber(int number) {
         int sum = 0;
-        int temp = number;
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = temp % 10;
-            sum += numbers[i];
-            temp = temp / 10;
+        while (number != 0) {
+            sum += number % 10;
+            number = number / 10;
         }
         return sum;
-    }
-
-    private static int getNumberOfDigits(int number) {
-        int value = 0;
-        while (number != 0) {
-            number = number / 10;
-            value++;
-        }
-        return value;
     }
 }

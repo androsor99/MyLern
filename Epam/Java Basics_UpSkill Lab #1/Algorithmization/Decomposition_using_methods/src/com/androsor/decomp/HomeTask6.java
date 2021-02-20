@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
-import static com.androsor.decomp.Data.inputDataInt;
 
 /**
  * Write a method (s) that checks whether the given three numbers are comprise.
@@ -10,9 +10,9 @@ public class HomeTask6 {
 
     public static void main(String[] args){
 
-        int number1 = inputDataInt(" Введите первое число: ");
-        int number2 = inputDataInt(" Введите второе число: ");
-        int number3 = inputDataInt(" Введите третье число: ");
+        int number1 = enterParameterFromConsoleInt(" Введите первое число: ");
+        int number2 = enterParameterFromConsoleInt(" Введите второе число: ");
+        int number3 = enterParameterFromConsoleInt(" Введите третье число: ");
 
         printResultCheckNumbers(number1, number2, number3);
     }

@@ -3,7 +3,7 @@ package com.androsor.decomp;
 import java.util.Arrays;
 import java.util.Random;
 
-import static com.androsor.decomp.Data.inputDataInt;
+import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.abs;
 
 /**
@@ -12,25 +12,26 @@ import static java.lang.Math.abs;
  */
 public class HomeTask8 {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
-        int length = getArrayLength(abs(inputDataInt(" Введите длинну массива: ")));
+        int length = getArrayLength();
 
         System.out.println(" Исходный массив: ");
         int[] numbers = fillArray(length);
         printArray(numbers);
 
-        int indexFrom = getIndexFrom(abs(inputDataInt(" Вычисление суммы от элемента массива №: ")), length);
+        int indexFrom = getIndexFrom(length);
 
-        int indexTo = getIndexTo(abs(inputDataInt(" Вычисление суммы до элемента массива №: ")), indexFrom, length );
+        int indexTo = getIndexTo(indexFrom, length );
 
         System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d = %d ", indexFrom, indexTo, getSum(numbers, indexFrom, indexTo));
     }
 
-    private static int getArrayLength(int length) {
-        while (length < 3) {
+    private static int getArrayLength() {
+        int length = abs(enterParameterFromConsoleInt(" Введите длинну массива: "));
+        if (length < 3) {
             System.out.println(" Длина массива должна быть ровна 3 и более. Повторите ввод");
-            length = abs(inputDataInt(" Введите длинну массива: "));
+            return getArrayLength();
         }
         return length;
     }
@@ -38,7 +39,7 @@ public class HomeTask8 {
     public static int[] fillArray(int length) {
         int[] numbers = new int[length];
         Random random = new Random();
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i < length; i++) {
             numbers[i] = random.nextInt(10);
         }
         return numbers;
@@ -50,19 +51,21 @@ public class HomeTask8 {
         System.out.println("----------------------------------------");
     }
 
-    private static int getIndexFrom(int indexFrom, int length) {
-        while ((indexFrom > length - 2) || (indexFrom == 0)) {
+    private static int getIndexFrom(int length) {
+        int indexFrom = abs(enterParameterFromConsoleInt(" Вычисление суммы от элемента массива №: "));
+        if ((indexFrom > length - 2) || (indexFrom == 0)) {
             System.out.println(" Начальное положение должно быть а пределах заданного массива длиной " + length + ". Повторите ввод");
-            indexFrom = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
+            return getIndexFrom(length);
         }
         return indexFrom;
     }
 
-    private static int getIndexTo(int indexTo, int indexFrom, int length) {
-        while ((indexTo > length) || ((indexTo) - indexFrom) < 2) {
+    private static int getIndexTo(int indexFrom, int length) {
+        int indexTo = abs(enterParameterFromConsoleInt(" Вычисление суммы до элемента массива №: "));
+        if ((indexTo > length) || ((indexTo) - indexFrom) < 2) {
             System.out.println(" В интервале значений начальной и конечных точек должен находится хотя бы один элемент массива " +
                     "и конечная точка не должна выходить за пределы массива. Повторите ввод");
-            indexTo = abs(inputDataInt(" Вычисление суммы от элемента массива №: "));
+            return getIndexTo(indexFrom, length);
         }
         return indexTo;
     }
