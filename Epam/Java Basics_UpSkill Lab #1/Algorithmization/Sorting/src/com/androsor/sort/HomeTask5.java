@@ -1,10 +1,9 @@
 package com.androsor.sort;
 
-import java.util.Arrays;
-
-import static com.androsor.sort.ArrayCreator.inputParameter;
-import static com.androsor.sort.ArrayCreator.createArray;
-import static com.androsor.sort.ArrayCreator.printArray;
+import static com.androsor.sort.ArrayCreator.createArrayRandom;
+import static com.androsor.sort.IOUtils.enterParameterFromConsole;
+import static com.androsor.sort.IOUtils.printArray;
+import static java.util.Arrays.copyOf;
 
 /**
  * Implement Shell sort.
@@ -14,10 +13,10 @@ public class HomeTask5 {
     public static void main(String[] args) {
 
         System.out.print(" Введите количество элементов массива N = ");
-        int length = inputParameter();
+        int length = enterParameterFromConsole();
 
         System.out.println(" Исходный массив с количеством элементов N = " + length);
-        int[] numbers = createArray(length);
+        int[] numbers = createArrayRandom(length);
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
@@ -30,12 +29,9 @@ public class HomeTask5 {
     }
 
     private static int[] sortAscending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
+        int[] copyArray = copyOf(array, array.length);
         int inner, outer, temp;
-        int h = 1; // интервал сортировки
-        while (h <= copyArray.length / 3) { // Ищем начальное значение интервала сортировки.
-            h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
-        }
+        int h = getSortingInterval(copyArray.length);
         while (h >= 1) {
             for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
                 temp = copyArray[outer];
@@ -51,13 +47,18 @@ public class HomeTask5 {
         return copyArray;
     }
 
-    private static int[] sortDescending(int[] array) {
-        int[] copyArray = Arrays.copyOf(array, array.length);
-        int inner, outer, temp;
+    private static int getSortingInterval(int length) {
         int h = 1; // интервал сортировки
-        while (h <= copyArray.length / 3) { // Ищем начальное значение интервала сортировки.
+        while (h <= length / 3) { // Ищем начальное значение интервала сортировки.
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
+        return h;
+    }
+
+    private static int[] sortDescending(int[] array) {
+        int[] copyArray = copyOf(array, array.length);
+        int inner, outer, temp;
+        int h = getSortingInterval(copyArray.length);
         while (h >= 1) {
             for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
                 temp = copyArray[outer];

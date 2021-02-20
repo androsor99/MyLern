@@ -2,9 +2,9 @@ package com.androsor.sort;
 
 import java.util.Scanner;
 
-import static com.androsor.sort.ArrayCreator.inputParameter;
-import static com.androsor.sort.ArrayCreator.createArray;
-import static com.androsor.sort.ArrayCreator.printArray;
+import static com.androsor.sort.ArrayCreator.createArrayRandom;
+import static com.androsor.sort.IOUtils.enterParameterFromConsole;
+import static com.androsor.sort.IOUtils.printArray;
 
 /**
  * Two one-dimensional arrays with different number of elements and a natural number k are given.
@@ -16,17 +16,17 @@ public class HomeTask1 {
     public static void main(String[] args) {
 
         System.out.print(" Введите количество элементов первого ммассива M = ");
-        int length_M = inputParameter();
+        int length_M = enterParameterFromConsole();
 
         System.out.println(" Первый массив с количеством элементов M = " + length_M);
-        int[] numbersM = createArray(length_M);
+        int[] numbersM = createArrayRandom(length_M);
         printArray(numbersM);
 
         System.out.print(" Введите количество элементов первого ммассива N = ");
-        int length_N = inputParameter();
+        int length_N = enterParameterFromConsole();
 
         System.out.println(" Второй массив с количеством элементов N = " + length_N);
-        int[] numbersN = createArray(length_N);
+        int[] numbersN = createArrayRandom(length_N);
         printArray(numbersN);
 
         System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");

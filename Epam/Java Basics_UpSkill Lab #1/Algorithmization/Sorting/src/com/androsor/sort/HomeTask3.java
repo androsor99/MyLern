@@ -1,10 +1,9 @@
 package com.androsor.sort;
 
-import java.util.Arrays;
-
-import static com.androsor.sort.ArrayCreator.inputParameter;
-import static com.androsor.sort.ArrayCreator.createArray;
-import static com.androsor.sort.ArrayCreator.printArray;
+import static com.androsor.sort.ArrayCreator.createArrayRandom;
+import static com.androsor.sort.IOUtils.enterParameterFromConsole;
+import static com.androsor.sort.IOUtils.printArray;
+import static java.util.Arrays.copyOf;
 
 /**
  * Implement exchange sort.
@@ -14,10 +13,10 @@ public class HomeTask3 {
     public static void main(String[] args) {
 
         System.out.print(" Введите количество элементов массива N = ");
-        int length = inputParameter();
+        int length = enterParameterFromConsole();
 
         System.out.println(" Исходный массив с количеством элементов N = " + length);
-        int[] numbers = createArray(length);
+        int[] numbers = createArrayRandom(length);
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
@@ -30,7 +29,7 @@ public class HomeTask3 {
     }
 
     private static int[] sortAscending(int[] numbers) {
-        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
+        int[] copyArray = copyOf(numbers, numbers.length);
         for(int i = copyArray.length-1 ; i > 0 ; i--) {
             for(int j = 0 ; j < i ; j++) {
                 if( copyArray[j] > copyArray[j+1] ) {
@@ -44,7 +43,7 @@ public class HomeTask3 {
     }
 
     private static int[] sortDescending(int[] numbers) {
-        int[] copyArray = Arrays.copyOf(numbers, numbers.length);
+        int[] copyArray = copyOf(numbers, numbers.length);
         for(int i = copyArray.length-1 ; i > 0 ; i--) {
             for(int j = 0 ; j < i ; j++) {
                 if( copyArray[j] < copyArray[j+1] ) {
