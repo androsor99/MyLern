@@ -19,7 +19,7 @@ public class HomeTask3 {
 
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         System.out.print(" Введите номер выводимой строки = ");

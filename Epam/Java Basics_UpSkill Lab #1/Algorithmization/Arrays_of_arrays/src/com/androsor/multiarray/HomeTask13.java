@@ -17,7 +17,7 @@ public class HomeTask13 {
         int length =abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         System.out.println(" Матрица с отсортированными по убыванию элементами столбцов: ");

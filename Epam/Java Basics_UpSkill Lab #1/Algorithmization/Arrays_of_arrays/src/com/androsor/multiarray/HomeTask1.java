@@ -16,7 +16,7 @@ public class HomeTask1{
         int length = abs(enterParameterFromConsole());
         
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         printOddColumns(numbers);

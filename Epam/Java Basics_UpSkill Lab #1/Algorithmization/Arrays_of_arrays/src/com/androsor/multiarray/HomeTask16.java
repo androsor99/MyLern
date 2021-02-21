@@ -19,11 +19,11 @@ public class HomeTask16 {
 
         if (length == 4) {
             System.out.println(" Магический квадрат разрядности length = " + length);
-            int [][] magicMatrixEven = fillMagicMatrixEven(length);
+            int[][] magicMatrixEven = fillMagicMatrixEven(length);
             printArrayInt(magicMatrixEven);
         } else {
             System.out.println(" Магический квадрат разрядности length = " + length);
-            int [][] magicMatrixOdd = fillMagicMatrixOdd(length);
+            int[][] magicMatrixOdd = fillMagicMatrixOdd(length);
             printArrayInt(magicMatrixOdd);
         }
     }
@@ -42,8 +42,8 @@ public class HomeTask16 {
     // Метод для матрицы 4х4. Составление магического квадрата путем перестановки главной и дополнительных
     // диаганалей матрицы.
 
-    public static int [][] fillMagicMatrixEven (int length) {
-        int [][] magicMatrix = fillArrayStandard(length);
+    public static int[][] fillMagicMatrixEven (int length) {
+        int[][] magicMatrix = fillArrayStandard(length);
         for (int i = 0; i < length / 2; i++) { // Перестановка главной диагонали.
             int temp = magicMatrix[i][i];
             magicMatrix[i][i] = magicMatrix[length - 1 - i][length - 1 - i];
@@ -67,7 +67,7 @@ public class HomeTask16 {
     //      3)  Если он заблокирован, то опускаемся в следующую строку (из исходного положения)
     //      4)  Если в правом верхнем углу, то опускаемся вниз до следующей строки.
 
-    public static int [][] fillMagicMatrixOdd(int length) {
+    public static int[][] fillMagicMatrixOdd(int length) {
         int [][] magicMatrix = new int[length][length];
         int indexI = 0; // начальный индекс строки.
         int indexJ = length / 2; // начальный индекс столбца.

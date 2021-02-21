@@ -18,7 +18,7 @@ public class HomeTask15 {
         int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         System.out.println(" Максимальный элемент матрицы " + findMaxElement(numbers).toString());
@@ -28,7 +28,7 @@ public class HomeTask15 {
         printArrayInt(replaceOddElements(numbers,maxElementArray));
     }
 
-    private static ElementMax findMaxElement(int [][] numbers) {
+    private static ElementMax findMaxElement(int[][] numbers) {
         int indexMaxI = 0; // Индекс строки максимального элемента.
         int indexMaxJ = 0; // Индекс столбца максимального элемента
         int max = numbers[0][0]; // Максимальный элемент матрицы.

@@ -17,14 +17,14 @@ public class HomeTask11 {
         int iteration = 3; // количество повторов
 
         System.out.println(" Исходный массив");
-        int [][] elements = fillArray(rows, columns, numbers);
+        int[][] elements = fillArray(rows, columns, numbers);
         printArray(elements);
 
         printRowWithIteration(elements, number, iteration);
     }
 
     private static int[][] fillArray(int rows, int columns, int numbers) {
-        int [][] elements = new int[rows][columns];
+        int[][] elements = new int[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 elements[i][j] = new Random().nextInt(numbers + 1);

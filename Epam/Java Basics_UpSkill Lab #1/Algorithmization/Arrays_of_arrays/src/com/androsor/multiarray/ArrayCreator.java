@@ -3,7 +3,7 @@ package com.androsor.multiarray;
 import java.util.Random;
 
 /**
- * Filling an array with random integers.
+ * Filling an array.
  */
 public class ArrayCreator {
 
