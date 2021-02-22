@@ -26,9 +26,9 @@ public class HomeTask9 {
     private static void printSumOfColumnElements(int[][] numbers) {
         int maxSumOfColumnElements = 0; // Максимальная сумма элементов в столбцах матрицы.
         int column = 0; // Индекс столбца матрицы с маусимальной суммой элементов.
-        for (int j = 0; j < numbers.length; j++) {
+        for (int j = 0; j < numbers[0].length; j++) {
             int sumOfColumnElements = 0; // Сумма элементов столбца матрицы
-            for (int i = 0; i < numbers[0].length; i++) {
+            for (int i = 0; i < numbers.length; i++) {
                 sumOfColumnElements += numbers[i][j];
                 if (sumOfColumnElements > maxSumOfColumnElements) {
                     maxSumOfColumnElements = sumOfColumnElements;

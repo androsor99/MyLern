@@ -20,7 +20,7 @@ public class HomeTask8 {
         int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int [][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
         System.out.println(" Введите номера заменямых столбцов");
@@ -45,8 +45,8 @@ public class HomeTask8 {
     }
 
     private static int[][] replaceColumns(int column_1, int column_2, int[][] numbers) {
-        for (int i = 0; i < numbers[0].length; i++) {
-            for (int j = 0; j < numbers.length; j ++) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[0].length; j ++) {
                 int temp = numbers[i][column_1 - 1];
                 numbers[i][column_1 - 1] = numbers[i][column_2 - 1];
                 numbers[i][column_2 - 1] = temp;

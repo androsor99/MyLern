@@ -1,7 +1,5 @@
 package com.androsor.multiarray;
 
-import java.util.Random;
-
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;

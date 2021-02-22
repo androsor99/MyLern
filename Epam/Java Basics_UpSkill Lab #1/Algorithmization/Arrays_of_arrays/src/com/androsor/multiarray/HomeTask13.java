@@ -31,7 +31,7 @@ public class HomeTask13 {
 
     private static int[][] sortColumnsInAscendingOrder(int[][] numbers) {
         int[][] copyArray = stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int j = 0; j < copyArray.length; j++) {
+        for (int j = 0; j < copyArray[0].length; j++) {
             for (int i = 0; i < copyArray.length; i++) {
                 for (int k = i + 1; k < copyArray.length; k++) {
                     if (copyArray[k][j] < copyArray[i][j]) {
@@ -47,7 +47,7 @@ public class HomeTask13 {
 
     private static int[][] sortColumnsInDescendingOrder(int[][] numbers) {
         int[][] copyArray = stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int j = 0; j < copyArray.length; j++) {
+        for (int j = 0; j < copyArray[0].length; j++) {
             for (int i = 0; i < copyArray.length; i++) {
                 for (int k = i + 1; k < copyArray.length; k++) {
                     if (copyArray[k][j] > copyArray[i][j]) {

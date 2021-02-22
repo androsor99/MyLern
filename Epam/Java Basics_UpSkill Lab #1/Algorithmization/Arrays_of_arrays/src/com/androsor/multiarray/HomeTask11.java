@@ -2,6 +2,8 @@ package com.androsor.multiarray;
 
 import java.util.Random;
 
+import static com.androsor.multiarray.IOUtils.printArrayInt;
+
 /**
  * Fill the 10x20 matrix with random numbers from 0 to 15. Display the matrix itself and the row numbers in which the
  * number 5 occurs three or more times.
@@ -18,7 +20,7 @@ public class HomeTask11 {
 
         System.out.println(" Исходный массив");
         int[][] elements = fillArray(rows, columns, numbers);
-        printArray(elements);
+        printArrayInt(elements);
 
         printRowWithIteration(elements, number, iteration);
     }
@@ -33,19 +35,8 @@ public class HomeTask11 {
         return elements;
     }
 
-    private static void printArray(int[][] elements) {
-        System.out.println("----------------------------------------------------------------------------------------");
-        for (int[] element : elements) {
-            for (int j = 0; j < elements[0].length; j++) {
-                System.out.printf("%4d", element[j]);
-            }
-            System.out.println();
-        }
-        System.out.println("----------------------------------------------------------------------------------------");
-    }
-
     private static void printRowWithIteration(int[][] elements, int number, int iteration) {
-        boolean flag = false; // вводим временную переменную для определения несовпадения количества встреч цифры 5.
+        boolean flag = false; // вводим временную переменную для определения совпадения количества встреч цифры 5.
         for (int i = 0; i < elements.length; i++) {
             int count = 0;// число встреч цифры 5 в строке матрицы.
             for (int j = 0; j < elements[0].length; j++) {

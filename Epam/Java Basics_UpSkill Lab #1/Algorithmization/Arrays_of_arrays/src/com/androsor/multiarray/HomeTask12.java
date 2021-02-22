@@ -18,9 +18,7 @@ public class HomeTask12 {
         int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        //int[][] numbers = fillArrayRandom(length);
-        int[][] numbers = {{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15}};
-                printArrayInt(numbers);
+        int[][] numbers = fillArrayRandom(length);
 
         System.out.println(" Матрица с отсортированными по убыванию элементами строк: ");
         int[][] sortedArray_1 = sortRowsInDescendingOrder(numbers);
@@ -33,9 +31,9 @@ public class HomeTask12 {
 
     private static int[][] sortRowsInDescendingOrder(int[][] numbers) {
         int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int i = 0; i < copyArray[0].length; i++) {
-            for (int j = 0; j < copyArray.length; j++) {
-                for (int k = i + 1; k < copyArray.length; k++) {
+        for (int i = 0; i < copyArray.length; i++) {
+            for (int j = 0; j < copyArray[0].length; j++) {
+                for (int k = j + 1; k < copyArray[0].length; k++) {
                     if (copyArray[i][k] > copyArray[i][j]) {
                         int temp = copyArray[i][k];
                         copyArray[i][k] = copyArray[i][j];
@@ -49,9 +47,9 @@ public class HomeTask12 {
 
     private static int[][] sortRowsInAscendingOrder(int[][] numbers) {
         int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int i = 0; i < copyArray[0].length; i++) {
-            for (int j = 0; j < copyArray.length; j++) {
-                for (int k = i + 1; k < copyArray.length; k++) {
+        for (int i = 0; i < copyArray.length; i++) {
+            for (int j = 0; j < copyArray[0].length; j++) {
+                for (int k = j + 1; k < copyArray[0].length; k++) {
                     if (copyArray[i][k] < copyArray[i][j]) {
                         int temp = copyArray[i][k];
                         copyArray[i][k] = copyArray[i][j];
