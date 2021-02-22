@@ -68,13 +68,13 @@ public class HomeTask16 {
     //      4)  Если в правом верхнем углу, то опускаемся вниз до следующей строки.
 
     public static int[][] fillMagicMatrixOdd(int length) {
-        int [][] magicMatrix = new int[length][length];
+        int[][] magicMatrix = new int[length][length];
         int indexI = 0; // начальный индекс строки.
         int indexJ = length / 2; // начальный индекс столбца.
         int currentIndexI; // текущий индекс строки
         int currentIndexJ; // текущий индекс столбца
 
-        for (int value = 1; value <=length * length; value ++) {
+        for (int value = 1; value <= length * length; value ++) {
             magicMatrix[indexI][indexJ] = value;
             currentIndexI = indexI;
             currentIndexJ = indexJ;

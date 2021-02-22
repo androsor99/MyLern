@@ -14,20 +14,22 @@ public class HomeTask14 {
 
     public static void main(String[] args) {
 
-        System.out.print(" Введите разрядность массива length = ");
-        int length = abs(enterParameterFromConsole());
+        System.out.print(" Введите число строк массива rows = ");
+        int rows = abs(enterParameterFromConsole());
+        System.out.print(" Введите число столбцов columns = ");
+        int columns = abs(enterParameterFromConsole());
 
         System.out.println(" Исходная матрица:");
-        int[][] numbers = fillArray(length);
+        int[][] numbers = fillArray(rows, columns);
         printArrayInt(numbers);
     }
 
-    private static int[][] fillArray(int length) {
-        int[][] numbers = new int[length][length];
-        for (int j = 0; j < length; j++) {
+    private static int[][] fillArray(int rows, int columns) {
+        int[][] numbers = new int[rows][columns];
+        for (int j = 0; j < columns; j++) {
             int duplicateZero = 0; // счетчик встреч 0
             int duplicateOne = 0; // счетчик встреч 1
-            for (int i = 0; i < length; i++) {
+            for (int i = 0; i < rows; i++) {
                 numbers[i][j] = new Random ().nextInt(2);
                 if (numbers[i][j] == 1) {
                     duplicateOne++;
@@ -37,7 +39,7 @@ public class HomeTask14 {
                 if ((numbers[i][j] == 1) && (duplicateOne > j + 1)) {
                     numbers[i][j] = 0;
                 }
-                if ((numbers[i][j] == 0) && (duplicateZero) >= (length - j)) {
+                if ((numbers[i][j] == 0) && (duplicateZero) >= (rows - j)) {
                     numbers[i][j] = 1;
                 }
             }
