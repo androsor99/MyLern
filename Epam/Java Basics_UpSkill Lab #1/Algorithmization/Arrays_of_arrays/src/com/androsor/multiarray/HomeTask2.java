@@ -29,6 +29,7 @@ public class HomeTask2 {
         for (int i = 0; i < numbers.length; i++) {
             System.out.print(numbers[i][i] + ", ");
         }
+        System.out.print("\b\b");
     }
 
     private static void printSideDiagonal(int[][] numbers) {
@@ -36,5 +37,7 @@ public class HomeTask2 {
         for (int i = 0; i < numbers.length; i++) {
             System.out.print(numbers[numbers.length - 1 - i][i]  + ", " );
         }
+        System.out.print("\b\b");
     }
+
 }

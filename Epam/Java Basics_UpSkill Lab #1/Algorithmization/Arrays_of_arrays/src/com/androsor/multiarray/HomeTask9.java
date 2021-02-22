@@ -28,8 +28,8 @@ public class HomeTask9 {
         int column = 0; // Индекс столбца матрицы с маусимальной суммой элементов.
         for (int j = 0; j < numbers.length; j++) {
             int sumOfColumnElements = 0; // Сумма элементов столбца матрицы
-            for (int[] number : numbers) {
-                sumOfColumnElements += number[j];
+            for (int i = 0; i < numbers[0].length; i++) {
+                sumOfColumnElements += numbers[i][j];
                 if (sumOfColumnElements > maxSumOfColumnElements) {
                     maxSumOfColumnElements = sumOfColumnElements;
                     column = j;

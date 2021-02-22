@@ -46,14 +46,15 @@ public class HomeTask3 {
 
     private static void printRowMatrix(int row, int[][] numbers) {
         System.out.printf(" %d-ая строка матрицы: ", row);
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i < numbers[0].length; i++) {
             System.out.printf("%d, ",numbers[row -1][i]);
         }
+        System.out.print("\b\b");
     }
     private static void printColumnMatrix(int column, int[][] numbers) {
         System.out.printf(" %d-ый столбец матрицы:\n", column);
-        for (int[] number : numbers) {
-            System.out.printf(" %d\n", number[column - 1]);
+        for (int j = 0; j < numbers.length; j++) {
+            System.out.printf(" %d\n", numbers[j][column - 1]);
         }
     }
 }

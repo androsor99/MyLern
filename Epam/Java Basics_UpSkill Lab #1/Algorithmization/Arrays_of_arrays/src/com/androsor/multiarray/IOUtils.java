@@ -15,7 +15,7 @@ public class IOUtils {
     public static void printArrayInt(int[][] numbers) {
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
+            for (int j = 0; j < numbers[0].length; j++) {
                 System.out.printf("%7d", numbers[i][j]);
             }
             System.out.println();
@@ -26,7 +26,7 @@ public class IOUtils {
     public static void printArrayDouble(double[][] numbers) {
         System.out.println("----------------------------------------------");
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
+            for (int j = 0; j < numbers[0].length; j++) {
                 System.out.printf("%9.3f", numbers[i][j]);
             }
             System.out.println();

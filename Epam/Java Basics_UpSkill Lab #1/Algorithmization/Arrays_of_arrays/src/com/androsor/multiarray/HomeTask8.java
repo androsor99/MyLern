@@ -45,7 +45,7 @@ public class HomeTask8 {
     }
 
     private static int[][] replaceColumns(int column_1, int column_2, int[][] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i < numbers[0].length; i++) {
             for (int j = 0; j < numbers.length; j ++) {
                 int temp = numbers[i][column_1 - 1];
                 numbers[i][column_1 - 1] = numbers[i][column_2 - 1];

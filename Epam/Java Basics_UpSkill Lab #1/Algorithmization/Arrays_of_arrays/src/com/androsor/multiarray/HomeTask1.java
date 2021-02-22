@@ -1,5 +1,7 @@
 package com.androsor.multiarray;
 
+import java.util.Random;
+
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
@@ -27,7 +29,7 @@ public class HomeTask1{
         for (int j = 0; j < numbers[0].length; j += 2) {
             if (numbers[0][j] > numbers[numbers.length - 1][j]) {
                 count++;
-                System.out.println(j + 1 +"-ый нечетный столбец у которого первый элемент больше последнего");
+                System.out.println(j + 1 + "-ый нечетный столбец у которого первый элемент больше последнего");
                 for (int i = 0; i < numbers.length; i++) {
                     System.out.println(numbers[i][j]);
                 }
