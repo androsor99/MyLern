@@ -1,8 +1,7 @@
 package com.androsor.multiarray;
 
-import java.util.Arrays;
-
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
+import static com.androsor.multiarray.IOUtils.copyArrayInt;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
@@ -19,45 +18,30 @@ public class HomeTask12 {
 
         System.out.println(" Исходный массив");
         int[][] numbers = fillArrayRandom(length);
+        printArrayInt(numbers);
 
         System.out.println(" Матрица с отсортированными по убыванию элементами строк: ");
-        int[][] sortedArray_1 = sortRowsInDescendingOrder(numbers);
-        printArrayInt(sortedArray_1);
+        int[][] sortedArrayDescendingOrder = sortRowItems(numbers, true);
+        printArrayInt(sortedArrayDescendingOrder);
 
         System.out.println(" Матрица с отсортированными по возростанию элементами строк: ");
-        int[][] sortedArray_2 = sortRowsInAscendingOrder(numbers);
-        printArrayInt(sortedArray_2);
+        int[][] sortedArrayAscendingOrder = sortRowItems(numbers, false);
+        printArrayInt(sortedArrayAscendingOrder);
     }
 
-    private static int[][] sortRowsInDescendingOrder(int[][] numbers) {
-        int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int i = 0; i < copyArray.length; i++) {
-            for (int j = 0; j < copyArray[0].length; j++) {
-                for (int k = j + 1; k < copyArray[0].length; k++) {
-                    if (copyArray[i][k] > copyArray[i][j]) {
-                        int temp = copyArray[i][k];
-                        copyArray[i][k] = copyArray[i][j];
-                        copyArray[i][j] = temp;
+    private static int[][] sortRowItems(int[][] numbers, boolean sortSelection) {
+        int[][] copiedArray = copyArrayInt(numbers);
+        for (int i = 0; i < copiedArray.length; i++) {
+            for (int j = 0; j < copiedArray[i].length; j++) {
+                for (int k = j + 1; k < copiedArray[i].length; k++) {
+                    if (sortSelection ? (copiedArray[i][k] > copiedArray[i][j]) : (copiedArray[i][k] < copiedArray[i][j])) {
+                        int temp = copiedArray[i][k];
+                        copiedArray[i][k] = copiedArray[i][j];
+                        copiedArray[i][j] = temp;
                     }
                 }
             }
         }
-        return copyArray;
-    }
-
-    private static int[][] sortRowsInAscendingOrder(int[][] numbers) {
-        int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int i = 0; i < copyArray.length; i++) {
-            for (int j = 0; j < copyArray[0].length; j++) {
-                for (int k = j + 1; k < copyArray[0].length; k++) {
-                    if (copyArray[i][k] < copyArray[i][j]) {
-                        int temp = copyArray[i][k];
-                        copyArray[i][k] = copyArray[i][j];
-                        copyArray[i][j] = temp;
-                    }
-                }
-            }
-        }
-        return copyArray;
+        return copiedArray;
     }
 }

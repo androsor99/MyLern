@@ -1,7 +1,6 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
@@ -26,12 +25,10 @@ public class HomeTask5 {
     }
 
     private static int inputParameter() {
-        Scanner scanner = new Scanner(System.in);
-        int parameter = abs(scanner.nextInt());
-        while (parameter % 2 != 0) {
-            System.out.println(" Значение разрядности должно быть четным по условию");
-            System.out.print(" Введите разрядность матрицы = ");
-            parameter = abs(scanner.nextInt());
+        int parameter = abs(enterParameterFromConsole());
+        if (parameter % 2 != 0) {
+            System.out.println(" Значение разрядности должно быть четным по условию. Повторите ввод:");
+            return inputParameter();
         }
         return parameter;
     }

@@ -3,8 +3,7 @@ package com.androsor.multiarray;
 import java.util.Arrays;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
-import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
-import static com.androsor.multiarray.IOUtils.printArrayInt;
+import static com.androsor.multiarray.IOUtils.*;
 import static java.lang.Math.abs;
 
 /**
@@ -33,7 +32,7 @@ public class HomeTask15 {
         int indexMaxJ = 0; // Индекс столбца максимального элемента
         int max = numbers[0][0]; // Максимальный элемент матрицы.
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers[0].length; j++) {
+            for (int j = 0; j < numbers[i].length; j++) {
                 if (numbers[i][j] > max) {
                     max = numbers[i][j];
                     indexMaxI = i + 1;
@@ -45,15 +44,15 @@ public class HomeTask15 {
     }
 
     private static int[][] replaceOddElements(int[][] numbers, int maxElement) {
-        int[][] copyArray = Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
-        for (int i = 0; i < copyArray.length; i++) {
-            for (int j = 0; j < copyArray[0].length; j++) {
-                if (copyArray[i][j] % 2 != 0) {
-                    copyArray[i][j] = maxElement;
+        int[][] copiedArray = copyArrayInt(numbers);
+        for (int i = 0; i < copiedArray.length; i++) {
+            for (int j = 0; j < copiedArray[i].length; j++) {
+                if (copiedArray[i][j] % 2 != 0) {
+                    copiedArray[i][j] = maxElement;
                 }
             }
         }
-        return copyArray;
+        return copiedArray;
     }
 
     private static class ElementMax {

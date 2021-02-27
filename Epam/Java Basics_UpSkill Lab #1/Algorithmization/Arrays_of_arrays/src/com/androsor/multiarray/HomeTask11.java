@@ -39,7 +39,7 @@ public class HomeTask11 {
         boolean flag = false; // вводим временную переменную для определения совпадения количества встреч цифры 5.
         for (int i = 0; i < elements.length; i++) {
             int count = 0;// число встреч цифры 5 в строке матрицы.
-            for (int j = 0; j < elements[0].length; j++) {
+            for (int j = 0; j < elements[i].length; j++) {
                 if (elements[i][j] == number) {
                     count++;
                 }

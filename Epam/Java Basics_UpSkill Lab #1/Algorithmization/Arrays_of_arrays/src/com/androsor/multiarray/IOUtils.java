@@ -1,11 +1,16 @@
 package com.androsor.multiarray;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Entering parameters and printing an array
  */
 public class IOUtils {
+
+    public static int[][] copyArrayInt(int[][] numbers) {
+        return Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
+    }
 
     public static int enterParameterFromConsole() {
         Scanner scanner = new Scanner(System.in);

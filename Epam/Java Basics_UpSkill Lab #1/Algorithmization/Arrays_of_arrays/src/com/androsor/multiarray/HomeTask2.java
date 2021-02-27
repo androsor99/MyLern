@@ -19,25 +19,18 @@ public class HomeTask2 {
         int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
-        printMainDiagonal(numbers);
-        System.out.println();
-        printSideDiagonal(numbers);
+        System.out.println(" Диагональ главная:");
+        printMatrixDiagonal(numbers, true);
+
+        System.out.println(" Диагональ побочная:");
+        printMatrixDiagonal(numbers, false);
     }
 
-    private static void printMainDiagonal(int[][] numbers) {
-        System.out.print(" Диагональ главная:  ");
+    private static void printMatrixDiagonal(int[][] numbers, boolean diagonalSelection) {
+
         for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i][i] + ", ");
+            System.out.print(diagonalSelection ? (numbers[i][i] + ", ") : (numbers[numbers.length - 1 - i][i]  + ", " ));
         }
-        System.out.print("\b\b");
+        System.out.print("\b\b\n");
     }
-
-    private static void printSideDiagonal(int[][] numbers) {
-        System.out.print(" Диагональ побочная:  ");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[numbers.length - 1 - i][i]  + ", " );
-        }
-        System.out.print("\b\b");
-    }
-
 }

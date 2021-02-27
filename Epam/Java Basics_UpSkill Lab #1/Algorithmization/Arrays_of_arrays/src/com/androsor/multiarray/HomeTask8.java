@@ -1,7 +1,5 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
@@ -25,31 +23,29 @@ public class HomeTask8 {
 
         System.out.println(" Введите номера заменямых столбцов");
         System.out.print(" Номер первого столбца = ");
-        int column_1 = inputNumberColumn(length);
+        int columnFrom = inputNumberColumn(length);
         System.out.print(" Номер второго столбца = ");
-        int column_2 = inputNumberColumn(length);
+        int columnTo = inputNumberColumn(length);
 
         System.out.println(" Матрица с измененными столбцами:");
-        printArrayInt(replaceColumns(column_1, column_2, numbers));
+        printArrayInt(swapColumns(columnFrom, columnTo, numbers));
     }
 
     private static int inputNumberColumn(int length) {
-        Scanner scanner = new Scanner(System.in);
-        int column = abs(scanner.nextInt());
-        while (column > length) {
-            System.out.println(" Значение заменяемого столбца не должно превышать разрядность матрицы");
-            System.out.print(" Номер столбца =  ");
-            column = abs(scanner.nextInt());
+        int column =abs(enterParameterFromConsole());
+        if (column > length) {
+            System.out.println(" Значение заменяемого столбца не должно превышать разрядность матрицы. Повторите ввод:");
+            return inputNumberColumn(length);
         }
         return column;
     }
 
-    private static int[][] replaceColumns(int column_1, int column_2, int[][] numbers) {
+    private static int[][] swapColumns(int columnFrom, int columnTo, int[][] numbers) {
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers[0].length; j ++) {
-                int temp = numbers[i][column_1 - 1];
-                numbers[i][column_1 - 1] = numbers[i][column_2 - 1];
-                numbers[i][column_2 - 1] = temp;
+            for (int j = 0; j < numbers[i].length; j ++) {
+                int temp = numbers[i][columnFrom - 1];
+                numbers[i][columnFrom - 1] = numbers[i][columnTo - 1];
+                numbers[i][columnTo - 1] = temp;
             }
         }
         return numbers;

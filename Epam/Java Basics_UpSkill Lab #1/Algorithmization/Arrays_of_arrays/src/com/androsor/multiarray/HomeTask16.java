@@ -1,8 +1,7 @@
 package com.androsor.multiarray;
 
-import java.util.Scanner;
-
 import static com.androsor.multiarray.ArrayCreator.fillArrayStandard;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
@@ -29,12 +28,10 @@ public class HomeTask16 {
     }
 
     private static int inputParameter() {
-        Scanner scanner = new Scanner(System.in);
-        int parameter = scanner.nextInt();
-        while ((parameter % 2 == 0) && (parameter != 4)) {
-            System.out.println(" Размерность должна быть нечетной или равной 4: ");
-            System.out.print(" Введите размерность магического квадрата: ");
-            parameter = scanner.nextInt();
+        int parameter = enterParameterFromConsole();
+        if ((parameter % 2 == 0) && (parameter != 4)) {
+            System.out.println(" Размерность должна быть нечетной или равной 4. Повторите ввод:");
+            return inputParameter();
         }
         return parameter;
     }
@@ -42,7 +39,7 @@ public class HomeTask16 {
     // Метод для матрицы 4х4. Составление магического квадрата путем перестановки главной и дополнительных
     // диаганалей матрицы.
 
-    public static int[][] fillMagicMatrixEven (int length) {
+    public static int[][] fillMagicMatrixEven(int length) {
         int[][] magicMatrix = fillArrayStandard(length);
         for (int i = 0; i < length / 2; i++) { // Перестановка главной диагонали.
             int temp = magicMatrix[i][i];
@@ -80,7 +77,6 @@ public class HomeTask16 {
             currentIndexJ = indexJ;
             indexI -= 1;
             indexJ += 1;
-
             if (indexI == -1) {
                 indexI = length - 1;
             }
