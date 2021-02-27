@@ -1,7 +1,5 @@
 package com.androsor.sort;
 
-import java.util.Scanner;
-
 import static com.androsor.sort.ArrayCreator.createArrayRandom;
 import static com.androsor.sort.IOUtils.enterParameterFromConsole;
 import static com.androsor.sort.IOUtils.printArray;
@@ -38,12 +36,10 @@ public class HomeTask1 {
     }
 
     private static int inputIndex(int length) {
-        Scanner scanner = new Scanner(System.in);
-        int index = scanner.nextInt();
-        while ((index > length) || (index < 0)) {
+        int index =enterParameterFromConsole();
+        if ((index > length) || (index < 0)) {
             System.out.println(" Индекс элемента первого массива не должен превышать его длину и быть больше нуля");
-            System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
-            index = scanner.nextInt();
+            return inputIndex(length);
         }
         return index;
     }

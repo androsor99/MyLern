@@ -20,39 +20,25 @@ public class HomeTask3 {
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] sortedNumbersAscending = sortAscending(numbers);
+        int[] sortedNumbersAscending = sort(numbers, true);
         printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] sortedNumbersDescending = sortDescending(numbers);
+        int[] sortedNumbersDescending = sort(numbers, false);
         printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for(int i = copyArray.length-1 ; i > 0 ; i--) {
-            for(int j = 0 ; j < i ; j++) {
-                if( copyArray[j] > copyArray[j+1] ) {
-                    int temp = copyArray[j];
-                    copyArray[j] = copyArray[j+1];
-                    copyArray[j+1] = temp;
+    private static int[] sort(int[] numbers, boolean sortSelection) {
+        int[] copiedArray = copyOf(numbers, numbers.length);
+        for(int i = 0; i < copiedArray.length - 1; i++) {
+            for(int j = copiedArray.length - 1; j > i; j--) {
+                if(sortSelection ? (copiedArray[j - 1] > copiedArray[j]) : (copiedArray[j - 1] < copiedArray[j])) {
+                    int temp = copiedArray[j - 1];
+                    copiedArray[j - 1] = copiedArray[j];
+                    copiedArray[j] = temp;
                 }
             }
         }
-        return copyArray;
-    }
-
-    private static int[] sortDescending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for(int i = copyArray.length-1 ; i > 0 ; i--) {
-            for(int j = 0 ; j < i ; j++) {
-                if( copyArray[j] < copyArray[j+1] ) {
-                    int temp = copyArray[j];
-                    copyArray[j] = copyArray[j+1];
-                    copyArray[j+1] = temp;
-                }
-            }
-        }
-        return copyArray;
+        return copiedArray;
     }
 }

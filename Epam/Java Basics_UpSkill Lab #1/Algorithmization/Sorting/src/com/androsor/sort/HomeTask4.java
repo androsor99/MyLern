@@ -20,39 +20,25 @@ public class HomeTask4 {
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] sortedNumbersAscending = sortAscending(numbers);
+        int[] sortedNumbersAscending = sort(numbers, true);
         printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] sortedNumbersDescending = sortDescending(numbers);
+        int[] sortedNumbersDescending = sort(numbers, false);
         printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for (int i = 0; i < copyArray.length; i++) {
-            int temp = copyArray[i];
+    private static int[] sort(int[] numbers, boolean sortSelection) {
+        int[] copiedArray = copyOf(numbers, numbers.length);
+        for (int i = 1; i < copiedArray.length; i++) {
+            int temp = copiedArray[i];
             int j = i - 1;
-            while (j >= 0 && copyArray[j] > temp) {
-                copyArray[j + 1] = copyArray[j];
+            while (j >= 0 && (sortSelection ? (copiedArray[j] > temp) : (copiedArray[j] < temp))) {
+                copiedArray[j + 1] = copiedArray[j];
                 j = j - 1;
             }
-            copyArray[j + 1] = temp;
+            copiedArray[j + 1] = temp;
         }
-        return copyArray;
-    }
-
-    private static int[] sortDescending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for (int i = 0; i < copyArray.length; i++) {
-            int temp = copyArray[i];
-            int j = i - 1;
-            while (j >= 0 && copyArray[j] < temp) {
-                copyArray[j + 1] = copyArray[j];
-                j = j - 1;
-            }
-            copyArray[j + 1] = temp;
-        }
-        return copyArray;
+        return copiedArray;
     }
 }

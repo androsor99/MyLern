@@ -20,51 +20,28 @@ public class HomeTask2 {
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] sortedNumbersAscending = sortAscending(numbers);
+        int[] sortedNumbersAscending = sort(numbers, true);
         printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] sortedNumbersDescending = sortDescending(numbers);
+        int[] sortedNumbersDescending = sort(numbers, false);
         printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for (int i = 0; i < copyArray.length; i++) {
-            int minItem = copyArray[i];
-            int indexMinItem = i;
-            for (int j = i + 1; j < copyArray.length; j++) {
-                if (copyArray[j] < minItem) {
-                    minItem = copyArray[j];
-                    indexMinItem = j;
+    private static int[] sort(int[] numbers, boolean sortSelection) {
+        int[] copiedArray = copyOf(numbers, numbers.length);
+        for (int i = 0; i < copiedArray.length; i++) {
+            int minOrMaxItem = copiedArray[i];
+            int indexMinOrMaxItem = i;
+            for (int j = i + 1; j < copiedArray.length; j++) {
+                if (sortSelection ? (copiedArray[j] < minOrMaxItem) : (copiedArray[j] > minOrMaxItem)){
+                    minOrMaxItem = copiedArray[j];
+                    indexMinOrMaxItem = j;
                 }
             }
-            rearrangeArrayElements(copyArray, i, indexMinItem);
+            copiedArray[indexMinOrMaxItem] = copiedArray[i];
+            copiedArray[i] = minOrMaxItem;
         }
-        return copyArray;
-    }
-
-    private static int[] sortDescending(int[] numbers) {
-        int[] copyArray = copyOf(numbers, numbers.length);
-        for (int i = 0; i < copyArray.length; i++) {
-            int maxItem = copyArray[i];
-            int indexMaxItem = i;
-            for (int j = i + 1; j < copyArray.length; j++) {
-                if (copyArray[j] > maxItem) {
-                    maxItem = copyArray[j];
-                    indexMaxItem = j;
-                }
-            }
-            rearrangeArrayElements(copyArray, i, indexMaxItem);
-        }
-        return copyArray;
-    }
-
-    private static void rearrangeArrayElements(int[] numbers, int indexFrom, int indexTo) {
-        if (indexFrom != indexTo) {
-            int temp = numbers[indexFrom];
-            numbers[indexFrom] = numbers[indexTo];
-            numbers[indexTo] = temp;
-        }
+        return copiedArray;
     }
 }
