@@ -14,7 +14,6 @@ public class HomeTask16 {
 
     public static void main(String [] args) {
 
-
         int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
 
         System.out.printf(" Массив чисел разрядности %d составленных из нечетных цифр:\n", number);
@@ -24,7 +23,7 @@ public class HomeTask16 {
         long sumOddDigitsOfNumber = getSumOddDigitsOfNumber(numbers);
         System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d %n", number, sumOddDigitsOfNumber);
 
-        System.out.printf("В найденной сумме %d четных цифр", getNumberOfEvenDigits(sumOddDigitsOfNumber));
+        System.out.printf("В найденной сумме %d четных цифр", getNumberOfDigits(sumOddDigitsOfNumber, false));
     }
 
     public static int[] fillArray(int number) {
@@ -32,7 +31,7 @@ public class HomeTask16 {
         int[] numbers = new int[length];
         int i = 0;
             for (int j = getInitialValue(number); j < (int) pow(10, number); j++) {
-                if (getNumberOfOddDigits(j) == number) {
+                if (getNumberOfDigits(j, true) == number) {
                     numbers[i] = j;
                     i++;
                 }
@@ -62,25 +61,14 @@ public class HomeTask16 {
        return sum;
     }
 
-    public static int getNumberOfOddDigits(long number) {
-        int countOdd = 0;
-        for (char symbol : String.valueOf(number).toCharArray()){
+    public static int getNumberOfDigits(long number, boolean evenAndOddDigitSwitch ) {
+        int count = 0;
+        for (char symbol : String.valueOf(number).toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(symbol));
-            if (digit % 2 != 0) {
-                countOdd++;
+            if (evenAndOddDigitSwitch ? (digit % 2 != 0) : (digit % 2 == 0 && digit != 0)) {
+                count++;
             }
         }
-        return countOdd;
-    }
-
-    public static int getNumberOfEvenDigits(long number) {
-        int countEven = 0;
-        for (char symbol : String.valueOf(number).toCharArray()){
-            int digit = Integer.parseInt(String.valueOf(symbol));
-            if (digit % 2 == 0 && digit != 0) {
-                countEven++;
-            }
-        }
-        return countEven;
+        return count;
     }
 }
