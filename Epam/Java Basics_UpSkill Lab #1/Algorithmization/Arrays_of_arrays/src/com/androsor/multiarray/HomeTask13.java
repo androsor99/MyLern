@@ -34,7 +34,7 @@ public class HomeTask13 {
         for (int j = 0; j < copiedArray[0].length; j++) {
             for (int i = 0; i < copiedArray.length; i++) {
                 for (int k = i + 1; k < copiedArray.length; k++) {
-                    if (sortSelection ? (copiedArray[k][j] > copiedArray[i][j]) : (copiedArray[k][j] < copiedArray[i][j])) {
+                    if (isReplace(copiedArray[k][j], copiedArray[i][j], sortSelection)) {
                         int temp = copiedArray[k][j];
                         copiedArray[k][j] = copiedArray[i][j];
                         copiedArray[i][j] = temp;
@@ -43,5 +43,13 @@ public class HomeTask13 {
             }
         }
         return copiedArray;
+    }
+
+    private static boolean isReplace(int numberFrom, int numberTo, boolean sortSelection) {
+        if (sortSelection) {
+            return numberFrom > numberTo;
+        } else {
+            return numberFrom < numberTo;
+        }
     }
 }

@@ -73,23 +73,22 @@ public class HomeTask16 {
 
         for (int value = 1; value <= length * length; value ++) {
             magicMatrix[indexI][indexJ] = value;
-            currentIndexI = indexI;
-            currentIndexJ = indexJ;
-            indexI -= 1;
-            indexJ += 1;
-            if (indexI == -1) {
+//            currentIndexI = indexI;
+//            currentIndexJ = indexJ;
+            indexI --;
+            indexJ ++;
+            if (indexI < 0) {
                 indexI = length - 1;
             }
-            if (indexJ == length) {
+            if (indexJ >= length) {
                 indexJ = 0;
             }
             if (magicMatrix[indexI][indexJ] != 0) {
-                indexI = currentIndexI + 1;
-                indexJ = currentIndexJ;
-                if (indexI == -1) {
-                    indexI = length - 1;
-                }
+                indexI = indexI + 2;
+                indexJ = indexJ - 1;
             }
+
+            magicMatrix[indexI][indexJ] = value;
         }
         return magicMatrix;
     }

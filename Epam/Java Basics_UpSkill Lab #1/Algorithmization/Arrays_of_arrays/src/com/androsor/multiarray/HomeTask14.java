@@ -30,32 +30,13 @@ public class HomeTask14 {
             int duplicateZero = 0; // счетчик встреч 0
             int duplicateOne = 0; // счетчик встреч 1
             for (int i = 0; i < rows; i++) {
-                numbers[i][j] = getRandomElement();
-                if (numbers[i][j] == 1) {
-                    duplicateOne++;
-                    if (isLimitDuplicateOne(duplicateOne, j)) {
-                        numbers[i][j] = 0;
-                    }
-                } else {
-                    duplicateZero++;
-                    if (isLimitDuplicateZero(duplicateZero, rows, j)) {
-                        numbers[i][j] = 1;
-                    }
+                int randomNumber = new Random().nextInt(2);
+                boolean isOneAllowed = randomNumber == 1 ? ++duplicateOne <= j + 1 : ++duplicateZero >= rows - j;
+                if (isOneAllowed) {
+                    numbers[i][j] = 1;
                 }
             }
         }
         return numbers;
-    }
-
-    private static int getRandomElement() {
-        return new Random().nextInt(2);
-    }
-
-    private static boolean isLimitDuplicateOne(int duplicateOne, int columnNumber) {
-        return duplicateOne > (columnNumber + 1);
-    }
-
-    private static boolean isLimitDuplicateZero(int duplicateZero, int numberOfArrayRows, int columnNumber) {
-        return duplicateZero >= (numberOfArrayRows - columnNumber);
     }
 }

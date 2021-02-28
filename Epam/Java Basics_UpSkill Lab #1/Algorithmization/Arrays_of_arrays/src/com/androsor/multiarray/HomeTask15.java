@@ -1,7 +1,5 @@
 package com.androsor.multiarray;
 
-import java.util.Arrays;
-
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.*;
 import static java.lang.Math.abs;
