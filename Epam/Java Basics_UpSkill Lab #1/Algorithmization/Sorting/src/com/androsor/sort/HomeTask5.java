@@ -20,31 +20,31 @@ public class HomeTask5 {
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");
-        int[] sortedNumbersAscending = sortAscending(numbers);
+        int[] sortedNumbersAscending = sort(numbers, true);
         printArray(sortedNumbersAscending);
 
         System.out.println(" Отсортированный массив по убыванию");
-        int[] sortedNumbersDescending = sortDescending(numbers);
+        int[] sortedNumbersDescending = sort(numbers, false);
         printArray(sortedNumbersDescending);
     }
 
-    private static int[] sortAscending(int[] array) {
-        int[] copyArray = copyOf(array, array.length);
+    private static int[] sort(int[] array, boolean sortSelection) {
+        int[] copiedArray = copyOf(array, array.length);
         int inner, outer, temp;
-        int h = getSortingInterval(copyArray.length);
+        int h = getSortingInterval(copiedArray.length);
         while (h >= 1) {
-            for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
-                temp = copyArray[outer];
+            for (outer = h; outer < copiedArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
+                temp = copiedArray[outer];
                 inner = outer;
-                while (inner > h - 1 && copyArray[inner - h] >= temp) { // Сортируем массив с шагом h.
-                    copyArray[inner] = copyArray[inner - h];
+                while (inner > h - 1 && (sortSelection ? (copiedArray[inner - h] >= temp) : (copiedArray[inner - h] <= temp))) { // Сортируем массив с шагом h.
+                    copiedArray[inner] = copiedArray[inner - h];
                     inner -= h;
                 }
-                copyArray[inner] = temp;
+                copiedArray[inner] = temp;
             }
             h = (h - 1) / 3; //на каждом шаге уменьшаем h
         }
-        return copyArray;
+        return copiedArray;
     }
 
     private static int getSortingInterval(int length) {
@@ -53,24 +53,5 @@ public class HomeTask5 {
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
         return h;
-    }
-
-    private static int[] sortDescending(int[] array) {
-        int[] copyArray = copyOf(array, array.length);
-        int inner, outer, temp;
-        int h = getSortingInterval(copyArray.length);
-        while (h >= 1) {
-            for (outer = h; outer < copyArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
-                temp = copyArray[outer];
-                inner = outer;
-                while (inner > h - 1 && copyArray[inner - h] <= temp) { // Сортируем массив с шагом h.
-                    copyArray[inner] = copyArray[inner - h];
-                    inner -= h;
-                }
-                copyArray[inner] = temp;
-            }
-            h = (h - 1) / 3; //на каждом шаге уменьшаем h
-        }
-        return copyArray;
     }
 }
