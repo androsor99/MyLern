@@ -61,7 +61,7 @@ public class HomeTask16 {
        return sum;
     }
 
-    public static int getNumberOfDigits(long number, boolean evenAndOddDigitSwitch ) {
+    public static int getNumberOfDigits(long number, boolean evenAndOddDigitSwitch) {
         int count = 0;
         for (char symbol : String.valueOf(number).toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(symbol));
