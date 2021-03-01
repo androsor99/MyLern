@@ -41,15 +41,13 @@ public class HomeTask16 {
 
     public static int[][] fillMagicMatrixEven(int length) {
         int[][] magicMatrix = fillArrayStandard(length);
-        for (int i = 0; i < length / 2; i++) { // Перестановка главной диагонали.
-            int temp = magicMatrix[i][i];
+        for (int i = 0; i < length / 2; i++) {
+            int tempMain = magicMatrix[i][i]; // Перестановка главной диагонали.
             magicMatrix[i][i] = magicMatrix[length - 1 - i][length - 1 - i];
-            magicMatrix[length - 1 - i][length - 1 - i] = temp;
-        }
-        for (int i = 0; i < length / 2 ; i++) { // Перестановка элементов побочной диагонали
-            int temp = magicMatrix[length - 1 - i][i];
+            magicMatrix[length - 1 - i][length - 1 - i] = tempMain;
+            int tempSide = magicMatrix[length - 1 - i][i]; // Перестановка элементов побочной диагонали
             magicMatrix[length - 1 - i][i] = magicMatrix[i][length - 1 - i];
-            magicMatrix[i][length - 1 - i] = temp;
+            magicMatrix[i][length - 1 - i] = tempSide;
         }
         return magicMatrix;
     }
@@ -66,29 +64,26 @@ public class HomeTask16 {
 
     public static int[][] fillMagicMatrixOdd(int length) {
         int[][] magicMatrix = new int[length][length];
-        int indexI = 0; // начальный индекс строки.
-        int indexJ = length / 2; // начальный индекс столбца.
-        int currentIndexI; // текущий индекс строки
-        int currentIndexJ; // текущий индекс столбца
-
-        for (int value = 1; value <= length * length; value ++) {
-            magicMatrix[indexI][indexJ] = value;
-//            currentIndexI = indexI;
-//            currentIndexJ = indexJ;
-            indexI --;
-            indexJ ++;
-            if (indexI < 0) {
-                indexI = length - 1;
+        int row = 0;
+        int column = length / 2;
+        int currentRow;
+        int currentColumn;
+        for (int value = 1; value <= length * length; value++) {
+            magicMatrix[row][column] = value;
+            currentRow = row;
+            currentColumn = column;
+            row--;
+            column++;
+            if (row < 0) {
+                row = length - 1;
             }
-            if (indexJ >= length) {
-                indexJ = 0;
+            if (column >= length) {
+                column = 0;
             }
-            if (magicMatrix[indexI][indexJ] != 0) {
-                indexI = indexI + 2;
-                indexJ = indexJ - 1;
+            if (magicMatrix[row][column] != 0) {
+                row = currentRow + 1;
+                column = currentColumn;
             }
-
-            magicMatrix[indexI][indexJ] = value;
         }
         return magicMatrix;
     }
