@@ -64,25 +64,25 @@ public class HomeTask16 {
 
     public static int[][] fillMagicMatrixOdd(int length) {
         int[][] magicMatrix = new int[length][length];
-        int row = 0;
-        int column = length / 2;
+        int nextRow = 0;
+        int nextColumn = length / 2;
         int currentRow;
         int currentColumn;
         for (int value = 1; value <= length * length; value++) {
-            magicMatrix[row][column] = value;
-            currentRow = row;
-            currentColumn = column;
-            row--;
-            column++;
-            if (row < 0) {
-                row = length - 1;
+            magicMatrix[nextRow][nextColumn] = value;
+            currentRow = nextRow;
+            currentColumn = nextColumn;
+            nextRow--;
+            nextColumn++;
+            if (nextRow < 0) {
+                nextRow = length - 1;
             }
-            if (column >= length) {
-                column = 0;
+            if (nextColumn >= length) {
+                nextColumn = 0;
             }
-            if (magicMatrix[row][column] != 0) {
-                row = currentRow + 1;
-                column = currentColumn;
+            if (magicMatrix[nextRow][nextColumn] != 0) {
+                nextRow = currentRow + 1;
+                nextColumn = currentColumn;
             }
         }
         return magicMatrix;
