@@ -36,7 +36,7 @@ public class HomeTask5 {
             for (outer = h; outer < copiedArray.length; outer++) { // Сдвигаемся на 1 шаг, для h-сортировки следующей группы элементов массива.
                 temp = copiedArray[outer];
                 inner = outer;
-                while (inner > h - 1 && (sortSelection ? (copiedArray[inner - h] >= temp) : (copiedArray[inner - h] <= temp))) { // Сортируем массив с шагом h.
+                while (inner > h - 1 && (isReplace(copiedArray[inner - h], temp, sortSelection))) { // Сортируем массив с шагом h.
                     copiedArray[inner] = copiedArray[inner - h];
                     inner -= h;
                 }
@@ -53,5 +53,13 @@ public class HomeTask5 {
             h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
         return h;
+    }
+
+    private static boolean isReplace(int numberFrom, int numberTo, boolean sortSelection) {
+        if (sortSelection) {
+            return numberFrom >= numberTo;
+        } else {
+            return numberFrom <= numberTo;
+        }
     }
 }

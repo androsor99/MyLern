@@ -15,9 +15,19 @@ public class IOUtils {
         return abs(scanner.nextInt());
     }
 
+    public static boolean isReplace(int numberFrom, int numberTo, boolean sortSelection) {
+        if (sortSelection) {
+            return numberFrom > numberTo;
+        } else {
+            return numberFrom < numberTo;
+        }
+    }
+
     public static void printArray(int[] array) {
         System.out.println("----------------------------------------");
         System.out.println(" " + Arrays.toString(array));
         System.out.println("----------------------------------------");
     }
+
+
 }

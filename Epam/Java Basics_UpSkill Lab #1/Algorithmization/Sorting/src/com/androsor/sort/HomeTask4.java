@@ -2,6 +2,7 @@ package com.androsor.sort;
 
 import static com.androsor.sort.ArrayCreator.createArrayRandom;
 import static com.androsor.sort.IOUtils.enterParameterFromConsole;
+import static com.androsor.sort.IOUtils.isReplace;
 import static com.androsor.sort.IOUtils.printArray;
 import static java.util.Arrays.copyOf;
 
@@ -33,7 +34,7 @@ public class HomeTask4 {
         for (int i = 1; i < copiedArray.length; i++) {
             int temp = copiedArray[i];
             int j = i - 1;
-            while (j >= 0 && (sortSelection ? (copiedArray[j] > temp) : (copiedArray[j] < temp))) {
+            while (j >= 0 && (isReplace(copiedArray[j], temp, sortSelection))) {
                 copiedArray[j + 1] = copiedArray[j];
                 j = j - 1;
             }
