@@ -3,7 +3,9 @@ package com.androsor.multiarray;
 import java.util.Arrays;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
-import static com.androsor.multiarray.IOUtils.*;
+import static com.androsor.multiarray.IOUtils.copyArrayInt;
+import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
 /**
@@ -20,28 +22,29 @@ public class HomeTask15 {
         int[][] numbers = fillArrayRandom(length);
         printArrayInt(numbers);
 
-        System.out.println(findMaxElement(numbers).toString());
-        int maxElementArray = findMaxElement(numbers).getValue();
+        MaxElement maxElement = findMaxElement(numbers);
+        System.out.println(maxElement.toString());
+        int maxElementOfArray = maxElement.getValue();
 
-        System.out.println(" Матрица с замененными нечетными элементами :");
-        printArrayInt(replaceOddElements(numbers,maxElementArray));
+        System.out.println(" Матрица с замененными нечетными элементами:");
+        printArrayInt(replaceOddElements(numbers, maxElementOfArray));
     }
 
-    private static ElementMax findMaxElement(int[][] numbers) {
-        int positionI = 0; // Индекс строки максимального элемента.
-        int positionJ = 0; // Индекс столбца максимального элемента
+    private static MaxElement findMaxElement(int[][] numbers) {
+        int row = 0; // Индекс строки максимального элемента.
+        int column = 0; // Индекс столбца максимального элемента
         int max = numbers[0][0]; // Максимальный элемент матрицы.
         for (int i = 0; i < numbers.length; i++) {
             for (int j = 0; j < numbers[i].length; j++) {
                 if (numbers[i][j] > max) {
                     max = numbers[i][j];
-                    positionI = i + 1;
-                    positionJ = j + 1;
+                    row = i + 1;
+                    column = j + 1;
                 }
             }
         }
-        int[] position = new int[] {positionI, positionJ};
-        return new ElementMax(position, max);
+        int[] position = new int[] {row, column};
+        return new MaxElement(position, max);
     }
 
     private static int[][] replaceOddElements(int[][] numbers, int maxElement) {
@@ -56,12 +59,12 @@ public class HomeTask15 {
         return copiedArray;
     }
 
-    private static class ElementMax {
+    private static class MaxElement {
 
         private final int[] position;
         private final int value;
 
-        public ElementMax(int[] position, int value) {
+        public MaxElement(int[] position, int value) {
             this.position = position;
             this.value = value;
         }

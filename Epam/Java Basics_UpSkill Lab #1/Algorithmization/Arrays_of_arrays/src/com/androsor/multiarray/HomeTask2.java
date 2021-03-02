@@ -29,7 +29,8 @@ public class HomeTask2 {
     private static void printMatrixDiagonal(int[][] numbers, boolean diagonalSelection) {
 
         for (int i = 0; i < numbers.length; i++) {
-            System.out.print(diagonalSelection ? (numbers[i][i] + ", ") : (numbers[numbers.length - 1 - i][i]  + ", " ));
+            int diagonal = diagonalSelection ? numbers[i][i] : numbers[numbers.length - 1 - i][i];
+            System.out.print(diagonal + ", ");
         }
         System.out.print("\b\b\n");
     }

@@ -36,9 +36,9 @@ public class HomeTask7 {
 
     private static int getNumberOfPositiveElements(double[][] numbers) {
         int count = 0;
-        for (double[] items : numbers) {
+        for (int i = 0; i < numbers.length; i++) {
             for (int j = 0; j < numbers.length; j++) {
-                if (items[j] > 0) {
+                if (numbers[i][j] > 0) {
                     count++;
                 }
             }

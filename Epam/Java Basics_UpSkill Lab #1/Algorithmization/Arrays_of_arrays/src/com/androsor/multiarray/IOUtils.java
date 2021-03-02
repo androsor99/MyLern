@@ -3,6 +3,8 @@ package com.androsor.multiarray;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 /**
  * Entering parameters and printing an array
  */
@@ -12,9 +14,27 @@ public class IOUtils {
         return Arrays.stream(numbers).map(int[]::clone).toArray(int[][]::new);
     }
 
+    public static int enterEvenParameterFromConsole() {
+        int parameter = abs(enterParameterFromConsole());
+        if (parameter % 2 != 0) {
+            System.out.println(" Значение разрядности должно быть четным по условию. Повторите ввод:");
+            return enterEvenParameterFromConsole();
+        }
+        return parameter;
+    }
+
     public static int enterParameterFromConsole() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+
+    public static int enterRowAndColumnFromConsole(int length) {
+        int parameter = abs(enterParameterFromConsole());
+        if ((parameter == 0) || (parameter > length)) {
+            System.out.println(" Значение выводимой строки/столбца не должно ровняться нулю и превышать разрядность матрицы. Повторите ввод:");
+            return enterRowAndColumnFromConsole(length);
+        }
+        return parameter;
     }
 
     public static void printArrayInt(int[][] numbers) {

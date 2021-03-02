@@ -2,6 +2,7 @@ package com.androsor.multiarray;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.enterRowAndColumnFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
@@ -23,21 +24,12 @@ public class HomeTask8 {
 
         System.out.println(" Введите номера заменямых столбцов");
         System.out.print(" Номер первого столбца = ");
-        int columnFrom = inputNumberColumn(length);
+        int columnFrom = enterRowAndColumnFromConsole(length);
         System.out.print(" Номер второго столбца = ");
-        int columnTo = inputNumberColumn(length);
+        int columnTo = enterRowAndColumnFromConsole(length);
 
         System.out.println(" Матрица с измененными столбцами:");
         printArrayInt(swapColumns(columnFrom, columnTo, numbers));
-    }
-
-    private static int inputNumberColumn(int length) {
-        int column =abs(enterParameterFromConsole());
-        if (column > length) {
-            System.out.println(" Значение заменяемого столбца не должно превышать разрядность матрицы. Повторите ввод:");
-            return inputNumberColumn(length);
-        }
-        return column;
     }
 
     private static int[][] swapColumns(int columnFrom, int columnTo, int[][] numbers) {

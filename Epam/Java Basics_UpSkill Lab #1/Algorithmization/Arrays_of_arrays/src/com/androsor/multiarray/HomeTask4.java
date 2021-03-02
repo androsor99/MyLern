@@ -1,8 +1,7 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.enterEvenParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
-import static java.lang.Math.abs;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -18,7 +17,7 @@ public class HomeTask4 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность массива length = ");
-        int length = abs(enterParameterFromConsole());
+        int length = enterEvenParameterFromConsole();
 
         System.out.println(" Исходная матрица:");
         printArrayInt(fillArray(length));

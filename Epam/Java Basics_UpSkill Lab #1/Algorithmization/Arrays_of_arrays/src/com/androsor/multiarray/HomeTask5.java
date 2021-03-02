@@ -1,8 +1,7 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
+import static com.androsor.multiarray.IOUtils.enterEvenParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
-import static java.lang.Math.abs;
 
 /**
  * Form a square matrix of order n according to a given pattern (n is even):
@@ -18,19 +17,10 @@ public class HomeTask5 {
     public static void main(String[] args) {
 
         System.out.print(" Введите разрядность матрицы = ");
-        int light = inputParameter();
+        int light = enterEvenParameterFromConsole();
 
         System.out.println(" Исходный массив");
         printArrayInt(fillArray(light));
-    }
-
-    private static int inputParameter() {
-        int parameter = abs(enterParameterFromConsole());
-        if (parameter % 2 != 0) {
-            System.out.println(" Значение разрядности должно быть четным по условию. Повторите ввод:");
-            return inputParameter();
-        }
-        return parameter;
     }
 
     private static int[][] fillArray(int length) {
