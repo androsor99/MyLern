@@ -1,7 +1,6 @@
 package com.androsor.sort;
 
-import static com.androsor.sort.ArrayCreator.createArrayRandom;
-import static com.androsor.sort.IOUtils.enterParameterFromConsole;
+import static com.androsor.sort.ArrayCreator.createFullArrayRandom;
 import static com.androsor.sort.IOUtils.isReplace;
 import static com.androsor.sort.IOUtils.printArray;
 import static java.util.Arrays.copyOf;
@@ -13,11 +12,7 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        System.out.print(" Введите количество элементов массива N = ");
-        int length = enterParameterFromConsole();
-
-        System.out.println(" Исходный массив с количеством элементов N = " + length);
-        int[] numbers = createArrayRandom(length);
+        int[] numbers = createFullArrayRandom();
         printArray(numbers);
 
         System.out.println(" Отсортированный массив по возрастанию ");

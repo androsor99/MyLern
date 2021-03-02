@@ -13,14 +13,14 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        System.out.print(" Введите количество элементов первого ммассива M = ");
+        System.out.print(" Введите количество элементов первого массива M = ");
         int length_M = enterParameterFromConsole();
 
         System.out.println(" Первый массив с количеством элементов M = " + length_M);
         int[] numbersM = createArrayRandom(length_M);
         printArray(numbersM);
 
-        System.out.print(" Введите количество элементов первого ммассива N = ");
+        System.out.print(" Введите количество элементов второго массива N = ");
         int length_N = enterParameterFromConsole();
 
         System.out.println(" Второй массив с количеством элементов N = " + length_N);
@@ -36,7 +36,7 @@ public class HomeTask1 {
     }
 
     private static int inputIndex(int length) {
-        int index =enterParameterFromConsole();
+        int index = enterParameterFromConsole();
         if ((index > length) || (index < 0)) {
             System.out.println(" Индекс элемента первого массива не должен превышать его длину и быть больше нуля");
             return inputIndex(length);
