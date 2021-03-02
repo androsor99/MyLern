@@ -28,10 +28,14 @@ public class HomeTask7 {
         double[][] numbers = new double[length][length];
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
-                numbers[i][j] = sin((double) (i * i - j * j) / length);
+                numbers[i][j] = getSin(i, j, length);
             }
         }
         return numbers;
+    }
+
+    private static double getSin(int ... value) {
+        return sin((double) (value[0] * value[0] - value[1] * value[1]) / value[2]);
     }
 
     private static int getNumberOfPositiveElements(double[][] numbers) {
