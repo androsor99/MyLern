@@ -34,7 +34,7 @@ public class HomeTask3 {
     private static void printRowMatrix(int row, int[][] numbers) {
         System.out.printf(" %d-ая строка матрицы: ", row);
         for (int j = 0; j < numbers[row - 1].length; j++) {
-            System.out.printf("%d, ",numbers[row -1][j]);
+            System.out.printf("%d, ", numbers[row -1][j]);
         }
         System.out.print("\b\b");
     }
