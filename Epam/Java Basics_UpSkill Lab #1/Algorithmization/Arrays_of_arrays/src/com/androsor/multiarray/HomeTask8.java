@@ -2,7 +2,7 @@ package com.androsor.multiarray;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
-import static com.androsor.multiarray.IOUtils.enterRowAndColumnFromConsole;
+import static com.androsor.multiarray.IOUtils.checkInputRowAndColumnFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
@@ -24,9 +24,9 @@ public class HomeTask8 {
 
         System.out.println(" Введите номера заменямых столбцов");
         System.out.print(" Номер первого столбца = ");
-        int columnFrom = enterRowAndColumnFromConsole(length);
+        int columnFrom = checkInputRowAndColumnFromConsole(length);
         System.out.print(" Номер второго столбца = ");
-        int columnTo = enterRowAndColumnFromConsole(length);
+        int columnTo = checkInputRowAndColumnFromConsole(length);
 
         System.out.println(" Матрица с измененными столбцами:");
         printArrayInt(swapColumns(columnFrom, columnTo, numbers));

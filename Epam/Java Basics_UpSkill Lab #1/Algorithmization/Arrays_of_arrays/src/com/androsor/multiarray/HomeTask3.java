@@ -2,7 +2,7 @@ package com.androsor.multiarray;
 
 import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
-import static com.androsor.multiarray.IOUtils.enterRowAndColumnFromConsole;
+import static com.androsor.multiarray.IOUtils.checkInputRowAndColumnFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
 
@@ -21,13 +21,13 @@ public class HomeTask3 {
         printArrayInt(numbers);
 
         System.out.print(" Введите номер выводимой строки = ");
-        int row = enterRowAndColumnFromConsole(length);
+        int row = checkInputRowAndColumnFromConsole(length);
         printRowMatrix(row, numbers);
 
         System.out.println();
 
         System.out.print(" Введите номер выводимого столбца = ");
-        int column = enterRowAndColumnFromConsole(length);
+        int column = checkInputRowAndColumnFromConsole(length);
         printColumnMatrix(column, numbers);
     }
 

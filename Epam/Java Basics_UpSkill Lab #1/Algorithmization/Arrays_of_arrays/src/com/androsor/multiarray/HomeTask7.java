@@ -16,32 +16,32 @@ public class HomeTask7 {
 
         System.out.print(" Введите разрядность массива length = ");
         int length = abs(enterParameterFromConsole());
+        double[][] defaultNumbers = new double[length][length];
 
         System.out.println(" Исходный массив");
-        double[][] numbers = fillArray(length);
+        double[][] numbers = fillArray(defaultNumbers);
         printArrayDouble(numbers);
 
         System.out.println("Количество положительных элементов матрицы: " + getNumberOfPositiveElements(numbers));
     }
 
-    private static double[][] fillArray(int length) {
-        double[][] numbers = new double[length][length];
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                numbers[i][j] = getSin(i, j, length);
+    private static double[][] fillArray(double[][] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                numbers[i][j] = getSin(i, j, numbers.length);
             }
         }
         return numbers;
     }
 
-    private static double getSin(int ... value) {
+    private static double getSin(int... value) {
         return sin((double) (value[0] * value[0] - value[1] * value[1]) / value[2]);
     }
 
     private static int getNumberOfPositiveElements(double[][] numbers) {
         int count = 0;
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length; j++) {
+            for (int j = 0; j < numbers[i].length; j++) {
                 if (numbers[i][j] > 0) {
                     count++;
                 }

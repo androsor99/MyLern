@@ -1,6 +1,7 @@
 package com.androsor.multiarray;
 
-import static com.androsor.multiarray.ArrayCreator.fillArrayRandom;
+import java.util.Random;
+
 import static com.androsor.multiarray.IOUtils.enterParameterFromConsole;
 import static com.androsor.multiarray.IOUtils.printArrayInt;
 import static java.lang.Math.abs;
@@ -17,10 +18,21 @@ public class HomeTask9 {
         int length = abs(enterParameterFromConsole());
 
         System.out.println(" Исходный массив");
-        int[][] numbers = fillArrayRandom(length);
+        int[][] numbers = fillArrayRandomlyWithPositiveElements(length);
         printArrayInt(numbers);
 
         printSumOfColumnElements(numbers);
+    }
+
+    public static int[][] fillArrayRandomlyWithPositiveElements(int length) {
+        int[][] numbers = new int[length][length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                numbers[i][j] = random.nextInt(100);
+            }
+        }
+        return numbers;
     }
 
     private static void printSumOfColumnElements(int[][] numbers) {
@@ -30,10 +42,10 @@ public class HomeTask9 {
             int sumOfColumnElements = 0; // Сумма элементов столбца матрицы
             for (int i = 0; i < numbers.length; i++) {
                 sumOfColumnElements += numbers[i][j];
-                if (sumOfColumnElements > maxSumOfColumnElements) {
-                    maxSumOfColumnElements = sumOfColumnElements;
-                    columnMaxSumElement = j;
-                }
+            }
+            if (sumOfColumnElements > maxSumOfColumnElements) {
+                maxSumOfColumnElements = sumOfColumnElements;
+                columnMaxSumElement = j;
             }
             System.out.println(j + 1 + "-ый столбец содержит <" + numbers.length + "> элементов сумма которых = " + sumOfColumnElements);
         }

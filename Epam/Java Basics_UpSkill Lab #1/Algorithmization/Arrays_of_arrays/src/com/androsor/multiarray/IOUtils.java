@@ -28,11 +28,11 @@ public class IOUtils {
         return scanner.nextInt();
     }
 
-    public static int enterRowAndColumnFromConsole(int length) {
+    public static int checkInputRowAndColumnFromConsole(int length) {
         int parameter = abs(enterParameterFromConsole());
         if ((parameter == 0) || (parameter > length)) {
             System.out.println(" Значение выводимой строки/столбца не должно ровняться нулю и превышать разрядность матрицы. Повторите ввод:");
-            return enterRowAndColumnFromConsole(length);
+            return checkInputRowAndColumnFromConsole(length);
         }
         return parameter;
     }
