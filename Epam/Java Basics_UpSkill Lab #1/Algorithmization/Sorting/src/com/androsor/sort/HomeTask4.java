@@ -15,6 +15,7 @@ public class HomeTask4 implements Sorter {
         run(sorter);
     }
 
+    @Override
     public int[] sort(int[] numbers, boolean sortSelection) {
         int[] copiedArray = copyOf(numbers, numbers.length);
         for (int i = 1; i < copiedArray.length; i++) {
