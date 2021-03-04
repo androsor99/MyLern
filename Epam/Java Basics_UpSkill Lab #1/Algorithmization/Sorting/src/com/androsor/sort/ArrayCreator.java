@@ -9,7 +9,7 @@ import static com.androsor.sort.IOUtils.enterParameterFromConsole;
  */
 public class ArrayCreator {
 
-    public static int[] createArrayRandom(int length) {
+    public static int[] fillArrayRandom(int length) {
         int[] numbers = new int[length];
         Random random = new Random();
         for (int i = 0; i < length; i++) {
@@ -18,10 +18,10 @@ public class ArrayCreator {
         return numbers;
     }
 
-    public static int[] createFullArrayRandom() {
+    public static int[] createArrayRandom() {
         System.out.print(" Введите количество элементов массива N = ");
         int length = enterParameterFromConsole();
         System.out.println(" Исходный массив с количеством элементов N = " + length);
-        return createArrayRandom(length);
+        return fillArrayRandom(length);
     }
 }

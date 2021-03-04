@@ -3,6 +3,7 @@ package com.androsor.sort;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static com.androsor.sort.ArrayCreator.createArrayRandom;
 import static java.lang.Math.abs;
 
 /**
@@ -27,5 +28,16 @@ public class IOUtils {
         System.out.println("----------------------------------------");
         System.out.println(" " + Arrays.toString(array));
         System.out.println("----------------------------------------");
+    }
+
+    public static void run(Sorter sorter) {
+        int[] numbers = createArrayRandom();
+        printArray(numbers);
+        System.out.println(" Отсортированный массив по возрастанию ");
+        int[] sortedNumbersAscending = sorter.sort(numbers, true);
+        printArray(sortedNumbersAscending);
+        System.out.println(" Отсортированный массив по убыванию");
+        int[] sortedNumbersDescending = sorter.sort(numbers, false);
+        printArray(sortedNumbersDescending);
     }
 }

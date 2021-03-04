@@ -1,6 +1,6 @@
 package com.androsor.sort;
 
-import static com.androsor.sort.ArrayCreator.createArrayRandom;
+import static com.androsor.sort.ArrayCreator.fillArrayRandom;
 import static com.androsor.sort.IOUtils.enterParameterFromConsole;
 import static com.androsor.sort.IOUtils.printArray;
 
@@ -17,14 +17,14 @@ public class HomeTask1 {
         int length_M = enterParameterFromConsole();
 
         System.out.println(" Первый массив с количеством элементов M = " + length_M);
-        int[] numbersM = createArrayRandom(length_M);
+        int[] numbersM = fillArrayRandom(length_M);
         printArray(numbersM);
 
         System.out.print(" Введите количество элементов второго массива N = ");
         int length_N = enterParameterFromConsole();
 
         System.out.println(" Второй массив с количеством элементов N = " + length_N);
-        int[] numbersN = createArrayRandom(length_N);
+        int[] numbersN = fillArrayRandom(length_N);
         printArray(numbersN);
 
         System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");

@@ -1,30 +1,21 @@
 package com.androsor.sort;
 
-import static com.androsor.sort.ArrayCreator.createFullArrayRandom;
 import static com.androsor.sort.IOUtils.isReplace;
-import static com.androsor.sort.IOUtils.printArray;
+import static com.androsor.sort.IOUtils.run;
 import static java.util.Arrays.copyOf;
 
 /**
  * Implement exchange sort.
  */
-public class HomeTask3 {
+public class HomeTask3 implements Sorter{
 
     public static void main(String[] args) {
 
-        int[] numbers = createFullArrayRandom();
-        printArray(numbers);
-
-        System.out.println(" Отсортированный массив по возрастанию ");
-        int[] sortedNumbersAscending = sort(numbers, true);
-        printArray(sortedNumbersAscending);
-
-        System.out.println(" Отсортированный массив по убыванию");
-        int[] sortedNumbersDescending = sort(numbers, false);
-        printArray(sortedNumbersDescending);
+        Sorter sorter = new HomeTask3();
+        run(sorter);
     }
 
-    private static int[] sort(int[] numbers, boolean sortSelection) {
+    public int[] sort(int[] numbers, boolean sortSelection) {
         int[] copiedArray = copyOf(numbers, numbers.length);
         for(int i = 0; i < copiedArray.length - 1; i++) {
             for(int j = copiedArray.length - 1; j > i; j--) {
