@@ -18,9 +18,8 @@ public class HomeTask3 implements Sorting {
     @Override
     public int[] sort(int[] numbers, boolean sortSelection) {
         int[] copiedArray = copyOf(numbers, numbers.length);
-        boolean changed;
         for (int i = 0; i < copiedArray.length - 1; i++) {
-            changed = false;
+            boolean changed = false;
             for (int j = copiedArray.length - 1; j > i; j--) {
                 if (isReplace(copiedArray[j - 1], copiedArray[j], sortSelection)) {
                     int temp = copiedArray[j - 1];
@@ -29,7 +28,7 @@ public class HomeTask3 implements Sorting {
                     changed = true;
                 }
             }
-            if (changed) {
+            if (!changed) {
                 break;
             }
         }
