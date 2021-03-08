@@ -1,6 +1,6 @@
 package com.androsor.sort;
 
-public interface Sorter {
+public interface Sorting {
 
      /**
       * Returns an array in ascending or descending order.

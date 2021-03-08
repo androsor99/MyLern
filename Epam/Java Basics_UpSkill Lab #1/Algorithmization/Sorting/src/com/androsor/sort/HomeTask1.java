@@ -13,33 +13,24 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
 
-        System.out.print(" Введите количество элементов первого массива M = ");
-        int length_M = enterParameterFromConsole();
-
-        System.out.println(" Первый массив с количеством элементов M = " + length_M);
+        int length_M = enterParameterFromConsole("Введите количество элементов первого массива M = ");
         int[] numbersM = fillArrayRandom(length_M);
-        printArray(numbersM);
+        printArray(numbersM, String.format(" Первый массив с количеством элементов M = %d", length_M));
 
-        System.out.print(" Введите количество элементов второго массива N = ");
-        int length_N = enterParameterFromConsole();
-
-        System.out.println(" Второй массив с количеством элементов N = " + length_N);
+        int length_N = enterParameterFromConsole("Введите количество элементов второго массива N = ");
         int[] numbersN = fillArrayRandom(length_N);
-        printArray(numbersN);
+        printArray(numbersN, String.format("Второй массив с количеством элементов N = %d", length_N));
 
-        System.out.print(" Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
-        int index_K = inputIndex(length_M);
-
-        System.out.println(" Объединенный массив с количеством элементов M + N = " + (length_M + length_N));
+        int index_K = inputIndex(length_M, "Введите индекс элемента первого массива после кторого будет вставлен второй массив, K = ");
         int[] numbersMN = concatenateArrays(index_K, numbersM, numbersN);
-        printArray(numbersMN);
+        printArray(numbersMN, "Объединенный массив с количеством элементов M + N = %d" + (length_M + length_N));
     }
 
-    private static int inputIndex(int length) {
-        int index = enterParameterFromConsole();
+    private static int inputIndex(int length, String message) {
+        int index = enterParameterFromConsole(message);
         if ((index > length) || (index < 0)) {
             System.out.println(" Индекс элемента первого массива не должен превышать его длину и быть больше нуля");
-            return inputIndex(length);
+            return inputIndex(length, message);
         }
         return index;
     }

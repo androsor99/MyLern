@@ -1,17 +1,17 @@
 package com.androsor.sort;
 
-import static com.androsor.sort.IOUtils.isReplace;
-import static com.androsor.sort.IOUtils.run;
+import static com.androsor.sort.SorterLogic.isReplace;
+import static com.androsor.sort.SorterLogic.run;
 import static java.util.Arrays.copyOf;
 
 /**
  * Implement selection sort.
  */
-public class HomeTask2 implements Sorter {
+public class HomeTask2 implements Sorting {
 
     public static void main(String[] args) {
 
-        Sorter sorter = new HomeTask2();
+        Sorting sorter = new HomeTask2();
         run(sorter);
     }
 
