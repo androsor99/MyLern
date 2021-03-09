@@ -30,7 +30,7 @@ public class HomeTask5 implements Sorting {
                 }
                 copiedArray[inner] = temp;
             }
-            h = (h - 1) / 2; //на каждом шаге уменьшаем h
+            h = (h - 1) / 3; //на каждом шаге уменьшаем h
         }
         return copiedArray;
     }
