@@ -38,7 +38,7 @@ public class HomeTask5 implements Sorting {
     private static int getSortingInterval(int length) {
         int h = 1; // интервал сортировки
         while (h <= length / 2) { // Ищем начальное значение интервала сортировки.
-            h = h * 2 + 1; // (1, 4, 13, 40, 121, ...)
+            h = h * 3 + 1; // (1, 4, 13, 40, 121, ...)
         }
         return h;
     }
