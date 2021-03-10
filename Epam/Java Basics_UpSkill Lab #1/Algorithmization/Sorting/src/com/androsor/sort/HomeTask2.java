@@ -1,7 +1,7 @@
 package com.androsor.sort;
 
 import static com.androsor.sort.SorterLogic.isReplace;
-import static com.androsor.sort.SorterLogic.run;
+import static com.androsor.sort.SorterLogic.test;
 import static java.util.Arrays.copyOf;
 
 /**
@@ -12,7 +12,7 @@ public class HomeTask2 implements Sorting {
     public static void main(String[] args) {
 
         Sorting sorter = new HomeTask2();
-        run(sorter);
+        test(sorter);
     }
 
     @Override

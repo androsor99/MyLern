@@ -6,7 +6,7 @@ import static com.androsor.sort.SortMessageType.*;
 
 public class SorterLogic {
 
-    public static void run(Sorting sorter) {
+    public static void test(Sorting sorter) {
         int[] numbers = createArrayRandom();
         printArray(numbers, DEFAULT.getType());
 
