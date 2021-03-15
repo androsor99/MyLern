@@ -24,8 +24,10 @@ public class HomeTask9 {
         double triangleSquare1 = getTriangleSquare(sideTriangleX, sideTriangleY, hypo, halfPerimeter1);
         double triangleSquare2 = getTriangleSquare(sideTriangleZ, sideTriangleT, hypo, halfPerimeter2);
 
-        System.out.printf(" Площадь четырехугольника = %.2f", getQuadrangleSquare(triangleSquare1, triangleSquare2));
+        double quadrangleSquare = getQuadrangleSquare(triangleSquare1, triangleSquare2);
+        System.out.printf(" Площадь четырехугольника = %.2f", quadrangleSquare);
     }
+
     private static double getHypotenuse(double leg1, double leg2) {
         return sqrt(pow(leg1, 2) + pow(leg2, 2));
     }
