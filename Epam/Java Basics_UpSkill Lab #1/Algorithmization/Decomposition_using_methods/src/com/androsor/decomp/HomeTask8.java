@@ -1,10 +1,8 @@
 package com.androsor.decomp;
 
-
 import static com.androsor.decomp.Helper.fillArray;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static com.androsor.decomp.IOUtils.printArray;
-import static java.lang.Math.abs;
 
 /**
  * An array D is given. Determine the following sums: D [l] + D [2] + D [3]; D [3] + D [4] + D [5]; D [4] + D [5] + D [6].
