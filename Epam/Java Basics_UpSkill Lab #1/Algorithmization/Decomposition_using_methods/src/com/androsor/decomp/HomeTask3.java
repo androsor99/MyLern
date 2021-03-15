@@ -1,7 +1,6 @@
 package com.androsor.decomp;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleDouble;
-import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**

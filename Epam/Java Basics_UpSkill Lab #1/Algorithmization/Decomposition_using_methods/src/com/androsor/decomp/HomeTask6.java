@@ -25,7 +25,11 @@ public class HomeTask6 {
         }
     }
 
-    private static boolean isPrime(int a, int b, int c) { // Числа являются взаимно простыми, если их НОД равен 1
-        return getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c) == 1;
+    private static boolean isPrime(int... value) { // Числа являются взаимно простыми, если их НОД равен 1
+        int result = getGreatestCommonDivisor(value[0], value[1]);
+        for (int i = 2; i < value.length; i++){
+            result = getGreatestCommonDivisor(value[i], result);
+        }
+        return result == 1;
     }
 }
