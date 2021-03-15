@@ -19,11 +19,9 @@ public class HomeTask8 {
         printArray(numbers);
 
         int indexFrom = getIndexFrom(length);
-
         int indexTo = getIndexTo(indexFrom, length);
 
         int sum = getSum(numbers, indexFrom, indexTo);
-
         System.out.printf(" Сумма каждых трех соседних элементов массива в пределах диапазона от %d до %d = %d ", indexFrom, indexTo, sum);
     }
 
