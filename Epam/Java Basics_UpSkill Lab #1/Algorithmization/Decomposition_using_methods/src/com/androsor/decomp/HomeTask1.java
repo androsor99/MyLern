@@ -3,7 +3,6 @@ package com.androsor.decomp;
 import static com.androsor.decomp.Helper.getGreatestCommonDivisor;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 
-
 /**
  * Write a method (methods) for finding the greatest common divisor and the least common multiple of two natural numbers:
  * LCM(a * b) = a * b / GCD(a, b)
