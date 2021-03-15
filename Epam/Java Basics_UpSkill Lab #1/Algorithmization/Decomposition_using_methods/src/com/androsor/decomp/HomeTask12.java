@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Given natural numbers K and N. Write a method (methods) for forming an array A, whose elements are numbers whose sum
@@ -14,15 +13,15 @@ public class HomeTask12 {
 
     public static void main (String[]args) {
 
-        int numberK = abs(enterParameterFromConsoleInt(" Введите число numberK = "));
+        int numberK = enterParameterFromConsoleInt(" Введите число numberK = ");
 
-        int numberN = abs(enterParameterFromConsoleInt(" Введите число numberN = "));
+        int numberN = enterParameterFromConsoleInt(" Введите число numberN = ");
 
-        List<Integer> numbers = fillArray(numberK, numberN);
-        printArray(numbers);
+        List<Integer> numbers = getNumbers(numberK, numberN);
+        printNumbers(numbers);
     }
 
-    private static List<Integer> fillArray(int numberK, int numberN) {
+    private static List<Integer> getNumbers(int numberK, int numberN) {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i <= numberN; i++) {
             if (isSumDigitsOfNumber(i, numberK)) {
@@ -41,7 +40,7 @@ public class HomeTask12 {
         return sumDigitsNumber == value;
     }
 
-    private static void printArray(List<Integer> numbers) {
+    private static void printNumbers(List<Integer> numbers) {
         if (numbers.isEmpty()) {
             System.out.println(" Создать массив невозможно. На заданном диапазоне не существует чисел удовлетворяющих вводимым данным!");
         } else {

@@ -1,7 +1,6 @@
 package com.androsor.decomp;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Two primes are called "twins" if they differ from each other by 2 (for example, 41 and 43). Find and print all pairs
@@ -18,7 +17,7 @@ public class HomeTask13 {
     }
 
     private static int getNumber() {
-        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
+        int number = enterParameterFromConsoleInt(" Введите число N = ");
         if (number <= 2) {
             System.out.println(" Начало диапазона вычислений должно быть больше 2 по условию задачи");
             return getNumber();

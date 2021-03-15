@@ -1,6 +1,9 @@
 package com.androsor.decomp;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
+import static java.lang.Math.*;
 
 /**
  * Entering parameters from the console.
@@ -16,7 +19,7 @@ public class IOUtils {
             scanner.next();
             System.out.println(MESSAGE_INVALID);
         }
-        return scanner.nextInt();
+        return abs(scanner.nextInt());
     }
 
     public  static double enterParameterFromConsoleDouble(String message) {
@@ -27,5 +30,11 @@ public class IOUtils {
             System.out.println(MESSAGE_INVALID);
         }
         return scanner.nextDouble();
+    }
+
+    public static void printArray(int[] numbers) {
+        System.out.println("----------------------------------------");
+        System.out.println(" " + Arrays.toString(numbers));
+        System.out.println("----------------------------------------");
     }
 }

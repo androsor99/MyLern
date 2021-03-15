@@ -1,9 +1,7 @@
 package com.androsor.decomp;
 
-import java.util.Arrays;
-
+import static com.androsor.decomp.IOUtils.printArray;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 /**
@@ -14,7 +12,7 @@ public class HomeTask16 {
 
     public static void main(String [] args) {
 
-        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
+        int number = enterParameterFromConsoleInt(" Введите число N = ");
 
         System.out.printf(" Массив чисел разрядности %d составленных из нечетных цифр:\n", number);
         int[] numbers = fillArray(number);
@@ -23,19 +21,20 @@ public class HomeTask16 {
         long sumOddDigitsOfNumber = getSumOddDigitsOfNumber(numbers);
         System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d %n", number, sumOddDigitsOfNumber);
 
-        System.out.printf("В найденной сумме %d четных цифр", getNumberOfDigits(sumOddDigitsOfNumber, false));
+        int numberOfDigits = getNumberOfDigits(sumOddDigitsOfNumber);
+        System.out.printf("В найденной сумме %d четных цифр", numberOfDigits);
     }
 
     public static int[] fillArray(int number) {
         int length = (int) pow(5, number);
         int[] numbers = new int[length];
         int i = 0;
-            for (int j = getInitialValue(number); j < (int) pow(10, number); j++) {
-                if (getNumberOfDigits(j, true) == number) {
-                    numbers[i] = j;
-                    i++;
-                }
+        for (int j = getInitialValue(number); j < (int) pow(10, number); j += 2) {
+            if (isNumberOdd(j)) {
+                numbers[i] = j;
+                i++;
             }
+        }
         return numbers;
     }
 
@@ -47,12 +46,6 @@ public class HomeTask16 {
         return initialValue;
     }
 
-    private static void printArray(int[] numbers) {
-        System.out.println("----------------------------------------");
-        System.out.println(" " + Arrays.toString(numbers));
-        System.out.println("----------------------------------------");
-    }
-
     private static long getSumOddDigitsOfNumber(int[] numbers){
         int sum = 0;
         for (int number : numbers) {
@@ -61,14 +54,24 @@ public class HomeTask16 {
        return sum;
     }
 
-    public static int getNumberOfDigits(long number, boolean evenAndOddDigitSwitch) {
+    public static int getNumberOfDigits(long number) {
         int count = 0;
         for (char symbol : String.valueOf(number).toCharArray()) {
             int digit = Integer.parseInt(String.valueOf(symbol));
-            if (evenAndOddDigitSwitch ? (digit % 2 != 0) : (digit % 2 == 0 && digit != 0)) {
+            if (digit % 2 == 0 && digit != 0) {
                 count++;
             }
         }
         return count;
+    }
+
+    private static boolean isNumberOdd(long number) {
+        for (char symbol : String.valueOf(number).toCharArray()) {
+            int digit = Integer.parseInt(String.valueOf(symbol));
+            if (digit % 2 == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

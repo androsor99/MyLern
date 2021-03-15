@@ -1,7 +1,6 @@
 package com.androsor.decomp;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Write a program that determines the sum of n - digit numbers containing only odd digits. Also determine how many
@@ -11,7 +10,7 @@ public class HomeTask17 {
 
     public static void main(String [] args) {
 
-        int number = abs(enterParameterFromConsoleInt(" Введите число N = "));
+        int number = enterParameterFromConsoleInt(" Введите число N = ");
 
         System.out.printf(" Количество действий над числом (согласно условию задачи) = %d ", getNumberOfActions(number));
     }

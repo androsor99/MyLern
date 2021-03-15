@@ -1,10 +1,9 @@
 package com.androsor.decomp;
 
-import java.util.Arrays;
-import java.util.Random;
-
+import static com.androsor.decomp.Helper.fillArray;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
+import static com.androsor.decomp.IOUtils.printArray;
+import static java.util.Arrays.copyOf;
 import static java.util.Arrays.sort;
 
 
@@ -16,36 +15,23 @@ public class HomeTask5 {
 
     public static void main(String[] args) {
 
-        int length = abs(enterParameterFromConsoleInt(" Введите длину массива length = "));
+        int length = enterParameterFromConsoleInt(" Введите длину массива length = ");
 
         System.out.println(" Исходный массив: ");
         int[] numbers = fillArray(length);
         printArray(numbers);
 
-        printSecondLargestElement(numbers);
+        int secondLargestElement = findSecondLargestElement(numbers);
+        System.out.printf("\nВторой по величине элемент массива = %d", secondLargestElement);
     }
 
-    private static int[] fillArray(int length) {
-        int[] numbers = new int[length];
-        Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            numbers[i] = 100 - (random.nextInt(200));
-        }
-        return numbers;
-    }
-
-    private static void printArray(int[] numbers) {
-        System.out.println("----------------------------------------");
-        System.out.println(" " + Arrays.toString(numbers));
-        System.out.println("----------------------------------------");
-    }
-
-    public static void printSecondLargestElement(int[] numbers) {
-        sort(numbers); // Сортируем массив по возрастанию.
+    public static int findSecondLargestElement(int[] numbers) {
         if (numbers.length < 2) {
-            System.out.println(" В массиве один элемент: " + numbers[0]);
+            return numbers[0];
         } else {
-            System.out.println(" Второй по величине элемент массива = " + numbers[numbers.length - 2]);
+            int[] copiedNumbers = copyOf(numbers, numbers.length);
+            sort(copiedNumbers);
+            return copiedNumbers[copiedNumbers.length - 2];
         }
     }
 }

@@ -11,13 +11,13 @@ public class HomeTask3 {
 
     public static void main(String[] args) {
 
-        double lengthSideTriangle = abs(enterParameterFromConsoleDouble(" Введите длину стороны треугольника = "));
+        double lengthSideHexagon = enterParameterFromConsoleDouble(" Введите длину стороны шестиугольника = ");
 
-        double areaHexagon = getAreaHexagon(getAreaTriangle(lengthSideTriangle));
-        printAreaHexagon(lengthSideTriangle, areaHexagon);
+        double areaHexagon = getAreaHexagon(getAreaTriangle(lengthSideHexagon));
+        printAreaHexagon(lengthSideHexagon, areaHexagon);
     }
 
-    private static double getAreaHexagon(double areaTriangle) {// Метод расчета площади треугольника.
+    private static double getAreaHexagon(double areaTriangle) {
         return 6 * areaTriangle;
     }
 
@@ -25,8 +25,9 @@ public class HomeTask3 {
         return (sqrt(3) / 4) * (side * side);
     }
 
-    private static void printAreaHexagon(double lengthSideTriangle, double areaHexagon) {
+
+    private static void printAreaHexagon(double lengthSideHexagon, double areaHexagon) {
         System.out.printf(" Площадь правильного шестиугольника со стороной = %.2f равна - %.2f",
-                lengthSideTriangle, areaHexagon);
+                lengthSideHexagon, areaHexagon);
     }
 }

@@ -1,7 +1,6 @@
 package com.androsor.decomp;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Write a method (s) for calculating the sum of the factorials of all odd numbers from 1 to 9.
@@ -10,13 +9,10 @@ public class HomeTask7 {
 
     public static void main(String[] args) {
 
-        int number = abs(enterParameterFromConsoleInt(" Введите значение числа для которого нужно посчитать сумму фактариалов всех нечетных чисел в промежутке от 1 до N = "));
+        int number = enterParameterFromConsoleInt(" Введите значение числа для которого нужно посчитать сумму фактариалов всех нечетных чисел в промежутке от 1 до N = ");
 
-        printSumFactorials(number);
-    }
-
-    private static void printSumFactorials(int number) {
-        System.out.println(" Сумма факториалов всех нечетных чисел от 1 до " + number + " равен = " + getSumFactorials(number));
+        long sumFactorials = getSumFactorials(number);
+        System.out.print("Сумма факториалов всех нечетных чисел от 1 до " + number + " равен = " + sumFactorials);
     }
 
     private static long getSumFactorials(int number) { // Метод нахождения суммы факториалов.

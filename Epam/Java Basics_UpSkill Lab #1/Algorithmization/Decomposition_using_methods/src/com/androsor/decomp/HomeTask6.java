@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.Helper.getGreatestCommonDivisor;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Write a method (s) that checks whether the given three numbers are comprise.
@@ -27,12 +27,5 @@ public class HomeTask6 {
 
     private static boolean isPrime(int a, int b, int c) { // Числа являются взаимно простыми, если их НОД равен 1
         return getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c) == 1;
-    }
-
-    private static int getGreatestCommonDivisor(int a, int b) { // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
-        if (b == 0) {
-            return (abs(a));
-        }
-        return getGreatestCommonDivisor(b, a % b);
     }
 }

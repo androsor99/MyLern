@@ -1,7 +1,7 @@
 package com.androsor.decomp;
 
+import static com.androsor.decomp.Helper.getGreatestCommonDivisor;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 
 /**
  * Write a method (s) for finding the greatest common divisor of four natural numbers.
@@ -15,19 +15,28 @@ public class HomeTask2 {
         int c = enterParameterFromConsoleInt("Введите натуральное число c = ");
         int d = enterParameterFromConsoleInt("Введите натуральное число d = ");
 
-        int gcdABCD = getGreatestCommonDivisor(getGreatestCommonDivisor(getGreatestCommonDivisor(a, b), c), d);
+        int gcdABCD = getGreatestCommonDivisorMulti(a, b, c, d);
 
         printGreatestCommonDivisor(a, b, c, d, gcdABCD);
     }
 
-    private static int getGreatestCommonDivisor(int a, int b) { // Метод нахождения наибольшего общего делителя (НОД/GSD(Greatest common divisor))
-        if (b == 0) {
-            return (abs(a));
+    private static int getGreatestCommonDivisorMulti(int... value) {
+        int result = getGreatestCommonDivisor(value[0], value[1]);
+        for (int i = 2; i < value.length; i++){
+            result = getGreatestCommonDivisor(value[i], result);
         }
-        return getGreatestCommonDivisor(b, a % b);
+        return result;
     }
 
-    private static void printGreatestCommonDivisor(int a, int b, int c, int d, int gcdABCD) {
-        System.out.printf(" НОД (%d, %d, %d, %d) = %d", a, b, c, d, gcdABCD);
+    private static void printGreatestCommonDivisor(int... value) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("НОД (");
+        for (int i = 0; i < value.length - 1; i++) {
+            stringBuilder.append(value[i]);
+            stringBuilder.append(", ");
+        }
+        stringBuilder.append("\b\b) = ");
+        stringBuilder.append(value[value.length -1]);
+        System.out.println(stringBuilder.toString());
     }
 }

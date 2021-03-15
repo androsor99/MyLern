@@ -1,9 +1,10 @@
 package com.androsor.decomp;
 
+import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
-import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -18,57 +19,132 @@ public class HomeTask4 {
         int numberOfPoints = getNumberOfPoints();
 
         System.out.println("Заданы точки с координатами:");
-        int[][] coordinates = fillArray(numberOfPoints);
-        printPointCoordinates(coordinates);
+        Point2D[] points = getRandomPoints(numberOfPoints);
+        printPoint(points);
 
-        printCoordinatesOfPointsWithMaxDistance(coordinates);
+        Distance max = getMaxDistanceBetweenPoints(points);
+        System.out.println("Максимальное " + max.toString().toLowerCase(Locale.ROOT));
     }
 
     private static int getNumberOfPoints() {
-        int numberOfPoints = abs(enterParameterFromConsoleInt(" Введите количество заданных точек numberOfPoints = "));
+        int numberOfPoints = enterParameterFromConsoleInt("Введите количество заданных точек numberOfPoints = ");
         if (numberOfPoints == 1) {
-            System.out.println(" Одной точки не достаточно!");
+            System.out.println("Одной точки не достаточно!");
             return getNumberOfPoints();
         }
         return numberOfPoints;
     }
 
-    private static int[][] fillArray (int length) {
-        int[][] numbers = new int[2][length];
+    private static Point2D[] getRandomPoints(int length) {
+        Point2D[] points  = new Point2D[length];
+        for (int i = 0; i < length; i++) {
+            points[i] = new Point2D(getRandomCoordinate(), getRandomCoordinate());
+        }
+        return points;
+    }
+
+    private static int getRandomCoordinate() {
         Random random = new Random();
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < length; j++) {
-                numbers[i][j] = (random.nextInt(100) - 50);
-            }
-        }
-        return numbers;
+        return random.nextInt(100) - 50;
     }
 
-    private static void printPointCoordinates(int[][] coordinates) {
-        for (int i = 0; i < coordinates[0].length; i++) {
-            System.out.printf("%1d-ая Точка с координатами [%d ; %d]\n",i + 1, coordinates[0][i], coordinates[1][i]);
+    private static void printPoint(Point2D[] points) {
+        for (int i = 0; i < points.length; i++) {
+            System.out.printf("%1d-ая Точка с координатами %s\n",i + 1, points[i].toString());
         }
     }
 
-    public static void printCoordinatesOfPointsWithMaxDistance(int[][] coordinates) {
-        int tempIndexI = 0;
-        int tempIndexJ = 0;
-        double distanceMax = 0;
-        for (int i = 0; i < coordinates[0].length - 1; i++) {
-            for (int j = i + 1; j < coordinates[0].length; j++) {
-                double distance = getDistance(coordinates[0][i], coordinates[1][i], coordinates[0][j], coordinates[1][j]);
-                if (distanceMax < distance) {
-                    tempIndexI = i;
-                    tempIndexJ = j;
+    public static Distance getMaxDistanceBetweenPoints(Point2D[] points) {
+        Distance distanceMax = new Distance(points[0], points[1]);
+        for (int i = 0; i < points.length - 1; i++) {
+            for (int j = i + 1; j < points.length - 1; j++) {
+                Distance distance = new Distance(points[i], points[j]);
+                if (distanceMax.getDistance() < distance.getDistance()) {
                     distanceMax = distance;
                 }
             }
         }
-        System.out.printf(" Между точками с координатами [%d ; %d] и [%d ; %d] максимальное расстояние",
-                coordinates[0][tempIndexI], coordinates[1][tempIndexI], coordinates[0][tempIndexJ], coordinates[1][tempIndexJ]);
+        return distanceMax;
     }
 
-    private static double getDistance(int x1, int y1, int x2, int y2) { // Метод нахождения расстояния между двумя точками
-        return sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
+    private static class Point2D {
+
+        private final int coordinateX;
+        private final int coordinateY;
+
+        public Point2D(int coordinateX, int getCoordinateY) {
+            this.coordinateX = coordinateX;
+            this.coordinateY = getCoordinateY;
+        }
+
+        public int getCoordinateX() {
+            return coordinateX;
+        }
+
+        public int getGetCoordinateY() {
+            return coordinateY;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Point2D point2D = (Point2D) o;
+            return coordinateX == point2D.coordinateX && coordinateY == point2D.coordinateY;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(coordinateX, coordinateY);
+        }
+
+        @Override
+        public String toString() {
+            return String.format("[%d ; %d]", coordinateX, coordinateY);
+        }
+    }
+
+    private static class Distance {
+
+        private final Point2D pointOne;
+        private final Point2D pointTwo;
+        private final double distance;
+
+        public Distance(Point2D pointOne, Point2D pointTwo) {
+            this.pointOne = pointOne;
+            this.pointTwo = pointTwo;
+            this.distance = sqrt(pow((pointOne.coordinateX - pointTwo.coordinateX), 2) + pow((pointOne.coordinateY - pointTwo.coordinateY), 2));
+        }
+
+        public Point2D getPointOne() {
+            return pointOne;
+        }
+
+        public Point2D getPointTwo() {
+            return pointTwo;
+        }
+
+        public double getDistance() {
+            return distance;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Distance distance1 = (Distance) o;
+            return Double.compare(distance1.distance, distance) == 0 && Objects.equals(pointOne, distance1.pointOne) && Objects.equals(pointTwo, distance1.pointTwo);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(pointOne, pointTwo, distance);
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Расстояние жежду точками с координатами %s и %s  = %.3f",
+                    pointOne.toString(), pointTwo.toString(), distance);
+        }
     }
 }
