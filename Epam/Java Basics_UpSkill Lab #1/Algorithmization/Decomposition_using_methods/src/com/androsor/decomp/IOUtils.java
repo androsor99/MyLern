@@ -1,6 +1,7 @@
 package com.androsor.decomp;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.Math.*;
@@ -36,5 +37,11 @@ public class IOUtils {
         System.out.println("----------------------------------------");
         System.out.println(" " + Arrays.toString(numbers));
         System.out.println("----------------------------------------");
+    }
+
+    public static void printList(List<Integer> numbers) {
+    System.out.println("----------------------------------------");
+            System.out.println(" " + numbers.toString());
+            System.out.println("----------------------------------------");
     }
 }

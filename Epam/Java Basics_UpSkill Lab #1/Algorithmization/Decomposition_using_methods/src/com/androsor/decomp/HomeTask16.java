@@ -1,6 +1,9 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.IOUtils.printArray;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.androsor.decomp.IOUtils.printList;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 import static java.lang.Math.pow;
 
@@ -15,8 +18,8 @@ public class HomeTask16 {
         int number = enterParameterFromConsoleInt(" Введите число N = ");
 
         System.out.printf(" Массив чисел разрядности %d составленных из нечетных цифр:\n", number);
-        int[] numbers = fillArray(number);
-        printArray(numbers);
+        List<Integer> numbers = getOddDigitsNumbers(number);
+        printList(numbers);
 
         long sumOddDigitsOfNumber = getSumOddDigitsOfNumber(numbers);
         System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d %n", number, sumOddDigitsOfNumber);
@@ -25,14 +28,11 @@ public class HomeTask16 {
         System.out.printf("В найденной сумме %d четных цифр", numberOfDigits);
     }
 
-    public static int[] fillArray(int number) {
-        int length = (int) pow(5, number);
-        int[] numbers = new int[length];
-        int i = 0;
-        for (int j = getInitialValue(number); j < (int) pow(10, number); j += 2) {
-            if (isNumberOdd(j)) {
-                numbers[i] = j;
-                i++;
+    public static List<Integer> getOddDigitsNumbers(int number) {
+       List<Integer> numbers = new ArrayList<>();
+        for (int i = getInitialValue(number); i < (int) pow(10, number); i += 2) {
+            if (isNumberOdd(i)) {
+                numbers.add(i);
             }
         }
         return numbers;
@@ -46,9 +46,9 @@ public class HomeTask16 {
         return initialValue;
     }
 
-    private static long getSumOddDigitsOfNumber(int[] numbers){
+    private static long getSumOddDigitsOfNumber(List<Integer> numbers){
         int sum = 0;
-        for (int number : numbers) {
+        for (Integer number : numbers) {
             sum += number;
         }
        return sum;

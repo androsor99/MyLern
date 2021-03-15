@@ -3,6 +3,7 @@ package com.androsor.decomp;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.androsor.decomp.IOUtils.printList;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 
 /**
@@ -45,9 +46,7 @@ public class HomeTask12 {
             System.out.println(" Создать массив невозможно. На заданном диапазоне не существует чисел удовлетворяющих вводимым данным!");
         } else {
             System.out.println(" Массив из элементов согласно условию задачи:");
-            System.out.println("----------------------------------------");
-            System.out.println(" " + numbers.toString());
-            System.out.println("----------------------------------------");
+            printList(numbers);
         }
     }
 }
