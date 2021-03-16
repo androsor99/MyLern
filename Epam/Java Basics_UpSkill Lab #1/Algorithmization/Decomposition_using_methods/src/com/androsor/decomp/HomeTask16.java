@@ -22,7 +22,7 @@ public class HomeTask16 {
         printList(numbers);
 
         long sumOddDigitsOfNumber = getSumOddDigitsOfNumber(numbers);
-        System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d %n", number, sumOddDigitsOfNumber);
+        System.out.printf("Сумма %d-значных чисел, содержащих только нечетные цифры: %d", number, sumOddDigitsOfNumber);
 
         int numberOfDigits = getNumberOfDigits(sumOddDigitsOfNumber);
         System.out.printf("В найденной сумме %d четных цифр", numberOfDigits);
