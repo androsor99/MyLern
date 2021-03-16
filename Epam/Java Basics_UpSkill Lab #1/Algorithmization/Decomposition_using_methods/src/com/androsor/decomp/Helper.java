@@ -21,4 +21,18 @@ public class Helper {
         }
         return numbers;
     }
+
+    public static boolean isPrime(int... value) {
+        return processGreatestCommonDivisorMulti(value) == 1;
+    }
+
+    public static int processGreatestCommonDivisorMulti(int... value) {
+        int result = getGreatestCommonDivisor(value[0], value[1]);
+        for (int i = 2; i < value.length; i++){
+            result = getGreatestCommonDivisor(value[i], result);
+        }
+        return result;
+    }
+
+
 }

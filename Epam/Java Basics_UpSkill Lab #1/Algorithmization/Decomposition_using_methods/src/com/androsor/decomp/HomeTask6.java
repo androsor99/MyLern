@@ -1,6 +1,6 @@
 package com.androsor.decomp;
 
-import static com.androsor.decomp.Helper.getGreatestCommonDivisor;
+import static com.androsor.decomp.Helper.isPrime;
 import static com.androsor.decomp.IOUtils.enterParameterFromConsoleInt;
 
 /**
@@ -23,13 +23,5 @@ public class HomeTask6 {
         } else {
             System.out.printf(" Числа %d, %d, %d не являются взаимно простыми.", number1, number2, number3);
         }
-    }
-
-    private static boolean isPrime(int... value) { // Числа являются взаимно простыми, если их НОД равен 1
-        int result = getGreatestCommonDivisor(value[0], value[1]);
-        for (int i = 2; i < value.length; i++){
-            result = getGreatestCommonDivisor(value[i], result);
-        }
-        return result == 1;
     }
 }
