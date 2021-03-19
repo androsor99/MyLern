@@ -33,6 +33,4 @@ public class Helper {
         }
         return result;
     }
-
-
 }

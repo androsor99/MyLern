@@ -72,16 +72,16 @@ public class HomeTask4 {
         private final int coordinateX;
         private final int coordinateY;
 
-        public Point2D(int coordinateX, int getCoordinateY) {
+        public Point2D(int coordinateX, int coordinateY) {
             this.coordinateX = coordinateX;
-            this.coordinateY = getCoordinateY;
+            this.coordinateY = coordinateY;
         }
 
         public int getCoordinateX() {
             return coordinateX;
         }
 
-        public int getGetCoordinateY() {
+        public int getCoordinateY() {
             return coordinateY;
         }
 

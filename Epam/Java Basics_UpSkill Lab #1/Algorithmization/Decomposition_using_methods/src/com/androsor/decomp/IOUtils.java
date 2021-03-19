@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
 
 /**
  * Entering parameters from the console.
@@ -40,8 +40,8 @@ public class IOUtils {
     }
 
     public static void printList(List<Integer> numbers) {
-    System.out.println("----------------------------------------");
-            System.out.println(" " + numbers.toString());
-            System.out.println("----------------------------------------");
+        System.out.println("----------------------------------------");
+        System.out.println(" " + numbers.toString());
+        System.out.println("----------------------------------------");
     }
 }
