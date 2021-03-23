@@ -15,7 +15,7 @@ public class HomeTask4 {
         System.out.printf("В исходной строке %d чисел/числа.", countNumbers(strInitial));
     }
 
-    private static int countNumbers (String line) {
+    private static int countNumbers(String line) {
         int counter = 0;
         for (int i = 0; i < line.length(); i++) {
             if (isDigit(line.charAt(i))) {

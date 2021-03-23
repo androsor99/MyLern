@@ -1,7 +1,7 @@
 package com.androsor.string_char;
 
 import static com.androsor.string_char.IOUtils.enterFromConsole;
-import static java.lang.Character.isWhitespace;
+import static java.lang.Character.isSpaceChar;
 
 /**
  * Remove all extra spaces in the line, that is, replace series of consecutive spaces with single spaces.
@@ -20,14 +20,13 @@ public class HomeTask5 {
     public static String replaceDuplicateSpaces(String line) {
         StringBuilder newString = new StringBuilder();
         char[] symbols = line.trim().toCharArray();
-        for (int i = 0; i < symbols.length; i++) {
-            newString.append(symbols[i]);
-            if (isWhitespace(symbols[i])) {
-                while (isWhitespace(symbols[i])){
+        for (int i = 0; i <= symbols.length - 1; i++) {
+            if (isSpaceChar(symbols[i])) {
+                while (isSpaceChar(symbols[i + 1])){
                     i++;
                 }
-                i--;
             }
+            newString.append(symbols[i]);
         }
         return newString.toString();
     }

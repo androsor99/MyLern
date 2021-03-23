@@ -2,12 +2,17 @@ package com.androsor.string_char;
 
 import java.util.Scanner;
 
-public class IOUtils {
+public class IOUtils implements AutoCloseable {
 
     public static String enterFromConsole(String message) {
-        @SuppressWarnings("resurce")
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(message);
-        return scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println(message);
+            return scanner.nextLine();
+        }
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }
