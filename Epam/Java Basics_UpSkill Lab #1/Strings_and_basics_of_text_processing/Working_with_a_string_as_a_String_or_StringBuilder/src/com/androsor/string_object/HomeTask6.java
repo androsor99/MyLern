@@ -7,7 +7,7 @@ import static com.androsor.string_object.IOUtils.enterStringFromConsole;
  */
 public class HomeTask6 {
 
-    public static void main(String [] args){
+    public static void main(String [] args) {
 
         String line = enterStringFromConsole("Введите строку");
 
@@ -15,10 +15,9 @@ public class HomeTask6 {
     }
 
     private static String makeWordFromDuplicateLetters(String line) {
-        StringBuilder stringBuilder = new StringBuilder ();
-        for (int i = 0; i < line.length(); i++){
-            stringBuilder.append(line.charAt(i));
-            stringBuilder.append(line.charAt(i));
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < line.length(); i++) {
+            stringBuilder.append(line.charAt(i)).append(line.charAt(i));
         }
         return stringBuilder.toString();
     }

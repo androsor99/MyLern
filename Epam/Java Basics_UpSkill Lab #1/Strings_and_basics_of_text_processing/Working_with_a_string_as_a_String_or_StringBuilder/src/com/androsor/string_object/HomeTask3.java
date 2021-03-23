@@ -7,20 +7,15 @@ import static com.androsor.string_object.IOUtils.enterStringFromConsole;
  */
 public class HomeTask3 {
 
-    public static void main (String [] args){
+    public static void main (String [] args) {
 
         String line = enterStringFromConsole("Введите слово или предложение:");
 
-        checkForPalindrome(line);
+        System.out.println("Введенное слово/предложение " + (isPalindrome(line) ? "" : "не ") + "является полиндромом.");
     }
 
-    private static void checkForPalindrome(String line) {
-
+    private static boolean isPalindrome(String line) {
         StringBuilder stringBuilder = new StringBuilder(line.replaceAll("[^А-Яа-я]", ""));
-        if (stringBuilder.toString().equalsIgnoreCase((stringBuilder.reverse().toString()))) {
-            System.out.println("Введенное слово/предложение является полиндромом.");
-        } else {
-            System.out.println("Введенное слово/предложение не является полиндромом." );
-        }
+        return stringBuilder.toString().equalsIgnoreCase((stringBuilder.reverse().toString()));
     }
 }

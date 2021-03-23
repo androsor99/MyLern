@@ -15,10 +15,8 @@ public class HomeTask4 {
     }
 
     private static String makeWordFromLetters(String string) {
-        StringBuilder word = new StringBuilder();
-        word.append(string.charAt(7));
-        word.append(string, 3, 5);
-        word.append(string.charAt(7));
-        return word.toString();
+        return string.charAt(7) +
+                string.substring(3, 5) +
+                string.charAt(7);
     }
 }

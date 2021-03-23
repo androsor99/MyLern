@@ -12,8 +12,8 @@ public class HomeTask9 {
 
         String line = enterStringFromConsole("Введите строку:");
 
-        System.out.printf("В заданной строке содержится %d строчных английских букв и " +
-                "%d прописных английских букв.",  findEnglishLetter(line)[0], findEnglishLetter(line)[1]);
+        System.out.printf("В заданной строке содержится %d строчных английских букв и %d прописных английских букв.",
+                findEnglishLetter(line)[0], findEnglishLetter(line)[1]);
     }
     
     public static int[] findEnglishLetter(String line) {

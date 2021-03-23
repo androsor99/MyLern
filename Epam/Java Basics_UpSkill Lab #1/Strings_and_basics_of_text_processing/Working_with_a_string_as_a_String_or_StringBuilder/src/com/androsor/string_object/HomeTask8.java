@@ -1,12 +1,14 @@
 package com.androsor.string_object;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
  * A string of words is entered, separated by spaces. Find the longest word and display it on the screen.
  * The case when there may be several longest words, do not process.
  */
-
 public class HomeTask8 {
 
     public static void main(String[] args) {
@@ -17,15 +19,13 @@ public class HomeTask8 {
     }
 
     private static String findLargeWord (String string) {
-        String[] array = string.split("\\s");
-        int lengthMax = 0;
-        int index = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (lengthMax < array[i].length()) {
-                lengthMax = array[i].length();
-                index = i;
+        String[] words = string.split("\\s");
+        Arrays.sort(words, new Comparator<>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Integer.compare(o2.length(), o1.length());
             }
-        }
-        return array[index];
+        });
+        return words[0];
     }
 }
