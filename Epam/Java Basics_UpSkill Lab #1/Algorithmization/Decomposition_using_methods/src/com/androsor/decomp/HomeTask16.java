@@ -56,11 +56,8 @@ public class HomeTask16 {
 
     public static int getNumberOfDigits(long number) {
         int count = 0;
-        for (char symbol : String.valueOf(number).toCharArray()) {
-            int digit = Integer.parseInt(String.valueOf(symbol));
-            if (digit % 2 == 0 && digit != 0) {
-                count++;
-            }
+        if (!isNumberOdd(number)) {
+            count++;
         }
         return count;
     }
