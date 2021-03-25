@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getScannerInstance;
 
 /**
  * Line X consists of several sentences, each ending with a period, exclamation mark, or question mark.
@@ -21,7 +20,7 @@ public class HomeTask10 {
 
         System.out.printf("Предложенный текст состоит из %d предложений.\n", countSentence(line));
 
-        closeScanner(getScannerInstance());
+        closeScanner();
     }
 
     public static int countSentence(String line) {

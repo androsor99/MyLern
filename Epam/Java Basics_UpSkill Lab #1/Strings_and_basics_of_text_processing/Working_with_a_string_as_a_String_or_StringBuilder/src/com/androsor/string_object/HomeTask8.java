@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getScannerInstance;
+
 
 /**
  * A string of words is entered, separated by spaces. Find the longest word and display it on the screen.
@@ -19,7 +19,7 @@ public class HomeTask8 {
 
         System.out.printf("Самое длинное слово в строке : \"%s\"", findLargeWord(line));
 
-        closeScanner(getScannerInstance());
+        closeScanner();
     }
 
     private static String findLargeWord (String line) {
