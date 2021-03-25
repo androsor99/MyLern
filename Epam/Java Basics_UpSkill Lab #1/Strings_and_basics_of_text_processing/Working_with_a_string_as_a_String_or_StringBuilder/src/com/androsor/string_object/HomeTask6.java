@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getInstance;
+import static com.androsor.string_object.IOUtils.getScannerInstance;
 
 /**
  * Get a new one from the given string by repeating each character twice.
@@ -15,7 +15,7 @@ public class HomeTask6 {
 
         System.out.printf("Строка с задвоенными символами:\n%s", makeWordFromDuplicateLetters(line));
 
-        closeScanner(getInstance());
+        closeScanner(getScannerInstance());
     }
 
     private static String makeWordFromDuplicateLetters(String line) {

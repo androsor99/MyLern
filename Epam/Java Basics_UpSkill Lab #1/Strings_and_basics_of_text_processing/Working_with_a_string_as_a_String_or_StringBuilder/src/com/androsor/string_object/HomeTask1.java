@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getInstance;
+import static com.androsor.string_object.IOUtils.getScannerInstance;
 import static java.lang.Character.isSpaceChar;
 
 /**
@@ -16,7 +16,7 @@ public class HomeTask1 {
 
         System.out.printf("Максимальное количество пробелов во введенной строке/строках = %d", countSpaces(line));
 
-        closeScanner(getInstance());
+        closeScanner(getScannerInstance());
     }
 
     private static int countSpaces(String line) {

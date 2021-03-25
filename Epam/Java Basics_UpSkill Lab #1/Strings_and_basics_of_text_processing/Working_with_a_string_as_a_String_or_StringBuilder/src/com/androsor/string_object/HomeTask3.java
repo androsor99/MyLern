@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getInstance;
+import static com.androsor.string_object.IOUtils.getScannerInstance;
 
 /**
  * Check if the given word is a palindrome.
@@ -15,7 +15,7 @@ public class HomeTask3 {
 
         System.out.println("Введенное слово/предложение " + (isPalindrome(line) ? "" : "не ") + "является полиндромом.");
 
-        closeScanner(getInstance());
+        closeScanner(getScannerInstance());
     }
 
     private static boolean isPalindrome(String line) {

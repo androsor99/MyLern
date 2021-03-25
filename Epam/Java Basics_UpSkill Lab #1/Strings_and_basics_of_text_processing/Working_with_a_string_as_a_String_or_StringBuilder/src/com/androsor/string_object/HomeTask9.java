@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getInstance;
+import static com.androsor.string_object.IOUtils.getScannerInstance;
 
 /**
  * Count the number of lowercase (small) and uppercase (uppercase) letters in the entered line.
@@ -17,7 +17,7 @@ public class HomeTask9 {
         System.out.printf("В заданной строке содержится %d строчных английских букв и %d прописных английских букв.",
                 findEnglishLetter(line)[0], findEnglishLetter(line)[1]);
 
-        closeScanner(getInstance());
+        closeScanner(getScannerInstance());
     }
     
     public static int[] findEnglishLetter(String line) {

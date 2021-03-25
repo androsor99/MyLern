@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
-import static com.androsor.string_object.IOUtils.getInstance;
+import static com.androsor.string_object.IOUtils.getScannerInstance;
 import static java.lang.Character.isSpaceChar;
 
 /**
@@ -17,7 +17,7 @@ public class HomeTask7 {
 
         System.out.printf("Строка без пробелов и повторяющихся символов\n%s", deleteAllSpacesAndDuplicateCharacters(line));
 
-        closeScanner(getInstance());
+        closeScanner(getScannerInstance());
     }
 
     public static String deleteAllSpacesAndDuplicateCharacters(String line) {
