@@ -18,9 +18,9 @@ public class HomeTask4 {
         closeScanner(getScannerInstance());
     }
 
-    private static String makeWordFromLetters(String string) {
-        return string.charAt(7) +
-                string.substring(3, 5) +
-                string.charAt(7);
+    private static String makeWordFromLetters(String line) {
+        return line.charAt(7) +
+                line.substring(3, 5) +
+                line.charAt(7);
     }
 }

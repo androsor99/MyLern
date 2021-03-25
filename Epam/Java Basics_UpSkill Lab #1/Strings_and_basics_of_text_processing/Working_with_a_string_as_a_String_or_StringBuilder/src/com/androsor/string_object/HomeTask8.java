@@ -22,8 +22,8 @@ public class HomeTask8 {
         closeScanner(getScannerInstance());
     }
 
-    private static String findLargeWord (String string) {
-        String[] words = string.split("\\s");
+    private static String findLargeWord (String line) {
+        String[] words = line.split("\\s");
         Arrays.sort(words, new Comparator<>() {
             @Override
             public int compare(String o1, String o2) {
