@@ -1,7 +1,9 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterCharFromConsole;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.getInstance;
 
 /**
  * In the line insert after each 'a' character 'b'.
@@ -16,6 +18,8 @@ public class HomeTask2 {
 
         //System.out.println(line.replace(symbolA, (symbolA + symbolB)));
         System.out.printf("Измененная строка:\n %s", replaceCharactersInString(line, symbolA, symbolB));
+
+        closeScanner(getInstance());
     }
 
     private static String replaceCharactersInString(String line, char symbolA, char symbolB) {

@@ -1,6 +1,8 @@
 package com.androsor.string_object;
 
+import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.getInstance;
 
 /**
  * Get a new one from the given string by repeating each character twice.
@@ -12,6 +14,8 @@ public class HomeTask6 {
         String line = enterStringFromConsole("Введите строку");
 
         System.out.printf("Строка с задвоенными символами:\n%s", makeWordFromDuplicateLetters(line));
+
+        closeScanner(getInstance());
     }
 
     private static String makeWordFromDuplicateLetters(String line) {

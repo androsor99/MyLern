@@ -1,6 +1,8 @@
 package com.androsor.string_object;
 
+import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.getInstance;
 
 /**
  * Count how many times the letter "a" occurs among the characters of a given string.
@@ -16,6 +18,8 @@ public class HomeTask5 {
         long count = countSymbol(line, symbol);
 
         System.out.printf("В заданной строке буква а встречается %d раз", count);
+
+        closeScanner(getInstance());
     }
 
     private static long countSymbol(String line, char symbol) {

@@ -1,7 +1,10 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import java.util.StringTokenizer;
 
+import static com.androsor.string_object.IOUtils.closeScanner;
+import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOUtils.getInstance;
 
 /**
  * Line X consists of several sentences, each ending with a period, exclamation mark, or question mark.
@@ -11,12 +14,17 @@ public class HomeTask10 {
 
     public static void main(String[] args) {
 
-        String line = enterStringFromConsole("Введите строку:");
+        String line = enterStringFromConsole("Введите строку:"); //.привет. пока пролд. отм?
 
-        System.out.printf("Предложенный текст состоит из %d предложений.", countSentence(line));
+        StringTokenizer str = new StringTokenizer(line.strip(), ".!?");
+        System.out.println(str.countTokens());
+
+        System.out.printf("Предложенный текст состоит из %d предложений.\n", countSentence(line));
+
+        closeScanner(getInstance());
     }
 
-    public static int countSentence(String string) {
-        return string.split("[.!?]").length;
+    public static int countSentence(String line) {
+        return line.strip().replaceAll("^\\.*", "").split("[.!?]+").length;
     }
 }
