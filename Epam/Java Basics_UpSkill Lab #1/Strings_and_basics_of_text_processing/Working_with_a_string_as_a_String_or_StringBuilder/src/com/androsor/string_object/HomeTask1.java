@@ -28,7 +28,9 @@ public class HomeTask1 {
                 if (count > countMax) {
                     countMax = count;
                 }
-            } else count = 0;
+            } else {
+                count = 0;
+            }
         }
         return countMax;
     }
