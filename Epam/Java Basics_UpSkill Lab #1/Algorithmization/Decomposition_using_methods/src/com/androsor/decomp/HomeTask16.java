@@ -31,7 +31,7 @@ public class HomeTask16 {
     public static List<Integer> getOddDigitsNumbers(int numberLength) {
        List<Integer> numbers = new ArrayList<>();
         for (int i = getInitialValue(numberLength); i < (int) pow(10, numberLength); i += 2) {
-            if (isNumberOdd(numberLength, i)) {
+            if (isOddDigitNumber(i)) {
                 numbers.add(i);
             }
         }
@@ -65,7 +65,7 @@ public class HomeTask16 {
         return count;
     }
 
-    private static boolean isNumberOdd(int numberLength, long number) {
-        return numberLength != getNumberOfEvenDigits(number);
+    private static boolean isOddDigitNumber(long number) {
+        return getNumberOfEvenDigits(number) == 0;
     }
 }
