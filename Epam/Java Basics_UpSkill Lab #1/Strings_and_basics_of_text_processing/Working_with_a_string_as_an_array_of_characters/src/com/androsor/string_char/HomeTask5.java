@@ -20,7 +20,7 @@ public class HomeTask5 {
     public static String replaceDuplicateSpaces(String line) {
         StringBuilder newString = new StringBuilder();
         char[] symbols = line.trim().toCharArray();
-        for (int i = 0; i <= symbols.length - 1; i++) {
+        for (int i = 0; i < symbols.length; i++) {
             if (isSpaceChar(symbols[i])) {
                 while (isSpaceChar(symbols[i + 1])){
                     i++;
