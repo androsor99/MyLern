@@ -1,7 +1,5 @@
 package com.androsor.string_object;
 
-import java.util.StringTokenizer;
-
 import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
@@ -15,8 +13,7 @@ public class HomeTask10 {
 
         String line = enterStringFromConsole("Введите строку:"); //.привет. пока пролд. отм?
 
-        StringTokenizer str = new StringTokenizer(line.strip(), ".!?");
-        System.out.println(str.countTokens());
+        //String line = "....привет.... пока .3.пролд. отм?!!!!!!!! мам\".....\"апро!";
 
         System.out.printf("Предложенный текст состоит из %d предложений.\n", countSentence(line));
 
@@ -24,6 +21,6 @@ public class HomeTask10 {
     }
 
     public static int countSentence(String line) {
-        return line.strip().replaceAll("^\\.*", "").split("[.!?]+").length;
+        return line.strip().split("[.!?]+\\s+").length;
     }
 }
