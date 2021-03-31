@@ -15,8 +15,4 @@ public class IOUtils {
         System.out.println(message);
         return INSTANCE.next().charAt(0);
     }
-
-    public static void closeScanner() {
-        INSTANCE.close();
-    }
 }

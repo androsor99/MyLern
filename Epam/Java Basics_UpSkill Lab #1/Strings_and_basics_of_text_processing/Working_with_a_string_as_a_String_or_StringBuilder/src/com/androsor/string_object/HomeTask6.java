@@ -1,6 +1,5 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
@@ -11,16 +10,14 @@ public class HomeTask6 {
     public static void main(String [] args) {
 
         String line = enterStringFromConsole("Введите строку");
-
         System.out.printf("Строка с задвоенными символами:\n%s", makeWordFromDuplicateLetters(line));
-
-        closeScanner();
     }
 
     private static String makeWordFromDuplicateLetters(String line) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
-            stringBuilder.append(line.charAt(i)).append(line.charAt(i));
+            char[] symbols = {line.charAt(i), line.charAt(i)};
+            stringBuilder.append(symbols);
         }
         return stringBuilder.toString();
     }

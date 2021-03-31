@@ -1,6 +1,5 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 import static java.lang.Character.isSpaceChar;
 
@@ -14,8 +13,6 @@ public class HomeTask1 {
         String line = enterStringFromConsole("Введите строку/строки с различным количеством прробелов:");
 
         System.out.printf("Максимальное количество пробелов во введенной строке/строках = %d", countSpaces(line));
-
-        closeScanner();
     }
 
     private static int countSpaces(String line) {

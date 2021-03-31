@@ -1,6 +1,5 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
@@ -13,11 +12,7 @@ public class HomeTask10 {
 
         String line = enterStringFromConsole("Введите строку:"); //.привет. пока пролд. отм?
 
-        //String line = "....привет.... пока .3.пролд. отм?!!!!!!!! мам\".....\"апро!";
-
         System.out.printf("Предложенный текст состоит из %d предложений.\n", countSentence(line));
-
-        closeScanner();
     }
 
     public static int countSentence(String line) {

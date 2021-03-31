@@ -1,6 +1,5 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.closeScanner;
 import static com.androsor.string_object.IOUtils.enterStringFromConsole;
 
 /**
@@ -13,20 +12,21 @@ public class HomeTask9 {
 
         String line = enterStringFromConsole("Введите строку:");
 
-        System.out.printf("В заданной строке содержится %d строчных английских букв и %d прописных английских букв.",
-                findEnglishLetter(line)[0], findEnglishLetter(line)[1]);
+        int[] counts = findEnglishLetter(line);
 
-        closeScanner();
+        System.out.printf("В заданной строке содержится %d строчных английских букв и %d прописных английских букв.",
+                counts[0], counts[1]);
     }
     
     public static int[] findEnglishLetter(String line) {
         int countLower = 0;
         int countUpper = 0;
         for (int i = 0; i < line.length(); i++) {
-            if (String.valueOf(line.charAt(i)).matches("[a-z]")) {
+            char symbol = line.charAt(i);
+            if (String.valueOf(symbol).matches("[a-z]")) {
                 countLower++;
             }
-            if (String.valueOf(line.charAt(i)).matches("[A-Z]")) {
+            if (String.valueOf(symbol).matches("[A-Z]")) {
                 countUpper++;
             }
         }
