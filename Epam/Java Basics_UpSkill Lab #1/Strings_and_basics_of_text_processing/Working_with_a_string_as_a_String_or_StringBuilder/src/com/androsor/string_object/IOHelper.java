@@ -2,7 +2,7 @@ package com.androsor.string_object;
 
 import java.util.Scanner;
 
-public class IOUtils {
+public class IOHelper {
 
     private static final Scanner INSTANCE = new Scanner(System.in);
 

@@ -1,23 +1,26 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOHelper.enterStringFromConsole;
 
 /**
  * Get a new one from the given string by repeating each character twice.
  */
 public class HomeTask6 {
 
-    public static void main(String [] args) {
+    private static final String INPUT_MESSAGE = "Введите строку";
+    private static final String OUTPUT_MESSAGE = "Строка с задвоенными символами:\n%s";
 
-        String line = enterStringFromConsole("Введите строку");
-        System.out.printf("Строка с задвоенными символами:\n%s", makeWordFromDuplicateLetters(line));
+    public static void main(String[] args) {
+
+        String line = enterStringFromConsole(INPUT_MESSAGE);
+        System.out.printf(OUTPUT_MESSAGE, makeWordFromDuplicateLetters(line));
     }
 
     private static String makeWordFromDuplicateLetters(String line) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
-            char[] symbols = {line.charAt(i), line.charAt(i)};
-            stringBuilder.append(symbols);
+            char symbol = line.charAt(i);
+            stringBuilder.append(symbol).append(symbol);
         }
         return stringBuilder.toString();
     }

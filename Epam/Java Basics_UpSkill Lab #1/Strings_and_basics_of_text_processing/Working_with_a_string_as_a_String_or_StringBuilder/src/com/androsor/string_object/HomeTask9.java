@@ -1,6 +1,6 @@
 package com.androsor.string_object;
 
-import static com.androsor.string_object.IOUtils.enterStringFromConsole;
+import static com.androsor.string_object.IOHelper.enterStringFromConsole;
 
 /**
  * Count the number of lowercase (small) and uppercase (uppercase) letters in the entered line.
@@ -8,17 +8,19 @@ import static com.androsor.string_object.IOUtils.enterStringFromConsole;
  */
 public class HomeTask9 {
 
+    private static final String INPUT_MESSAGE = "Введите строку:";
+    private static final String OUTPUT_MESSAGE = "В заданной строке содержится %d строчных английских букв и %d прописных английских букв.";
+
     public static void main(String[] args) {
 
-        String line = enterStringFromConsole("Введите строку:");
+        String line = enterStringFromConsole(INPUT_MESSAGE);
 
-        int[] counts = findEnglishLetter(line);
+        int[] counts = findNumberOfLetters(line);
 
-        System.out.printf("В заданной строке содержится %d строчных английских букв и %d прописных английских букв.",
-                counts[0], counts[1]);
+        System.out.printf(OUTPUT_MESSAGE, counts[0], counts[1]);
     }
     
-    public static int[] findEnglishLetter(String line) {
+    public static int[] findNumberOfLetters(String line) {
         int countLower = 0;
         int countUpper = 0;
         for (int i = 0; i < line.length(); i++) {
