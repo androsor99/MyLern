@@ -19,6 +19,6 @@ public class HomeTask10 {
     }
 
     public static int countSentence(String line) {
-        return line.strip().split("[.!?]+\\s+").length;
+        return line.strip().split("(?<=([.!?]\s))").length;
     }
 }
